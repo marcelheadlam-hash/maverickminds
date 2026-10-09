@@ -1,4 +1,15 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maverick Minds</title>
+<meta name="description" content="Calm, social sessions for ADHD and autistic young people in Years 7 to 9, plus free, sourced guides for parents.">
+<meta property="og:title" content="Maverick Minds">
+<meta property="og:description" content="Calm, social sessions for ADHD and autistic young people in Years 7 to 9, plus free, sourced guides for parents.">
+<meta name="theme-color" content="#C2410C">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23EA580C'%3E%3Ccircle cx='40' cy='38' r='16'/%3E%3Ccircle cx='28' cy='58' r='16'/%3E%3Ccircle cx='40' cy='76' r='16'/%3E%3Crect x='40' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='26,84 14,106 44,90'/%3E%3C/g%3E%3Cg fill='%237C3AED'%3E%3Ccircle cx='80' cy='38' r='16'/%3E%3Ccircle cx='92' cy='58' r='16'/%3E%3Ccircle cx='80' cy='76' r='16'/%3E%3Crect x='64' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='94,84 106,106 76,90'/%3E%3C/g%3E%3C/svg%3E">
+<style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap">
@@ -11,6 +22,11 @@
   --accent:#5B2EE6; --accent-soft:#ECE6FF; --on-accent:#FFFFFF;
   --spark:#FF5A4E; --spark-soft:#FFE7E4; --pop:#FFD23F; --pop-soft:#FFF5D1; --warn:#B9271A;
   --hero:#5B2EE6; --on-hero:#FFFFFF; --hero-muted:#E2D9FF;
+  /* Colour = meaning. Sessions (booking for kids) · Learn (guides, famous minds) · Team (work with us) · Trust (safety and policies) */
+  --c-sessions:#5B2EE6; --c-sessions-soft:#ECE6FF;
+  --c-learn:#D0362A; --c-learn-soft:#FFE7E4;
+  --c-team:#0F7A5A; --c-team-soft:#D9F3EA;
+  --c-trust:#1B1530; --c-trust-soft:#ECEAF3;
   --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --body:"Atkinson Hyperlegible", "Verdana", system-ui, sans-serif;
   --fs:17px; --lh:1.65; color-scheme:light;
@@ -20,19 +36,31 @@
   --accent:#00777B; --accent-soft:#D6F1EF; --on-accent:#FFFFFF;
   --spark:#FF8A1F; --spark-soft:#FFEBD6; --pop:#FFE14D; --pop-soft:#FFF8D1; --warn:#A64A06;
   --hero:#00777B; --on-hero:#FFFFFF; --hero-muted:#CBF0EE;
+  --c-sessions:#00777B; --c-sessions-soft:#D6F1EF; --c-learn:#B4540A; --c-learn-soft:#FFEBD6;
+  --c-team:#4B47C9; --c-team-soft:#E5E4FF; --c-trust:#0E2829; --c-trust-soft:#E6EEED;
 }
 :root[data-cw="sherbet"]{
   --bg:#FFF7FA; --surface:#FFFFFF; --ink:#24112B; --muted:#644F6B; --line:#F2DCE7;
   --accent:#2F47D9; --accent-soft:#E3E8FF; --on-accent:#FFFFFF;
   --spark:#E2367F; --spark-soft:#FDE1EC; --pop:#B6E32C; --pop-soft:#F0FAD2; --warn:#B0124E;
   --hero:#C8186A; --on-hero:#FFFFFF; --hero-muted:#FFD3E6;
+  --c-sessions:#C8186A; --c-sessions-soft:#FFD9EA; --c-learn:#2F47D9; --c-learn-soft:#E3E8FF;
+  --c-team:#4D7A00; --c-team-soft:#EAF6CF; --c-trust:#24112B; --c-trust-soft:#F0E8EF;
 }
 :root[data-cw="sunset"]{
   --bg:#FFFAF4; --surface:#FFFFFF; --ink:#2A1608; --muted:#6B5240; --line:#F3E1CF;
   --accent:#C2410C; --accent-soft:#FFE8D6; --on-accent:#FFFFFF;
-  --spark:#7C3AED; --spark-soft:#EEE6FF; --pop:#22C3E6; --pop-soft:#D8F5FC; --warn:#9F1D1D;
+  --spark:#7C3AED; --spark-soft:#EEE6FF; --pop:#FFC93C; --pop-soft:#FFF1C7; --warn:#9F1D1D;
   --hero:#C2410C; --on-hero:#FFFFFF; --hero-muted:#FFDCC4;
+  --c-sessions:#C2410C; --c-sessions-soft:#FFE8D6; --c-learn:#6D28D9; --c-learn-soft:#EEE6FF;
+  --c-team:#0E7490; --c-team-soft:#D5F3FA; --c-trust:#2A1608; --c-trust-soft:#F3ECE6;
 }
+/* Section colour: every page and teaser picks one role; components only ever use --sec */
+:root{--sec:var(--c-sessions);--sec-soft:var(--c-sessions-soft)}
+.sec-sessions,#app[data-sec="sessions"]{--sec:var(--c-sessions);--sec-soft:var(--c-sessions-soft)}
+.sec-learn,#app[data-sec="learn"]{--sec:var(--c-learn);--sec-soft:var(--c-learn-soft)}
+.sec-team,#app[data-sec="team"]{--sec:var(--c-team);--sec-soft:var(--c-team-soft)}
+.sec-trust,#app[data-sec="trust"]{--sec:var(--c-trust);--sec-soft:var(--c-trust-soft)}
 :root.big{--fs:20px; --lh:1.8}
 
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--fs);line-height:var(--lh)}
@@ -227,11 +255,123 @@ mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
 .faq details > div{padding-top:10px;display:flex;flex-direction:column;gap:10px}
 .faq summary:focus-visible{outline:3px solid var(--spark);outline-offset:4px;border-radius:6px}
 
+[hidden]{display:none!important}
+@media (max-width:820px){.hero::before{display:none}}
+/* skip link */
+.skip{position:absolute;left:16px;top:-60px;z-index:50;background:var(--ink);color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+#app:focus{outline:none}
+/* comfort: calm switch */
+.comfort-gap{margin-top:10px}
+.comfort small{color:var(--muted);font-size:.78rem;max-width:170px}
+.switch{display:flex;align-items:center;gap:10px}
+.switch .knob{width:38px;height:22px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .2s}
+.switch .knob::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .2s}
+.switch[aria-checked="true"]{border-color:var(--accent);color:var(--accent);font-weight:700}
+.switch[aria-checked="true"] .knob{background:var(--accent)}
+.switch[aria-checked="true"] .knob::after{transform:translateX(16px)}
+/* in short + listen */
+.in-short{background:var(--sec-soft);border-left:6px solid var(--sec);border-radius:0 14px 14px 0;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
+.in-short h2{font-size:1.05rem!important;margin:0!important;color:var(--sec);text-transform:uppercase;letter-spacing:.08em}
+.in-short ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-weight:700}
+.listen{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.listen-btn{cursor:pointer;font:inherit;font-weight:700;padding:8px 18px;background:transparent}
+.listen-btn[aria-pressed="true"]{background:var(--sec-soft)}
+.linkish{background:none;border:0;padding:0;font:inherit;color:var(--sec);text-decoration:underline;cursor:pointer}
+#app .btn.linkish{border:0;padding:8px 6px}
+.save-note{text-align:center;font-size:.88rem;color:var(--muted);background:var(--sec-soft);border-radius:10px;padding:10px 14px}
+/* calm mode: muted colours, no decoration, no movement */
+html.calm main,html.calm .where,html.calm footer,html.calm header.site{filter:saturate(.35)}
+html.calm .hero{background:var(--sec-soft);color:var(--ink)}
+html.calm .hero::before,html.calm .hero::after{display:none}
+html.calm .hero h1,html.calm #app .hero .eyebrow,html.calm .hero .lede{color:var(--ink)}
+html.calm .hero h1::after{background:var(--sec)!important}
+html.calm #app .hero .btn.solid{background:var(--sec);border-color:var(--sec);color:#fff}
+html.calm #app .hero .btn:not(.solid){border-color:var(--sec);color:var(--sec)}
+html.calm .hero-note,html.calm .form{transform:none;box-shadow:none;border-width:1px;border-color:var(--line)}
+html.calm .parts{border-width:1px}
+html.calm *,html.calm *::before,html.calm *::after{transition:none!important;animation:none!important}
+html.calm .btn:hover,html.calm .card:hover,html.calm .where-tile:hover{transform:none}
+html.calm .burger{background:var(--surface)}
+html.calm footer{border-top-color:var(--line)}
+
+/* questionnaire */
+.who{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.who legend{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:12px;text-align:center;width:100%}
+.who-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.who-card{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;background:var(--surface)}
+.who-card input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--sec)}
+.who-card b{display:block;font-size:1.05rem}
+.who-card small{color:var(--muted);font-size:.88rem}
+.who-card:has(input:checked){border-color:var(--sec);background:var(--sec-soft)}
+.survey[data-who=""] .q-list{display:none}
+.survey[data-who="teacher"] [data-only="parent"]{display:none}
+.survey[data-who="teacher"] [data-who="parent"]{display:none}
+.survey[data-who="parent"] [data-who="teacher"]{display:none}
+.q-list{display:flex;flex-direction:column;gap:18px;border-top:2px dashed var(--line);padding-top:20px}
+.q-note{text-align:center}
+.q-group{font-size:1.1rem;color:var(--sec);margin-top:10px;padding-bottom:6px;border-bottom:2px solid var(--sec-soft)}
+.q label{display:flex;gap:12px;align-items:baseline;font-size:1rem}
+.q-n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--sec);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:.9rem;transform:translateY(5px)}
+@media (max-width:640px){.who-row{grid-template-columns:1fr}}
+.cta-band{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--sec-soft);border:2px solid var(--sec);border-radius:20px;padding:24px 28px}
+.cta-band .stack{gap:6px;flex:1 1 320px}
+
+/* ---- Colour = meaning: components take the section colour ---- */
+#app a{color:var(--sec)}
+#app .btn{border-color:var(--sec);color:var(--sec)}
+#app .btn.solid{background:var(--sec);border-color:var(--sec);color:#fff}
+#app .eyebrow{color:var(--sec)}
+#app h1::after{content:"";display:block;width:64px;height:5px;border-radius:3px;background:var(--sec);margin-top:18px}
+.hero{background:var(--sec)}
+.hero h1::after{background:var(--pop)!important}
+#app .hero .eyebrow,.hero .lede{color:rgba(255,255,255,.9)}
+#app .hero .btn.solid{background:var(--pop);border-color:var(--pop);color:var(--ink)}
+#app .hero .btn:not(.solid){border-color:#fff;color:#fff}
+.hero::after{background:var(--pop-soft)}
+#app .hero-note .eyebrow{color:var(--muted)}
+.hero-note .k{color:var(--sec)}
+.card,.grid .card:nth-child(n){border-top-color:var(--sec)}
+.card:hover{border-color:var(--sec)}
+#app .card{color:var(--ink)}
+.parts{border-color:var(--sec)}
+.part:nth-child(n){background:var(--sec-soft)}
+.part+.part{border-left-color:var(--sec)}
+.part .n{color:var(--sec)}
+.ticks li::before{border-color:var(--sec)}
+.steps li::before{background:var(--sec)}
+.form{box-shadow:8px 8px 0 var(--sec)}
+.field.check input{accent-color:var(--sec)}
+.chip[aria-pressed="true"]{background:var(--sec);border-color:var(--sec);color:#fff}
+.role,.role + .role{border-top-color:var(--sec)}
+.needs{background:var(--sec)}
+.need-list li{background:rgba(255,255,255,.14)}
+.need-k{color:#fff}
+.spark{background:var(--sec-soft);border-left-color:var(--sec)}
+.faq summary::after{color:var(--sec)}
+.form-msg.ok{color:var(--sec)}
+.ev-law,.ev-guidance,.ev-practice{color:var(--sec)}
+/* nav: each link carries its section colour */
+nav.main a::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--sec);margin-right:10px;vertical-align:.1em}
+nav.main a:hover{background:var(--sec-soft)}
+nav.main a[aria-current="page"]{background:var(--sec);color:#fff}
+nav.main a[aria-current="page"]::before{background:#fff}
+/* Where next? */
+.where{padding-block:8px 56px;display:flex;flex-direction:column;gap:18px}
+.where h2{text-align:center}
+.where-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.where-tile{display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);background:var(--sec-soft);border-left:6px solid var(--sec);border-radius:12px;padding:14px 16px;font-size:.9rem;transition:transform .15s;min-width:0}
+.where-tile:hover{transform:translateY(-2px)}
+.where-k{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--sec)}
+@media (max-width:820px){.where-row{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.where-row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){.where-tile{transition:none}.where-tile:hover{transform:none}}
+
 @media (max-width:820px){
   .hero,.two,.roles{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr 1fr}
   .parts{grid-template-columns:1fr}
-  .part+.part{border-left:0;border-top:1px solid var(--line)}
+  .part+.part{border-left:0;border-top:2px solid var(--sec)}
 }
 @media (max-width:540px){
   .grid,.parts{grid-template-columns:1fr}
@@ -239,11 +379,21 @@ mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
   dl.facts{grid-template-columns:1fr} dl.facts dd{margin-bottom:6px}
 }
 </style>
-
+</head>
+<body>
+<a class="skip" href="#app" id="skip">Skip to main content</a>
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="#home" aria-label="Maverick Minds home">
-      <svg class="logo" width="42" height="42" viewBox="0 0 100 100" aria-hidden="true"><g fill="var(--accent)"><polygon points="12,88 12,22 30,22 54,60 50,76 30,46 30,88"/><polygon points="44,64 72.6,24.4 81.4,31 50,76"/><polygon points="72,52 88,30 88,88 72,88"/></g><polygon fill="var(--spark)" points="92,8 66,20 86,38"/></svg>
+      <svg class="logo" width="44" height="44" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="mm-o" gradientUnits="userSpaceOnUse" x1="0" y1="14" x2="0" y2="106"><stop offset="0" stop-color="#FF8A2B"/><stop offset="1" stop-color="#C2410C"/></linearGradient>
+          <linearGradient id="mm-v" gradientUnits="userSpaceOnUse" x1="0" y1="14" x2="0" y2="106"><stop offset="0" stop-color="#A855F7"/><stop offset="1" stop-color="#6D28D9"/></linearGradient>
+        </defs>
+        <g fill="url(#mm-o)"><circle cx="40" cy="38" r="16"/><circle cx="28" cy="58" r="16"/><circle cx="40" cy="76" r="16"/><rect x="40" y="22" width="16" height="70" rx="3"/><polygon points="26,84 14,106 44,90"/></g>
+        <g fill="url(#mm-v)"><circle cx="80" cy="38" r="16"/><circle cx="92" cy="58" r="16"/><circle cx="80" cy="76" r="16"/><rect x="64" y="22" width="16" height="70" rx="3"/><polygon points="94,84 106,106 76,90"/></g>
+        <circle cx="48" cy="52" r="4.5" fill="#fff"/><circle cx="72" cy="52" r="4.5" fill="#fff"/>
+      </svg>
       <span>Maverick <em>Minds</em></span>
     </a>
     <div class="bar-actions">
@@ -256,18 +406,22 @@ mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
   <div class="menu" id="menu" hidden>
     <div class="wrap menu-inner">
       <nav class="main" aria-label="Main">
-        <a href="#home" data-nav="home">Home</a>
-        <a href="#sessions" data-nav="sessions">Sessions</a>
-        <a href="#safeguarding" data-nav="safeguarding">Safeguarding</a>
-        <a href="#faq" data-nav="faq">FAQ</a>
-        <a href="#library" data-nav="library">Library</a>
-        <a href="#famous" data-nav="famous">Famous minds</a>
-        <a href="#team" data-nav="team">Join the team</a>
+        <a href="#home" data-nav="home" class="sec-sessions">Home</a>
+        <a href="#sessions" data-nav="sessions" class="sec-sessions">Sessions</a>
+        <a href="#faq" data-nav="faq" class="sec-sessions">FAQ</a>
+        <a href="#survey" data-nav="survey" class="sec-sessions">Have your say</a>
+        <a href="#library" data-nav="library" class="sec-learn">Library</a>
+        <a href="#famous" data-nav="famous" class="sec-learn">Famous minds</a>
+        <a href="#team" data-nav="team" class="sec-team">Join the team</a>
+        <a href="#safeguarding" data-nav="safeguarding" class="sec-trust">Safeguarding</a>
       </nav>
-      <div class="comfort" role="group" aria-label="Text size">
+      <div class="comfort" role="group" aria-label="Comfort settings">
         <span>Text size</span>
         <button type="button" id="size-std" aria-pressed="true">Standard</button>
         <button type="button" id="size-big" aria-pressed="false">Larger</button>
+        <span class="comfort-gap">Calm mode</span>
+        <button type="button" id="calm" class="switch" role="switch" aria-checked="false"><span class="knob" aria-hidden="true"></span><span class="switch-label">Off</span></button>
+        <small>Softer colours, no shapes or movement</small>
       </div>
     </div>
   </div>
@@ -276,7 +430,17 @@ mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
   <span>Colourway</span>
 </div>
 
-<main class="wrap" id="app"></main>
+<main class="wrap" id="app" tabindex="-1"></main>
+
+<section class="wrap where" aria-labelledby="where-h">
+  <h2 id="where-h">Where next?</h2>
+  <div class="where-row">
+    <a class="where-tile sec-sessions" href="#sessions"><span class="where-k">Sessions</span><span>How sessions work and the waiting list</span></a>
+    <a class="where-tile sec-learn" href="#library"><span class="where-k">Guides</span><span>Free, sourced guides for parents</span></a>
+    <a class="where-tile sec-team" href="#team"><span class="where-k">Join the team</span><span>Teaching assistant and volunteer roles</span></a>
+    <a class="where-tile sec-trust" href="#safeguarding"><span class="where-k">Safeguarding</span><span>How we keep your child safe</span></a>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
@@ -297,9 +461,12 @@ mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
 </footer>
 
 <script>
-/* Formspree endpoints. Both forms currently go to one Formspree form; the hidden form_type and _subject fields tell them apart in your inbox. */
-const FORMSPREE = "https://formspree.io/f/xoejwqwe";
-const FORMS = { waitlist:FORMSPREE, apply:FORMSPREE };
+/* Formspree endpoints: one form per purpose, so each has its own inbox and CSV export. */
+const FORMS = {
+  waitlist:"https://formspree.io/f/xoejwqwe",
+  apply:"https://formspree.io/f/xppqrwaw",
+  survey:"https://formspree.io/f/xeaekqyy"
+};
 const CATS = ["Understanding ADHD & autism","Sensory & regulation","School & SEND","Diagnosis & support","Home & family","Friends & feelings","Out and about"];
 const EV = {
   mixed:{label:"Evidence: mixed", cls:"ev-mixed", note:"Some trials, results disagree"},
@@ -313,6 +480,7 @@ const GUIDES = [
   slug:"what-is-adhd", title:"What is ADHD?",
   cat:"Understanding ADHD & autism", ev:"guidance", mins:5,
   summary:"The three areas ADHD affects, why hyperactivity isn't required, and why girls are often missed.",
+  short:["ADHD affects attention, energy levels and impulse control, and signs usually start before 12.", "A child can have ADHD without being hyperactive, and it's often missed in girls.", "Only a qualified clinician can diagnose it, and symptoms must affect life in more than one setting."],
   body:`
 <p>ADHD (attention deficit hyperactivity disorder) affects attention, energy levels and impulse control. Signs usually start before the age of 12.<sup><a href="#s1">1</a></sup></p>
 <h2>The three areas</h2>
@@ -341,6 +509,7 @@ const GUIDES = [
   slug:"what-is-autism", title:"What is autism?",
   cat:"Understanding ADHD & autism", ev:"guidance", mins:4,
   summary:"Autism isn't an illness. What it means, the signs in older children, and why many autistic girls go unnoticed.",
+  short:["Autism isn't an illness. It means the brain works differently, and it's lifelong.", "Common signs include finding feelings hard to explain, needing routine, intense interests and sensory differences.", "Many autistic girls copy others to fit in, which can hide their needs at school."],
   body:`
 <p>Autism is not an illness or a disease. It means a person's brain works differently from other people's. It's lifelong, and every autistic person is different, which is why it's described as a spectrum.<sup><a href="#s1">1</a></sup></p>
 <h2>Common signs in older children</h2>
@@ -368,6 +537,7 @@ const GUIDES = [
   slug:"history-of-adhd", title:"A short history of ADHD",
   cat:"Understanding ADHD & autism", ev:"history", mins:4,
   summary:"From an 18th-century doctor's description to today's NICE guidance. ADHD is not a new invention.",
+  short:["Doctors described ADHD-like behaviour as early as 1775 and 1798.", "The name changed several times before \"ADHD\" was adopted in 1987.", "In the UK, NICE guidance has covered children since 2000 and adults since 2008."],
   body:`
 <p>People sometimes say ADHD is a modern label. Doctors were describing it more than 200 years ago.</p>
 <h2>1775 and 1798: the first descriptions</h2>
@@ -397,6 +567,7 @@ const GUIDES = [
   slug:"adhd-assessment-steps", title:"Getting an ADHD assessment for your child",
   cat:"Diagnosis & support", ev:"guidance", mins:5,
   summary:"Step by step: talking to the GP or school, the three routes to assessment, and what the appointments involve.",
+  short:["Start by talking to your GP or your child's school.", "There are three routes: a local NHS referral, Right to Choose, or a private assessment.", "A private diagnosis doesn't automatically mean NHS treatment, so ask your GP before booking."],
   body:`
 <p>This covers England. The process differs in Scotland, Wales and Northern Ireland.</p>
 <h2>Step 1: Raise it</h2>
@@ -425,6 +596,7 @@ const GUIDES = [
   slug:"send-appeals", title:"Disagreeing with a SEND decision",
   cat:"School & SEND", ev:"law", mins:4,
   summary:"If the council refuses an assessment or you disagree with an EHC plan: mediation, the tribunal and the deadlines.",
+  short:["You can challenge many council decisions about SEND, including a refusal to assess.", "Before most appeals you must get a mediation certificate.", "Appeal within 2 months of the decision, or 1 month of the certificate, whichever is later."],
   body:`
 <p>You can challenge many local authority decisions about SEND, such as a refusal to assess your child, a refusal to issue an EHC plan, or what the plan says.<sup><a href="#s1">1</a></sup></p>
 <h2>Step 1: Mediation advice</h2>
@@ -444,6 +616,7 @@ const GUIDES = [
   slug:"sensory-tools-evidence", title:"Sensory tools: what the evidence actually says",
   cat:"Sensory & regulation", ev:"mixed", mins:5,
   summary:"Weighted blankets, ear defenders, fidgets. Which have research behind them, and how to try them without wasting money.",
+  short:["Most sensory tools are low-risk comfort aids, but the evidence that they reduce anxiety is thin.", "Weighted blankets helped sleep in one ADHD trial but not in an autism trial.", "Try one tool at a time, ask your child, and see your GP if anxiety affects daily life."],
   body:`
 <p>Most sensory tools are low-risk comfort aids. They can help a child feel settled. The research on whether they reduce anxiety is thinner than the marketing suggests: most studies measure sleep or behaviour, and very few look at children who are both autistic and have ADHD.</p>
 <h2>Weighted blankets</h2>
@@ -472,6 +645,7 @@ const GUIDES = [
   slug:"self-soothing-menu", title:"A self-soothing menu, sense by sense",
   cat:"Sensory & regulation", ev:"practice", mins:6,
   summary:"Calming options grouped by sense, plus how to build a menu with your child so they choose what works.",
+  short:["Stimming is often how a child calms down, so only redirect it if it causes harm.", "Match the need: overwhelmed children usually need less input, restless ones need more.", "Build a menu of 5 to 8 options with your child and practise them when calm."],
   body:`
 <p>Every child already has ways of calming down. The aim is to notice them, add a few healthy options, and practise them when things are calm so they are easy to reach when things are not.</p>
 <h2>Five principles</h2>
@@ -518,6 +692,7 @@ const GUIDES = [
   slug:"days-out", title:"Days out without the overwhelm",
   cat:"Out and about", ev:"thin", mins:4,
   summary:"What research with autistic people says makes public places hard, and a simple plan for your next trip.",
+  short:["Busy shops, transport and cafés are common trouble spots.", "Less noise, knowing what's coming, and a quiet spot to retreat to all help.", "Check for sensory guides or relaxed sessions, and plan an exit before you go."],
   body:`
 <p>Research on keeping children calm in public places is mostly about changing the place, not about what the child carries. Much of it is qualitative or based on case studies, so treat it as a good guide rather than proof.</p>
 <h2>Where it gets hard</h2>
@@ -547,6 +722,7 @@ const GUIDES = [
   slug:"calmer-room", title:"A calmer room at home",
   cat:"Sensory & regulation", ev:"mixed", mins:5,
   summary:"Sound, light, clutter and choice. The changes with the most research behind them, and how to involve your child.",
+  short:["Start with sound: rugs, curtains and soft furnishings help most.", "Use lamps instead of bright overhead lights, and keep walls uncluttered.", "Design the space with your child, especially from around age 9."],
   body:`
 <p>Design research on calm spaces mostly comes from schools and small studies, but a few themes come up consistently. None of these need a big budget.</p>
 <h2>Sound first</h2>
@@ -571,6 +747,7 @@ const GUIDES = [
   slug:"sen-support-secondary", title:"SEN support at secondary school: what you can ask for",
   cat:"School & SEND", ev:"law", mins:5,
   summary:"Support is based on need, not diagnosis. How SEN support works, and when to ask for an EHC needs assessment.",
+  short:["Schools should support your child based on need, not diagnosis.", "Start with the SENCO, and put requests in writing.", "If support isn't enough, you can ask the council for an EHC needs assessment yourself."],
   body:`
 <p>This guide covers schools in England. The rules come from the SEND Code of Practice.<sup><a href="#s1">1</a></sup> SEND rules can change, so check the current version before you rely on any detail.</p>
 <h2>Need, not diagnosis</h2>
@@ -599,6 +776,7 @@ const GUIDES = [
   slug:"waiting-for-assessment", title:"Waiting for an assessment: what you can do now",
   cat:"Diagnosis & support", ev:"guidance", mins:4,
   summary:"Waits can be long. What you can do while you wait, from choosing a provider to getting school support started.",
+  short:["You don't need a diagnosis to get help at school.", "In England you can sometimes choose your NHS assessment provider (Right to Choose).", "Keep a record of what happens and what helps. It makes appointments more useful."],
   body:`
 <p>Waits for ADHD and autism assessments for children can be long. You don't have to wait for a diagnosis before getting help.</p>
 <h2>Ask about choosing your provider</h2>
@@ -622,6 +800,7 @@ const GUIDES = [
   slug:"meltdowns-shutdowns", title:"Meltdowns and shutdowns: what's happening and how to respond",
   cat:"Sensory & regulation", ev:"practice", mins:5,
   summary:"A meltdown is not a tantrum. What's going on, what to do in the moment, and what to do afterwards.",
+  short:["Meltdowns and shutdowns are responses to overwhelm, not bad behaviour.", "In the moment: keep everyone safe, cut the noise and light, use few words, and wait.", "Afterwards, rest comes first. Then keep a log to spot patterns."],
   body:`
 <p>A meltdown is an intense response to being overwhelmed. A shutdown is the quieter version: the child goes silent, withdraws or can't respond. Neither is a choice, and neither is bad behaviour.<sup><a href="#s1">1</a></sup></p>
 <h2>In the moment</h2>
@@ -646,6 +825,7 @@ const GUIDES = [
   slug:"moving-to-secondary", title:"Moving to secondary school",
   cat:"School & SEND", ev:"practice", mins:5,
   summary:"New building, new timetable, new teachers every hour. How to prepare your child, and the EHCP deadline to know.",
+  short:["Extra visits, photos, an early timetable and practising the journey all reduce surprises.", "With an EHC plan, the new school must be named by 15 February of the year your child moves.", "Expect exhaustion in the first term and keep evenings light."],
   body:`
 <p>Secondary school brings more change at once than most children have faced: a bigger building, a timetable, different teachers each lesson and new social groups. Preparation reduces the number of surprises.</p>
 <h2>Before September</h2>
@@ -672,6 +852,7 @@ const GUIDES = [
   slug:"ehcp-annual-review", title:"Getting the most from an EHCP annual review",
   cat:"School & SEND", ev:"law", mins:5,
   summary:"The review happens at least once a year. How to prepare, what to ask for, and why Year 9 is different.",
+  short:["EHC plans must be reviewed at least every 12 months.", "Read the plan line by line before the meeting and push for specific wording.", "From Year 9 at the latest, reviews must include preparing for adulthood."],
   body:`
 <p>An Education, Health and Care plan must be reviewed at least every 12 months.<sup><a href="#s1">1</a></sup> The review is your chance to make sure the plan still describes your child and the support they really get.</p>
 <h2>Before the meeting</h2>
@@ -696,6 +877,7 @@ const GUIDES = [
   slug:"school-anxiety-attendance", title:"When school feels impossible: anxiety and attendance",
   cat:"School & SEND", ev:"guidance", mins:5,
   summary:"Many neurodivergent children struggle to get to school because of anxiety. How to work with the school instead of against it.",
+  short:["Struggling to get to school is often anxiety, not truancy.", "Ask the SENCO and attendance lead to meet together, and agree adjustments.", "Keep records of attendance and conversations, and see your GP if anxiety is severe."],
   body:`
 <p>Some children find school so stressful that getting through the door becomes a daily battle. Many councils call this emotionally based school avoidance (EBSA). It is different from truancy: the child often wants to go and can't.</p>
 <h2>Work out what's behind it</h2>
@@ -721,6 +903,7 @@ const GUIDES = [
   slug:"exam-access-arrangements", title:"Exam access arrangements: extra time and more",
   cat:"School & SEND", ev:"law", mins:4,
   summary:"Extra time, rest breaks and a separate room are possible in GCSEs. How they're decided, and why to start asking in Year 9.",
+  short:["Extra time, rest breaks and a separate room are possible in GCSEs.", "The SENCO decides based on evidence of need, and the support should be how your child normally works.", "Raise it in Year 9, when assessments can begin."],
   body:`
 <p>Access arrangements are adjustments that let a student show what they know in exams. They are set by the Joint Council for Qualifications (JCQ) and managed by the school.<sup><a href="#s1">1</a></sup></p>
 <h2>What's possible</h2>
@@ -748,6 +931,7 @@ const GUIDES = [
   slug:"adhd-medication-questions", title:"ADHD medication: questions to ask",
   cat:"Diagnosis & support", ev:"guidance", mins:5,
   summary:"What UK guidance says about medication for children, the common side effects, and the questions to take to appointments.",
+  short:["NICE says medication can be offered to children aged 5 and over when changes at home and school haven't been enough.", "Common side effects include reduced appetite and trouble sleeping.", "Take a list of questions, and involve your child in deciding whether it's working."],
   body:`
 <p>This guide is here to help you have a better conversation with your child's specialist. It is not medical advice, and only a doctor can advise on your child's treatment.</p>
 <h2>What the guidance says</h2>
@@ -773,6 +957,7 @@ const GUIDES = [
   slug:"telling-your-child", title:"Talking to your child about their diagnosis",
   cat:"Diagnosis & support", ev:"practice", mins:4,
   summary:"When to tell them, how to frame it, and why their own words for it matter.",
+  short:["Talking early is usually better than your child finding out by accident.", "Frame it as a different way of thinking, starting from what they're good at.", "Let them decide who else is told, and what words they use."],
   body:`
 <p>Many autistic and ADHD adults say finding out about their diagnosis helped them make sense of themselves. There's no perfect moment, but it's usually better to talk early than to let them find out by accident.<sup><a href="#s1">1</a></sup></p>
 <h2>How to frame it</h2>
@@ -794,6 +979,7 @@ const GUIDES = [
   slug:"dla-for-children", title:"Disability Living Allowance for children",
   cat:"Diagnosis & support", ev:"law", mins:4,
   summary:"DLA is based on extra care or supervision needs, not on diagnosis. Who can claim and how to fill in the form.",
+  short:["DLA is for under-16s who need more care or supervision than other children their age.", "It's based on needs, not diagnosis, and isn't means-tested.", "On the form, describe a bad day with specific examples and attach evidence."],
   body:`
 <p>Disability Living Allowance (DLA) is a benefit for children under 16 who need more care, supervision or help getting around than other children of the same age.<sup><a href="#s1">1</a></sup> It is not means-tested.</p>
 <h2>It's about needs, not diagnosis</h2>
@@ -822,6 +1008,7 @@ const GUIDES = [
   slug:"sleep", title:"Sleep and the neurodivergent teen",
   cat:"Home & family", ev:"guidance", mins:5,
   summary:"Sleep problems are common with ADHD and autism. A routine that helps, and when to ask the GP.",
+  short:["Sleep problems are common with ADHD and autism, and some ADHD medication affects sleep.", "A consistent wind-down routine and a cool, dark, quiet room help.", "Keep a two-week sleep diary, and only use melatonin with medical advice."],
   body:`
 <p>Difficulty falling asleep, waking in the night and early waking are common for children with ADHD and autistic children. Some ADHD medication can also affect sleep.<sup><a href="#s1">1</a></sup></p>
 <h2>A routine that helps</h2>
@@ -847,6 +1034,7 @@ const GUIDES = [
   slug:"siblings", title:"Brothers and sisters: keeping things fair",
   cat:"Home & family", ev:"practice", mins:4,
   summary:"Siblings of neurodivergent children often feel overlooked. Small habits that help them feel seen.",
+  short:["Brothers and sisters can feel left out but often keep it to themselves.", "Regular one-to-one time and honest explanations help.", "Sibs is a UK charity with support for siblings and parents."],
   body:`
 <p>When one child needs more attention, brothers and sisters can feel left out, embarrassed or worried, and they often keep it to themselves.<sup><a href="#s1">1</a></sup></p>
 <h2>Explain, at their level</h2>
@@ -869,6 +1057,7 @@ const GUIDES = [
   slug:"looking-after-yourself", title:"Looking after yourself as a parent carer",
   cat:"Home & family", ev:"law", mins:4,
   summary:"You have a legal right to have your own needs assessed. What that means and where to start.",
+  short:["Parent carers in England have a right to their own needs assessment from the council.", "Check whether your child qualifies for DLA and whether you can claim Carer's Allowance.", "Your local parent carer forum knows local services and other families."],
   body:`
 <p>Caring for a neurodivergent child can be tiring and isolating. Looking after yourself is part of looking after them.</p>
 <h2>Your right to an assessment</h2>
@@ -887,6 +1076,7 @@ const GUIDES = [
   slug:"online-safety", title:"Staying safe online",
   cat:"Home & family", ev:"practice", mins:5,
   summary:"Gaming and group chats are where many neurodivergent teens make friends. How to keep them safe without cutting them off.",
+  short:["Online spaces are where many neurodivergent teens make friends, so aim for safe use, not no use.", "Give clear, specific rules, such as never moving a chat to a private app because someone asks.", "Make sure your child knows they won't be in trouble for telling you something."],
   body:`
 <p>For many neurodivergent young people, online spaces are where they feel most comfortable socially. Research suggests children with SEND can also be more vulnerable to some online risks.<sup><a href="#s1">1</a></sup> The goal is safe use, not no use.</p>
 <h2>Make the rules concrete</h2>
@@ -912,6 +1102,7 @@ const GUIDES = [
   slug:"friendships", title:"Friendships that fit",
   cat:"Friends & feelings", ev:"mixed", mins:5,
   summary:"Why neurodivergent kids often click with each other, and how to help friendships grow around shared interests.",
+  short:["Misunderstandings between autistic and non-autistic people go both ways.", "Shared interests and side-by-side play make friendship easier.", "One or two good friends matter more than being popular."],
   body:`
 <p>Friendship difficulties are often put down to the neurodivergent child. Research suggests it's more two-way than that.</p>
 <h2>The double empathy problem</h2>
@@ -937,6 +1128,7 @@ const GUIDES = [
   slug:"naming-feelings", title:"Helping your child name their feelings",
   cat:"Friends & feelings", ev:"mixed", mins:4,
   summary:"Many autistic people find it hard to identify their own emotions. Tools that make feelings visible.",
+  short:["Around half of autistic people find it hard to identify their own emotions.", "Start with body signals, then link them to a possible feeling.", "Feelings cards, a 1 to 5 scale and talking about characters can help."],
   body:`
 <p>Difficulty identifying and describing your own emotions is called alexithymia. A review of studies estimated that around half of autistic people have it, compared with far fewer in the general population.<sup><a href="#s1">1</a></sup> A child who can't name a feeling can't easily ask for help with it.</p>
 <h2>Start with the body</h2>
@@ -1028,6 +1220,84 @@ function waitlistForm(){
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>`;
 }
+const SURVEY = [
+  {group:"Social situations"},
+  {name:"hardest_social_situations",
+   parent:"What social situations does your child find hardest? Can you provide any recent examples of any difficult interactions?",
+   teacher:"What social situations do the children find hardest? Can you provide any recent examples of any difficult interactions?"},
+  {group:"Support so far"},
+  {name:"support_accessed",
+   parent:"What type of support have you accessed so far, and what actually helped?",
+   teacher:"What type of support do they have access to, and what actually helped?"},
+  {name:"obstacles_to_support",
+   parent:"What obstacles affected you accessing support for your child (cost, waiting lists, location, time)?",
+   teacher:"What obstacles affected the children accessing support (cost, waiting lists, location, time)?"},
+  {group:"Sensory needs"},
+  {name:"what_helps_calm",
+   parent:"During periods of overstimulation what helps your child calm down or self-soothe (objects, activities, routines, people)?",
+   teacher:"During periods of overstimulation what helps the children calm down or self-soothe (objects, activities, routines, people)?"},
+  {name:"sensory_triggers_and_comfort",
+   parent:"What sounds, lights, smells, textures or crowds do they find overwhelming, and what environments help them feel comfortable?",
+   teacher:"What sounds, lights, smells, textures or crowds do they find overwhelming, and what environments help them feel comfortable?"},
+  {group:"You as a parent", only:"parent"},
+  {name:"hardest_as_parent", only:"parent",
+   parent:"What is hardest for you as a parent day to day?"},
+  {name:"connected_to_other_parents", only:"parent",
+   parent:"How connected do you feel to other parents in a similar situation?"},
+  {group:"Your ideas"},
+  {name:"great_service_looks_like",
+   parent:"What would a great social skills service and parent community look like?",
+   teacher:"What would a great social skills service and community look like?"},
+  {name:"other_comments",
+   parent:"Any other comments?",
+   teacher:"Any other comments?"}
+];
+function surveyForm(){
+  let n = 0;
+  const items = SURVEY.map(q=>{
+    const only = q.only ? ` data-only="${q.only}"` : "";
+    if(q.group) return `<h3 class="q-group"${only}>${q.group}</h3>`;
+    n++;
+    const id = "sv-"+q.name;
+    const label = `<span data-who="parent">${q.parent}</span>${q.teacher?`<span data-who="teacher">${q.teacher}</span>`:""}`;
+    return `<div class="field q"${only}><label for="${id}"><span class="q-n">${n}</span>${label}</label><textarea id="${id}" name="${q.name}" rows="4"></textarea></div>`;
+  }).join("");
+  return `<form class="form wide survey" id="survey" data-form="survey" data-who="" action="${FORMS.survey}" method="POST" novalidate>
+  <input type="hidden" name="form_type" value="Questionnaire">
+  <input type="hidden" name="_subject" value="New questionnaire response – Maverick Minds">
+  <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <fieldset class="who">
+    <legend>First, which describes you?</legend>
+    <div class="who-row">
+      <label class="who-card" for="sv-role-parent"><input type="radio" id="sv-role-parent" name="respondent" value="Parent or carer" required><span><b>I'm a parent or carer</b><small>of a neurodivergent child</small></span></label>
+      <label class="who-card" for="sv-role-teacher"><input type="radio" id="sv-role-teacher" name="respondent" value="Teacher or school staff" required><span><b>I work in a school</b><small>teacher, teaching assistant or SENCO</small></span></label>
+    </div>
+  </fieldset>
+  <div class="q-list">
+    <p class="hint q-note">Answer as many questions as you like, and skip any you'd rather not answer. Please don't include children's names.</p>
+    <p class="save-note" id="sv-save-note">Your answers are saved on this device as you type, so you can stop and come back later. <button type="button" class="linkish" id="sv-clear">Clear saved answers</button></p>
+    ${items}
+    <h3 class="q-group">Staying in touch (optional)</h3>
+    <div class="fields">
+      ${field("sv-email","Email address, if you're happy for us to follow up",`<input id="sv-email" name="email" type="email" autocomplete="email">`)}
+      <div class="field check"><input type="checkbox" id="sv-waitlist" name="join_waiting_list" value="Yes"><label for="sv-waitlist">Add me to the waiting list for sessions too</label></div>
+    </div>
+    <div class="field check"><input type="checkbox" id="sv-consent" name="consent" required><label for="sv-consent">I agree to Maverick Minds using my answers to design its sessions and community. Answers may be quoted anonymously. See our <a href="#privacy">privacy notice</a>.</label></div>
+    <div class="form-foot">
+      <button type="submit" class="btn solid">Send my answers</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</form>`;
+}
+function applyWho(form){
+  const r = form.querySelector('[name="respondent"]:checked');
+  const who = r ? (r.id==="sv-role-teacher" ? "teacher" : "parent") : "";
+  form.dataset.who = who;
+  form.querySelectorAll('[data-only] textarea').forEach(t=>t.disabled = who!=="parent");
+  form.querySelector('[name="form_type"]').value = who==="teacher" ? "Questionnaire – school staff" : "Questionnaire – parent";
+  form.querySelector('[name="_subject"]').value = who==="teacher" ? "New questionnaire response (school staff) – Maverick Minds" : "New questionnaire response (parent) – Maverick Minds";
+}
 function applyForm(){
   return `<form class="form wide" id="apply" data-form="apply" action="${FORMS.apply}" method="POST" novalidate>
   <input type="hidden" name="form_type" value="Team application">
@@ -1071,20 +1341,27 @@ home(){
     <div class="row"><span class="k">£30</span><span>Per two-hour session, with a debrief for you at pickup.</span></div>
   </aside>
 </section>
-<section class="stack">
+<section class="cta-band">
+  <div class="stack">
+    <span class="eyebrow">Have your say · about 10 minutes</span>
+    <h2>Parent, carer or teacher? Help us shape our sessions.</h2>
+  </div>
+  <a class="btn solid" href="#survey">Answer our questionnaire</a>
+</section>
+<section class="stack sec-learn">
   <div class="stack" style="gap:6px"><span class="eyebrow">The library · free for every parent</span><h2>Clear, sourced guides</h2>
   <p class="lede">Short guides on sensory needs, school support and getting help. Every claim links to its source, and each guide shows how strong the evidence is.</p></div>
   <div class="grid">${["what-is-adhd","what-is-autism","sen-support-secondary"].map(s=>card(GUIDES.find(g=>g.slug===s))).join("")}</div>
   <a href="#library">See all ${GUIDES.length} guides</a>
 </section>
 <section class="two">
-  <div class="stack">
+  <div class="stack sec-learn">
     <span class="eyebrow">Inspiration</span>
     <h2>Famous minds</h2>
     <p>Athletes, comedians, scientists and artists who have spoken about their own ADHD or autism.</p>
     <a href="#famous">Meet them</a>
   </div>
-  <div class="stack">
+  <div class="stack sec-team">
     <span class="eyebrow">Work with us</span>
     <h2>Teaching assistants and volunteers wanted.</h2>
     <p>We're building a team of people who get neurodivergent kids. Psychology and education students are welcome.</p>
@@ -1235,6 +1512,17 @@ team(){
   ${applyForm()}
 </section>`;
 },
+survey(){
+  return `
+<section class="stack">
+  <span class="eyebrow">Have your say · about 10 minutes</span>
+  <h1>Help us shape Maverick Minds.</h1>
+  <p class="lede">We're designing our sessions and parent community around what families and schools actually need. Your answers go straight to Elysse and Marcel, and they'll change what we build.</p>
+</section>
+<section>
+  ${surveyForm()}
+</section>`;
+},
 safeguarding(){
   return `
 <article class="doc"><div class="stack">
@@ -1366,6 +1654,7 @@ privacy(){
   <h2>What we collect</h2>
   <ul>
     <li><b>Waiting list:</b> your name, email, phone number if you give it, your child's school year, your area and how you heard about us.</li>
+    <li><b>Questionnaire:</b> whether you're a parent or work in a school, your answers, and your email if you choose to give it. Answers can describe a child's needs, so we ask you not to include names. We use answers to design our sessions and may quote them anonymously. While you fill it in, your answers are saved only on your own device so you can come back later. They're deleted from your device when you send them, or when you press "Clear saved answers".</li>
     <li><b>Team applications:</b> your name, contact details, the role you're interested in, your experience, DBS status and availability.</li>
     <li><b>Before your child's first session:</b> information about your child's needs, such as their sensory profile, what helps them, any diagnosis you choose to share, medication and who can collect them. We only ask for this when you're booking a place.</li>
   </ul>
@@ -1402,7 +1691,11 @@ accessibility(){
 
   <h2>This website</h2>
   <ul>
-    <li>Use the <b>Text</b> buttons at the top of every page to make text larger and more widely spaced.</li>
+    <li>Open the menu and use <b>Text size</b> to make text larger and more widely spaced.</li>
+    <li>Turn on <b>Calm mode</b> in the menu for softer colours, no decorative shapes and no movement.</li>
+    <li>Every guide starts with an <b>In short</b> summary, and has a <b>Listen to this guide</b> button that reads it aloud using your browser's built-in voice.</li>
+    <li>Our questionnaire saves your answers on your device as you go, so you can stop and come back.</li>
+    <li>Keyboard users can press Tab once to reveal a <b>Skip to main content</b> link.</li>
     <li>We use Atkinson Hyperlegible, a typeface designed to be easy to read for people with low vision.</li>
     <li>The site follows your device's light or dark setting.</li>
     <li>There are no autoplaying videos, sounds or moving animations.</li>
@@ -1430,7 +1723,11 @@ guide(slug){
     <span class="eyebrow">${g.cat}</span>
     <h1>${g.title}</h1>
     <div class="meta"><span class="pill ${e.cls}">${e.label}</span><span>${g.mins} min read</span><span>By Elysse Lawrence and Marcel Headlam</span></div>
+    <div class="listen" hidden><button type="button" class="btn listen-btn" id="listen" aria-pressed="false"><span class="listen-icon" aria-hidden="true">▶</span> <span class="listen-label">Listen to this guide</span></button><button type="button" class="btn linkish" id="listen-stop" hidden>Stop</button></div>
+    ${g.short ? `<aside class="in-short" aria-label="In short"><h2>In short</h2><ul>${g.short.map(b=>`<li>${b}</li>`).join("")}</ul></aside>` : ""}
+    <div class="guide-body">
     ${g.body}
+    </div>
   </div>
   <div class="sources">
     <h2 style="margin-top:0;font-size:1.1rem">Sources</h2>
@@ -1461,9 +1758,14 @@ function route(){
   else if(h==="join"){ page="sessions"; html = PAGES.sessions(); }
   else { if(!PAGES[h] || h==="guide") page="home"; html = PAGES[page](); }
   $("#app").innerHTML = html;
+  const sv = $("#survey"); if(sv){ applyWho(sv); surveyLoad(sv); }
+  if(synth) synth.cancel();
+  setupListen();
+  const SEC = {survey:"sessions",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
+  $("#app").dataset.sec = SEC[page] || "sessions";
   document.querySelectorAll("[data-form] [id]").forEach(el=>{
     if(!(el.id in DRAFT)) return;
-    if(el.type==="checkbox") el.checked = DRAFT[el.id]; else el.value = DRAFT[el.id];
+    if(el.type==="checkbox" || el.type==="radio") el.checked = DRAFT[el.id]; else el.value = DRAFT[el.id];
   });
   document.querySelectorAll("[data-nav]").forEach(a=>a.toggleAttribute("aria-current",false));
   const cur = document.querySelector(`[data-nav="${page}"]`); if(cur) cur.setAttribute("aria-current","page");
@@ -1483,7 +1785,10 @@ function route(){
 const DRAFT = {};
 ["input","change"].forEach(t=>document.addEventListener(t, e=>{
   const el = e.target;
-  if(el.closest && el.closest("[data-form]") && el.id) DRAFT[el.id] = el.type==="checkbox" ? el.checked : el.value;
+  if(!(el.closest && el.closest("[data-form]") && el.id)) return;
+  if(el.type==="radio"){ el.form.querySelectorAll(`[name="${el.name}"]`).forEach(r=>DRAFT[r.id]=r.checked); }
+  else DRAFT[el.id] = el.type==="checkbox" ? el.checked : el.value;
+  if(el.name==="respondent") applyWho(el.form);
 }));
 
 document.addEventListener("submit", async e=>{
@@ -1492,10 +1797,18 @@ document.addEventListener("submit", async e=>{
   e.preventDefault();
   const msg = form.querySelector(".form-msg");
   msg.className = "form-msg";
-  const bad = [...form.querySelectorAll("[required]")].find(el=> el.type==="checkbox" ? !el.checked : !el.value.trim() || (el.type==="email" && !el.checkValidity()));
+  const bad = [...form.querySelectorAll("[required], input[type=email]")].find(el=>
+    el.type==="checkbox" ? !el.checked :
+    el.type==="radio" ? !form.querySelector(`[name="${el.name}"]:checked`) :
+    el.type==="email" ? (el.required ? !el.value.trim() : false) || (el.value.trim() && !el.checkValidity()) :
+    !el.value.trim());
   if(bad){
     const lbl = form.querySelector(`label[for="${bad.id}"]`);
-    msg.textContent = bad.type==="checkbox" ? "Please tick the box to agree to us storing your details." : `Please fill in “${lbl?lbl.textContent:"this field"}”${bad.type==="email"?" with a valid email address":""}.`;
+    msg.textContent =
+      bad.type==="radio" ? "Please choose whether you're a parent or work in a school." :
+      bad.type==="checkbox" ? "Please tick the box to agree to how we use your answers." :
+      bad.type==="email" && bad.value.trim() ? "Please check the email address. It doesn't look quite right." :
+      `Please fill in “${lbl?lbl.textContent:"this field"}”.`;
     msg.classList.add("err"); bad.focus(); return;
   }
   const url = FORMS[form.dataset.form];
@@ -1512,7 +1825,12 @@ document.addEventListener("submit", async e=>{
     }
     form.reset();
     form.querySelectorAll("[id]").forEach(el=>delete DRAFT[el.id]);
-    msg.textContent = form.dataset.form==="waitlist" ? "Thank you, you're on the list. Elysse or Marcel will be in touch soon." : "Thank you, we've got your application. Elysse or Marcel will be in touch soon.";
+    msg.textContent = {
+      waitlist:"Thank you, you're on the list. Elysse or Marcel will be in touch soon.",
+      apply:"Thank you, we've got your application. Elysse or Marcel will be in touch soon.",
+      survey:"Thank you. Your answers will help shape Maverick Minds."
+    }[form.dataset.form];
+    if(form.dataset.form==="survey"){ try{ localStorage.removeItem(SV_KEY); }catch(_){} applyWho(form); }
     msg.classList.add("ok");
   }catch(_){
     msg.textContent = "That didn't send. Check your connection and try again.";
@@ -1539,6 +1857,73 @@ function setSize(big){
 $("#size-std").addEventListener("click",()=>setSize(false));
 $("#size-big").addEventListener("click",()=>setSize(true));
 try{ if(localStorage.getItem("mm-size")==="big") setSize(true); }catch(_){}
+
+/* Skip link: focus main content without changing the page's hash route */
+$("#skip").addEventListener("click", e=>{ e.preventDefault(); $("#app").focus(); });
+
+/* Calm mode */
+function setCalm(on){
+  document.documentElement.classList.toggle("calm", on);
+  const b = $("#calm"); b.setAttribute("aria-checked", on); b.querySelector(".switch-label").textContent = on ? "On" : "Off";
+  try{ localStorage.setItem("mm-calm", on ? "1" : "0"); }catch(_){}
+}
+$("#calm").addEventListener("click", ()=>setCalm(!document.documentElement.classList.contains("calm")));
+try{ if(localStorage.getItem("mm-calm")==="1") setCalm(true); }catch(_){}
+
+/* Read aloud (browser's built-in voice) */
+const synth = ("speechSynthesis" in window) ? window.speechSynthesis : null;
+function stopListen(){
+  if(synth) synth.cancel();
+  const b=$("#listen"); if(!b) return;
+  b.setAttribute("aria-pressed","false"); b.querySelector(".listen-icon").textContent="▶"; b.querySelector(".listen-label").textContent="Listen to this guide";
+  $("#listen-stop").hidden = true;
+}
+function setupListen(){
+  const box = document.querySelector(".listen"); if(!box || !synth) return;
+  box.hidden = false;
+  const b=$("#listen"), stop=$("#listen-stop");
+  b.addEventListener("click", ()=>{
+    if(synth.speaking && !synth.paused){ synth.pause(); b.setAttribute("aria-pressed","false"); b.querySelector(".listen-icon").textContent="▶"; b.querySelector(".listen-label").textContent="Resume"; return; }
+    if(synth.paused){ synth.resume(); b.setAttribute("aria-pressed","true"); b.querySelector(".listen-icon").textContent="❚❚"; b.querySelector(".listen-label").textContent="Pause"; return; }
+    const parts = [document.querySelector("article.guide h1"), document.querySelector(".in-short"), document.querySelector(".guide-body")]
+      .filter(Boolean).map(el=>el.innerText.replace(/\s\d+(,\d+)*\s/g," ")).join(". ");
+    const u = new SpeechSynthesisUtterance(parts);
+    u.lang = "en-GB"; u.rate = 0.95;
+    const v = synth.getVoices().find(v=>v.lang==="en-GB"); if(v) u.voice = v;
+    u.onend = stopListen;
+    synth.cancel(); synth.speak(u);
+    b.setAttribute("aria-pressed","true"); b.querySelector(".listen-icon").textContent="❚❚"; b.querySelector(".listen-label").textContent="Pause";
+    stop.hidden = false;
+  });
+  stop.addEventListener("click", stopListen);
+}
+
+/* Questionnaire: save progress on this device */
+const SV_KEY = "mm-survey";
+function surveyLoad(form){
+  let saved = null; try{ saved = JSON.parse(localStorage.getItem(SV_KEY)||"null"); }catch(_){}
+  if(!saved) return;
+  Object.entries(saved).forEach(([id,val])=>{
+    const el = form.querySelector("#"+CSS.escape(id)); if(!el) return;
+    if(el.type==="checkbox"||el.type==="radio") el.checked = !!val; else el.value = val;
+  });
+  applyWho(form);
+}
+function surveySave(form){
+  const data = {};
+  form.querySelectorAll("textarea[id], input[id]:not([type=hidden])").forEach(el=>{
+    if(el.name==="_gotcha" || el.id==="sv-consent") return;
+    if(el.type==="checkbox"||el.type==="radio"){ if(el.checked) data[el.id]=true; } else if(el.value.trim()) data[el.id]=el.value;
+  });
+  try{ Object.keys(data).length ? localStorage.setItem(SV_KEY, JSON.stringify(data)) : localStorage.removeItem(SV_KEY); }catch(_){}
+}
+function surveyClear(form){
+  try{ localStorage.removeItem(SV_KEY); }catch(_){}
+  form.reset(); form.querySelectorAll("[id]").forEach(el=>delete DRAFT[el.id]); applyWho(form);
+}
+document.addEventListener("input", e=>{ const f=e.target.closest && e.target.closest("#survey"); if(f) surveySave(f); });
+document.addEventListener("change", e=>{ const f=e.target.closest && e.target.closest("#survey"); if(f) surveySave(f); });
+document.addEventListener("click", e=>{ if(e.target.id==="sv-clear"){ const f=$("#survey"); if(f){ surveyClear(f); const m=f.querySelector(".form-msg"); m.className="form-msg ok"; m.textContent="Saved answers cleared."; } } });
 
 /* Burger menu */
 const burger = $("#burger"), menu = $("#menu");
@@ -1573,3 +1958,5 @@ if(SHOW_PICKER){
 window.addEventListener("hashchange", route);
 route();
 </script>
+</body>
+</html>
