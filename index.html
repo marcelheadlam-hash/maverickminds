@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maverick Minds</title>
-<meta name="description" content="Calm, social sessions for ADHD and autistic young people in Years 7 to 9, plus free, sourced guides for parents.">
+<meta name="description" content="The world wasn't built for their brains. Weekly sessions that teach ADHD and autistic young people the skills to navigate it.">
 <meta property="og:title" content="Maverick Minds">
-<meta property="og:description" content="Calm, social sessions for ADHD and autistic young people in Years 7 to 9, plus free, sourced guides for parents.">
+<meta property="og:description" content="The world wasn't built for their brains. Weekly sessions that teach ADHD and autistic young people the skills to navigate it.">
 <meta name="theme-color" content="#C2410C">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23EA580C'%3E%3Ccircle cx='40' cy='38' r='16'/%3E%3Ccircle cx='28' cy='58' r='16'/%3E%3Ccircle cx='40' cy='76' r='16'/%3E%3Crect x='40' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='26,84 14,106 44,90'/%3E%3C/g%3E%3Cg fill='%237C3AED'%3E%3Ccircle cx='80' cy='38' r='16'/%3E%3Ccircle cx='92' cy='58' r='16'/%3E%3Ccircle cx='80' cy='76' r='16'/%3E%3Crect x='64' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='94,84 106,106 76,90'/%3E%3C/g%3E%3C/svg%3E">
 <style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
@@ -304,6 +304,14 @@ html.calm .btn:hover,html.calm .card:hover,html.calm .where-tile:hover{transform
 html.calm .burger{background:var(--surface)}
 html.calm footer{border-top-color:var(--line)}
 
+.contact-pref{border:0;margin:0;padding:0}
+.contact-pref legend{font-weight:700;font-size:.95rem;margin-bottom:4px}
+.pref-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.pref{display:flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:.92rem;background:var(--surface)}
+.pref input{width:18px;height:18px;accent-color:var(--sec)}
+.pref:has(input:checked){border-color:var(--sec);background:var(--sec-soft)}
+.form.wide .full{grid-column:1/-1}
+.talk-instead{background:var(--sec-soft);border-radius:12px;padding:12px 14px}
 /* questionnaire */
 .who{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .who legend{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:12px;text-align:center;width:100%}
@@ -1209,7 +1217,7 @@ function card(g){
     <span class="eyebrow">${g.cat}</span>
     <h3>${g.title}</h3>
     <p>${g.summary}</p>
-    <div class="meta"><span class="pill ${e.cls}">${e.label}</span><span>${g.mins} min read</span></div>
+    <div class="meta"><span class="pill ${e.cls}">${e.label}</span></div>
   </a>`;
 }
 
@@ -1225,10 +1233,11 @@ function waitlistForm(){
   <input type="hidden" name="_subject" value="New waiting list sign-up – Maverick Minds">
   <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
   <h2>Join the waiting list</h2>
-  <p class="hint">Elysse or Marcel will get in touch with you personally. We'll ask about your child's needs privately later, so we can ensure that we create a unique experience for your child.</p>
+  <p class="hint">Elysse or Marcel will get in touch personally, in the way you choose. We'll ask about your child's needs privately later, so we can ensure that we create a unique experience for your child.</p>
   ${field("wl-name","Your name",`<input id="wl-name" name="parent_name" autocomplete="name" required>`)}
   ${field("wl-email","Email address",`<input id="wl-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("wl-phone","Phone number (optional)",`<input id="wl-phone" name="phone" type="tel" autocomplete="tel">`)}
+  <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="wl-c-email"><input type="checkbox" id="wl-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="wl-c-text"><input type="checkbox" id="wl-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="wl-c-call"><input type="checkbox" id="wl-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="wl-c-video"><input type="checkbox" id="wl-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
   ${field("wl-year","Your child's school year",`<select id="wl-year" name="school_year" required><option value="">Choose a year</option><option>Year 7</option><option>Year 8</option><option>Year 9</option></select>`)}
   ${field("wl-area","Your area or borough",`<input id="wl-area" name="area" placeholder="For example, Harrow">`)}
   ${field("wl-heard","How did you hear about us? (optional)",`<input id="wl-heard" name="heard_from">`)}
@@ -1238,6 +1247,10 @@ function waitlistForm(){
 </form>`;
 }
 const SURVEY = [
+  {group:"Strengths first"},
+  {name:"loves_and_strengths",
+   parent:"What does your child love, and what are they brilliant at?",
+   teacher:"What do the children love, and what are they brilliant at?"},
   {group:"Social situations"},
   {name:"hardest_social_situations",
    parent:"What social situations does your child find hardest? Can you provide any recent examples of any difficult interactions?",
@@ -1295,7 +1308,9 @@ function surveyForm(){
     <p class="save-note" id="sv-save-note">Your answers are saved on this device as you type, so you can stop and come back later. <button type="button" class="linkish" id="sv-clear">Clear saved answers</button></p>
     ${items}
     <h3 class="q-group">Staying in touch (optional)</h3>
+    <div class="field check talk-instead"><input type="checkbox" id="sv-talk" name="prefer_to_talk" value="Yes"><label for="sv-talk"><b>I'd rather talk than write.</b> Leave your email or phone number below and we'll arrange a call, or you can send us a voice note instead.</label></div>
     <div class="fields">
+      ${field("sv-phone","Phone number, if you'd prefer a call or voice note",`<input id="sv-phone" name="phone" type="tel" autocomplete="tel">`)}
       ${field("sv-email","Email address, if you're happy for us to follow up",`<input id="sv-email" name="email" type="email" autocomplete="email">`)}
       <div class="field check"><input type="checkbox" id="sv-waitlist" name="join_waiting_list" value="Yes"><label for="sv-waitlist">Add me to the waiting list for sessions too</label></div>
     </div>
@@ -1328,6 +1343,7 @@ function applyForm(){
   ${field("ap-name","Your name",`<input id="ap-name" name="name" autocomplete="name" required>`)}
   ${field("ap-email","Email address",`<input id="ap-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("ap-phone","Phone number (optional)",`<input id="ap-phone" name="phone" type="tel" autocomplete="tel">`)}
+  <div class="full"><fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="ap-c-email"><input type="checkbox" id="ap-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="ap-c-text"><input type="checkbox" id="ap-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="ap-c-call"><input type="checkbox" id="ap-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="ap-c-video"><input type="checkbox" id="ap-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset></div>
   ${field("ap-role","Which role?",`<select id="ap-role" name="role" required><option value="">Choose a role</option><option>Teaching assistant (paid)</option><option>Volunteer</option><option>Not sure yet</option></select>`)}
   ${field("ap-exp","Your experience with young people",`<textarea id="ap-exp" name="experience" rows="4" required></textarea>`, "Paid or unpaid, including SEN, youth work, tutoring or family.", "full")}
   ${field("ap-dbs","Do you have an Enhanced DBS?",`<select id="ap-dbs" name="dbs"><option value="">Choose one</option><option>Yes, on the Update Service</option><option>Yes, not on the Update Service</option><option>No</option></select>`)}
@@ -1347,27 +1363,27 @@ home(){
 <section class="hero">
   <div class="stack">
     <span class="eyebrow">Sessions for Years 7 to 9 · launching early 2027</span>
-    <h1>Two calm, social hours built around your child.</h1>
-    <p class="lede">Small weekly sessions for ADHD and autistic young people. A hands-on life lesson, then games and play with hosts who get it, in a space set up for kids who find busy places hard.</p>
+    <h1>The world wasn't built for their brains.</h1>
+    <p class="lede">So every week, we teach the skills to navigate it, without asking them to be anyone else. Calm sessions for ADHD and autistic young people.</p>
     <div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
   </div>
   <aside class="hero-note" aria-label="Session facts">
     <span class="eyebrow">Every session</span>
     <div class="row"><span class="k">1:5</span><span>One adult for every five children, never fewer than two adults in the room.</span></div>
     <div class="row"><span class="k">DBS</span><span>Every member of staff holds an Enhanced DBS check.</span></div>
-    <div class="row"><span class="k">£30</span><span>Per two-hour session, with a debrief for you at pickup.</span></div>
+    <div class="row"><span class="k">£30</span><span>Per two-hour session, with an update for you after each one.</span></div>
   </aside>
 </section>
 <section class="cta-band">
   <div class="stack">
-    <span class="eyebrow">Have your say · about 10 minutes</span>
+    <span class="eyebrow">Have your say</span>
     <h2>Parent, carer or teacher? Help us shape our sessions.</h2>
   </div>
   <a class="btn solid" href="#survey">Answer our questionnaire</a>
 </section>
 <section class="stack sec-learn">
-  <div class="stack" style="gap:6px"><span class="eyebrow">The library · free for every parent</span><h2>Clear, sourced guides</h2>
-  <p class="lede">Short guides on sensory needs, school support and getting help. Every claim links to its source, and each guide shows how strong the evidence is.</p></div>
+  <div class="stack" style="gap:6px"><span class="eyebrow">The library · free for every parent</span><h2>Answers you can trust.</h2>
+  <p class="lede">Guides for parents. Every claim sourced. Honest about the evidence, even when it's thin.</p></div>
   <div class="grid">${["what-is-adhd","what-is-autism","sen-support-secondary"].map(s=>card(GUIDES.find(g=>g.slug===s))).join("")}</div>
   <a href="#library">See all ${GUIDES.length} guides</a>
 </section>
@@ -1390,7 +1406,7 @@ library(){
   return `
 <section>
   <div class="stack"><span class="eyebrow">The library</span><h1>Guides for parents</h1>
-  <p class="lede">Short, sourced guides on sensory needs, school support and getting help. Each one tells you how strong the evidence is.</p></div>
+  <p class="lede">Sourced guides on sensory needs, school support and getting help. Each one tells you how strong the evidence is.</p></div>
   <div class="tools">
     <label for="q" class="eyebrow">Search guides</label>
     <input id="q" class="search" type="search" placeholder="Try “sleep”, “school” or “ear defenders”" autocomplete="off">
@@ -1438,15 +1454,15 @@ sessions(){
   return `
 <section class="stack">
   <span class="eyebrow">Sessions · launching early 2027</span>
-  <h1>A calm, social two hours for Years 7 to 9.</h1>
-  <p class="lede">Each session mixes a little learning with a lot of play, in a space set up for kids who find busy places hard.</p>
+  <h1>A new skill every week. A safe place to use it.</h1>
+  <p class="lede">Two hours for Years 7 to 9: a short life lesson, then games and play, in a space set up for kids who find busy places hard.</p>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
   <div class="parts">
     <div class="part"><span class="n">Part 1</span><h3>Level Up</h3><p>A short, hands-on lesson on a life skill, with an activity that makes it stick.</p></div>
     <div class="part"><span class="n">Part 2</span><h3>Host-led fun and open play</h3><p>Games run by our hosts, then consoles, co-op games and building. Options for active kids and quieter ones, with hosts joining in rather than watching.</p></div>
-    <div class="part"><span class="n">At pickup</span><h3>Parent debrief</h3><p>A quick summary of what we covered and how your child got on.</p></div>
+    <div class="part"><span class="n">After the session</span><h3>Your update</h3><p>What we covered and how your child got on, in person at pickup or written down, whichever your family prefers. We talk with your child, not about them.</p></div>
   </div>
 </section>
 <section class="two">
@@ -1472,14 +1488,14 @@ sessions(){
       <dt>Where</dt><dd>Venue TBC</dd>
     </dl>
     <p>Read our <a href="#safeguarding">safeguarding policy</a>, <a href="#booking">booking terms</a> and <a href="#faq">answers to common questions</a>.</p>
-    <div class="spark">Places are limited. Join the waiting list and we'll tell you first when dates are confirmed.</div>
+    <div class="spark">We'll tell everyone on the waiting list first when dates are confirmed.</div>
   </div>
 </section>
 <section class="centre">
   <div class="stack">
     <h2>What happens after you join</h2>
     <ol class="steps">
-      <li>Elysse or Marcel gets in touch personally for a short chat.</li>
+      <li>Elysse or Marcel gets in touch personally, in the way you've chosen: email, text, phone or video.</li>
       <li>We send you a private questionnaire about your child's sensory needs and what helps them.</li>
       <li>When the venue and dates are confirmed, you get first choice of places.</li>
       <li>Before the first session, you get photos of the venue to look at together.</li>
@@ -1492,8 +1508,9 @@ team(){
   return `
 <section class="stack">
   <span class="eyebrow">Join the team</span>
-  <h1>Help us run sessions neurodivergent kids actually enjoy.</h1>
-  <p class="lede">We keep groups small, with one adult for every five children, so every member of the team matters.</p>
+  <h1>Be someone they can count on.</h1>
+  <p class="lede">With one adult for every five children, every member of the team matters.</p>
+  <p class="spark"><b>Neurodivergent applicants especially welcome.</b> Lived experience counts as experience.</p>
 </section>
 <section class="needs">
   <h2>What everyone needs</h2>
@@ -1509,7 +1526,7 @@ team(){
     <h2>Teaching assistant</h2>
     <p>You'll help run Level Up lessons and games, and be the steady adult a child can go to.</p>
     <ul class="ticks">
-      <li>Experience supporting children with SEN, ideally ADHD or autism</li>
+      <li>Experience supporting children with SEN, ideally ADHD or autism. Lived and family experience counts.</li>
       <li>Calm, patient and happy to join in with play</li>
       <li>Available for weekly sessions</li>
     </ul>
@@ -1532,7 +1549,7 @@ team(){
 survey(){
   return `
 <section class="stack">
-  <span class="eyebrow">Have your say · about 10 minutes</span>
+  <span class="eyebrow">Have your say</span>
   <h1>Help us shape Maverick Minds.</h1>
   <p class="lede">We're designing our sessions and parent community around what families and schools actually need. Your answers go straight to Elysse and Marcel, and they'll change what we build.</p>
 </section>
@@ -1616,10 +1633,10 @@ faq(){
   ${q("Can I stay for the first session?", `<p><mark class="tbc">confirm</mark> Yes. Many children feel better knowing you're close by the first time. You can wait nearby in the venue, and we'll come and get you if your child needs you.</p>`)}
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#booking">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
-  ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle. There's no commitment to keep coming.</p>`)}
+  ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming.</p>`)}
   ${q("Can they bring a friend?", `<p>Yes, if their friend is in Years 7 to 9. Their friend's parent needs to join the waiting list too, and you can tell us you'd like them to come together.</p>`)}
   ${q("What do the staff know about ADHD and autism?", `<p>Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
-  ${q("What will I hear about the session?", `<p>At pickup you get a short debrief: what the Level Up lesson covered and how your child got on.</p>`)}
+  ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them.</p>`)}
 </section>`;
 },
 booking(){
@@ -1634,7 +1651,7 @@ booking(){
     <li>A two-hour session: a Level Up life lesson, host-led fun and open play</li>
     <li>All activities, games, consoles and materials</li>
     <li>Staffing at one adult for every five children</li>
-    <li>A debrief for you at pickup</li>
+    <li>An update for you after each session, in person or written</li>
     <li>Your child's sensory profile, kept up to date with you</li>
   </ul>
 
@@ -1670,7 +1687,7 @@ privacy(){
 
   <h2>What we collect</h2>
   <ul>
-    <li><b>Waiting list:</b> your name, email, phone number if you give it, your child's school year, your area and how you heard about us.</li>
+    <li><b>Waiting list:</b> your name, email, phone number if you give it, how you'd like to be contacted, your child's school year, your area and how you heard about us.</li>
     <li><b>Questionnaire:</b> whether you're a parent or work in a school, your answers, and your email if you choose to give it. Answers can describe a child's needs, so we ask you not to include names. We use answers to design our sessions and may quote them anonymously. While you fill it in, your answers are saved only on your own device so you can come back later. They're deleted from your device when you send them, or when you press "Clear saved answers".</li>
     <li><b>Team applications:</b> your name, contact details, the role you're interested in, your experience, DBS status and availability.</li>
     <li><b>Before your child's first session:</b> information about your child's needs, such as their sensory profile, what helps them, any diagnosis you choose to share, medication and who can collect them. We only ask for this when you're booking a place.</li>
@@ -1739,7 +1756,7 @@ guide(slug){
   <div class="stack">
     <span class="eyebrow">${g.cat}</span>
     <h1>${g.title}</h1>
-    <div class="meta"><span class="pill ${e.cls}">${e.label}</span><span>${g.mins} min read</span><span>By Elysse Lawrence and Marcel Headlam</span></div>
+    <div class="meta"><span class="pill ${e.cls}">${e.label}</span><span>By Elysse Lawrence and Marcel Headlam</span></div>
     <div class="listen" hidden><button type="button" class="btn listen-btn" id="listen" aria-pressed="false"><span class="listen-icon" aria-hidden="true">▶</span> <span class="listen-label">Listen to this guide</span></button><button type="button" class="btn linkish" id="listen-stop" hidden>Stop</button></div>
     ${g.short ? `<aside class="in-short" aria-label="In short"><h2>In short</h2><ul>${g.short.map(b=>`<li>${b}</li>`).join("")}</ul></aside>` : ""}
     <div class="guide-body">
