@@ -65,7 +65,7 @@
 :root.big{font-size:22px; --lh:1.85}
 
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:var(--lh)}
-.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:20px}
 a{color:var(--accent);text-underline-offset:3px}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px;border-radius:6px}
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;text-wrap:balance;margin:0}
@@ -73,7 +73,7 @@ h1{font-size:clamp(2.1rem,5.5vw,3.4rem);letter-spacing:-.02em}
 h2{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em}
 h3{font-size:1.2rem}
 p{margin:0}
-.lede{font-size:1.15em;color:var(--muted);max-width:60ch}
+.lede{font-size:1.15em;color:var(--muted)}
 .eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
 
 /* header + burger menu */
@@ -159,7 +159,7 @@ section+section{margin-top:64px}
 .empty{color:var(--muted);padding:24px 0}
 
 /* guide */
-article.guide{max-width:68ch}
+article.guide{max-width:none}
 article.guide .stack{gap:14px}
 article.guide h2{font-size:1.4rem;margin-top:28px}
 article.guide ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
@@ -242,12 +242,12 @@ footer a{color:#fff}
 footer .sel{color:#fff}
 mark.tbc{background:var(--pop-soft);color:var(--ink);border:1px dashed var(--warn);border-radius:4px;padding:0 5px}
 mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
-.doc{max-width:68ch}
+.doc{max-width:none}
 .doc .stack{gap:14px}
 .doc h2{font-size:1.35rem;margin-top:24px}
 .doc ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
 .updated{color:var(--muted);font-size:.88rem}
-.faq{display:flex;flex-direction:column;border-top:1px solid var(--line);max-width:72ch}
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);padding-block:16px}
 .faq summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.15rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
 .faq summary::-webkit-details-marker{display:none}
@@ -320,9 +320,16 @@ html.calm footer{border-top-color:var(--line)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .why-stat{background:var(--sec-soft);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .why-n{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,2.8rem);line-height:1;color:var(--sec);font-variant-numeric:tabular-nums}
-.why-story{display:flex;flex-direction:column;gap:12px;max-width:68ch}
+.why-story{display:flex;flex-direction:column;gap:12px}
 .why-story h3{font-size:1.3rem}
 .why-more{font-weight:700;align-self:flex-start}
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.tl-item{display:grid;grid-template-columns:180px 1fr;gap:20px;background:var(--surface);border:2px solid var(--line);border-left:6px solid var(--sec);border-radius:14px;padding:18px 20px}
+.tl-time{font-family:var(--display);font-weight:700;color:var(--sec);font-variant-numeric:tabular-nums}
+.tl-body{display:flex;flex-direction:column;gap:8px}
+.tl-body h2{font-size:1.25rem}
+.tl-body ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+@media (max-width:640px){.tl-item{grid-template-columns:1fr;gap:6px}}
 .story-people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .story-card{background:var(--sec-soft);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
 .story-card h2{font-size:1.4rem}
@@ -447,6 +454,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
         <a href="#home" data-nav="home" class="sec-sessions">Home</a>
         <a href="#story" data-nav="story" class="sec-sessions">Our story</a>
         <a href="#sessions" data-nav="sessions" class="sec-sessions">Sessions</a>
+        <a href="#plan" data-nav="plan" class="sec-sessions">A typical session</a>
         <a href="#faq" data-nav="faq" class="sec-sessions">FAQ</a>
         <a href="#survey" data-nav="survey" class="sec-sessions">Have your say</a>
         <a href="#library" data-nav="library" class="sec-learn">Library</a>
@@ -1390,7 +1398,7 @@ function waitlistForm(){
   <input type="hidden" name="_subject" value="New waiting list sign-up – Maverick Minds">
   <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
   <h2>Join the waiting list</h2>
-  <p class="hint">Elysse or Marcel will get in touch personally, in the way you choose. We'll ask about your child's needs privately later, so we can ensure that we create a unique experience for your child.</p>
+  <p class="hint">Elysse or Marcel will get in touch personally, in the way you choose. When you claim a space, one of our team will set up a call to get to know your child, so their sessions are built around them.</p>
   ${field("wl-name","Your name",`<input id="wl-name" name="parent_name" autocomplete="name" required>`)}
   ${field("wl-email","Email address",`<input id="wl-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("wl-phone","Phone number (optional)",`<input id="wl-phone" name="phone" type="tel" autocomplete="tel">`)}
@@ -1547,7 +1555,7 @@ home(){
   <div class="why-story">
       <h3>Why Years 7 and 8</h3>
       <p>The move to secondary school changes almost everything at once: a bigger, noisier building, a new teacher every lesson, new social groups, and often losing the one familiar adult who understood them. A 2025 study found parents were largely dissatisfied with support after the move, with help often dropping away after Year 7, and worries about meltdowns, school refusal and exhaustion from masking.<sup><a href="#why-s3">3</a></sup></p>
-      <p>For a neurodivergent child, even a small change can feel huge: a new seating plan, or a teacher wearing a different perfume. Suspensions peak in Year 9.<sup><a href="#why-s2">2</a></sup> We step in during Years 7 and 8, the formative years, before that point.</p>
+      <p>For a neurodivergent child, even a seemingly small change can feel huge: a new seating plan, or a teacher wearing a different perfume. Suspensions peak in Year 9.<sup><a href="#why-s2">2</a></sup> We step in during Years 7 and 8, the formative years, before that point.</p>
   </div>
   <div class="why-change">
     <h3>What a year with us gives them</h3>
@@ -1557,7 +1565,7 @@ home(){
       <li><b>Calm and independence</b>: practical tips and step-by-step routines for the things no one ever explained to them.</li>
     </ul>
   </div>
-  <blockquote class="why-belief">We believe every neurodivergent child deserves a chance to thrive in a neurotypical world. Get the environment right, and they grow into healthy, happy adults.</blockquote>
+  <blockquote class="why-belief">We believe every neurodivergent child deserves a chance to thrive in a neurotypical world. Get the environment right and your child will grow into a healthy, happy adult.</blockquote>
 </section>
 <section class="cta-band">
   <div class="stack">
@@ -1640,15 +1648,16 @@ sessions(){
 <section class="stack">
   <span class="eyebrow">Sessions · launching early 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Two hours for ages 11 to 13: a short life lesson, then games and play, in a space set up for kids who find busy places hard.</p>
+  <p class="lede">Two hours for ages 11 to 13: an ice breaker, a life skills lesson with breaks built in, then play planned around your child, in a space set up for kids who find busy places hard.</p>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
   <div class="parts">
-    <div class="part"><span class="n">Part 1</span><h3>Level Up</h3><p>A short, hands-on lesson on a life skill, starting with how to regulate emotions, plus an activity that makes it stick.</p></div>
-    <div class="part"><span class="n">Part 2</span><h3>Host-led fun and open play</h3><p>Games run by our hosts, then consoles, co-op games and building. Options for active kids and quieter ones, with hosts joining in rather than watching.</p></div>
+    <div class="part"><span class="n">Part 1</span><h3>Level Up</h3><p>A hands-on lesson on a life skill, with short breaks built in, starting with how to regulate emotions, plus an activity that makes it stick.</p></div>
+    <div class="part"><span class="n">Part 2</span><h3>Play their way</h3><p>Planned around what your child loves, using what we learn when we get to know them. Gaming, Lego, drawing, coding, animals, music, anime, space: if they're into it, we'll make room for it. Small interest groups, active and quiet options, and they're welcome to bring their own game, project or comfort item.</p></div>
     <div class="part"><span class="n">After the session</span><h3>Your update</h3><p>What we covered and how your child got on, in person at pickup or written down, whichever your family prefers. We talk with your child, not about them.</p></div>
   </div>
+  <a class="why-more" href="#plan">See a typical session, minute by minute →</a>
 </section>
 <section class="two">
   <div class="stack">
@@ -1659,7 +1668,7 @@ sessions(){
       <li>Badges so kids can show whether they feel like chatting today.</li>
       <li>Games that don't need talking, for kids who want to join in quietly.</li>
       <li>Spare ear defenders, hand dryers off, no strong scents.</li>
-      <li>A questionnaire before the first session so we know your child's sensory needs.</li>
+      <li>A questionnaire and a get-to-know-you call before the first session, so we know your child's needs.</li>
     </ul>
   </div>
   <div class="stack">
@@ -1676,16 +1685,20 @@ sessions(){
     <div class="spark">We'll tell everyone on the waiting list first when dates are confirmed.</div>
   </div>
 </section>
+<section class="stack">
+  <h2>From waiting list to first session</h2>
+  <p class="lede">No two children get the same sessions. Before your child joins, we get to know them properly, so their time with us is built around their interests and needs.</p>
+  <ol class="steps">
+    <li><span><b>Join the waiting list.</b> It's free. Elysse or Marcel will confirm you're on it, in the way you've chosen.</span></li>
+    <li><span><b>Claim a space.</b> When the venue and dates are confirmed, families on the waiting list get first choice of places.</span></li>
+    <li><span><b>Tell us about your child.</b> A private questionnaire about their interests, sensory needs and what helps them.</span></li>
+    <li><span><b>Get-to-know-you call.</b> One of our team meets you by video or phone, for up to an hour. Your child is welcome to join if they'd like to, but they don't have to. We'll ask about anything that helps us build a picture of your child: their hobbies and interests, sensory needs, what calms them, what can upset them, how they like to communicate and the support they get at school.</span></li>
+    <li><span><b>We build their plan.</b> Your child gets a one-page profile, shared only with the staff who work with them, so nobody asks the same questions twice. They also get a named host as their go-to adult.</span></li>
+    <li><span><b>Get ready together.</b> Photos of the venue to look through with your child, and an optional visit before the first session.</span></li>
+    <li><span><b>Monthly check-ins.</b> After their fourth session, and then once a month, we meet with you to talk about how it's going and adjust their plan.</span></li>
+  </ol>
+</section>
 <section class="centre">
-  <div class="stack">
-    <h2>What happens after you join</h2>
-    <ol class="steps">
-      <li>Elysse or Marcel gets in touch personally, in the way you've chosen: email, text, phone or video.</li>
-      <li>We send you a private questionnaire about your child's sensory needs and what helps them.</li>
-      <li>When the venue and dates are confirmed, you get first choice of places.</li>
-      <li>Before the first session, you get photos of the venue to look at together.</li>
-    </ol>
-  </div>
   ${waitlistForm()}
 </section>`;
 },
@@ -1875,7 +1888,7 @@ privacy(){
     <li><b>Waiting list:</b> your name, email, phone number if you give it, how you'd like to be contacted, your child's age, your area and how you heard about us.</li>
     <li><b>Questionnaire:</b> whether you're a parent or work in a school, your answers, and your email if you choose to give it. Answers can describe a child's needs, so we ask you not to include names. We use answers to design our sessions and may quote them anonymously. While you fill it in, your answers are saved only on your own device so you can come back later. They're deleted from your device when you send them, or when you press "Clear saved answers".</li>
     <li><b>Team applications:</b> your name, contact details, the role you're interested in, your experience, DBS status and availability.</li>
-    <li><b>Before your child's first session:</b> information about your child's needs, such as their sensory profile, what helps them, any diagnosis you choose to share, medication and who can collect them. We only ask for this when you're booking a place.</li>
+    <li><b>Before your child's first session:</b> information about your child from the questionnaire and the get-to-know-you call, such as their interests, sensory profile, what helps them, any diagnosis you choose to share, medication and who can collect them. We only ask for this when you're booking a place. We add notes from monthly check-ins to their profile.</li>
   </ul>
 
   <h2>Why we use it, and our legal basis</h2>
@@ -1900,6 +1913,36 @@ privacy(){
   <p>You can ask to see, correct or delete your information, and withdraw your consent at any time. Email <span class="sel">info@maverickminds.co.uk</span>. If you're unhappy with how we've used your information, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk</a>.</p>
 </div></article>`;
 },
+plan(){
+  const T=(t,h,items)=>`<li class="tl-item"><span class="tl-time">${t}</span><div class="tl-body"><h2>${h}</h2><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div></li>`;
+  return `
+<section class="stack">
+  <span class="eyebrow">Sessions · an example</span>
+  <h1>A typical session, minute by minute.</h1>
+  <p class="lede">So you and your child know exactly what to expect. This example starts at 1pm. Every session follows the same shape, so it feels familiar from week one.</p>
+</section>
+<ol class="timeline">
+${T("12:45 – 1:15pm","Arrive and check in",[
+ "Arrive up to 15 minutes before the start, or up to 15 minutes after. Delays happen, and nobody misses out."])}
+${T("1:15 – 1:25pm","Ice breaker",[
+ "A simple game to help everyone get to know each other, like people bingo: each child gets a sheet of facts, such as \"born in August\" or \"has an older sibling\", and finds someone who matches each one.",
+ "It gets kids talking without having to think up questions themselves, which takes away a lot of the worry of meeting new people.",
+ "Instructions are clear and written down. Joining in is optional: kids can play in a pair, with a host, or watch until they're ready."])}
+${T("1:25 – 1:30pm","Break",["Five minutes to reset before Level Up."])}
+${T("1:30 – 2:15pm","Level Up",[
+ "A lesson on the skills that help with feelings, friendships and everyday life. Some sessions explore what it means to have ADHD or autism.",
+ "Some weeks feature a workshop with a guest speaker, always with our team in the room.",
+ "A five-minute break every 10 to 15 minutes, so kids can step away, reset their focus and come back."])}
+${T("2:15 – 3:00pm","Play their way",[
+ "Time to find kids with similar interests, in a sensory-friendly space planned around what each child loves.",
+ "Our teaching assistants and volunteers, experienced in supporting children with special educational needs, help with joining in and with emotional support.",
+ "A space to unmask and feel at home, without judgement."])}
+${T("3:00pm","Pickup and your update",[
+ "You collect your child, and we share how today went, including who they've started to bond with.",
+ "It's also a chance for parents to get to know each other. The community doesn't stop when the session does."])}
+</ol>
+<div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">Back to sessions</a></div>`;
+},
 story(){
   return `
 <article class="doc"><div class="stack">
@@ -1911,9 +1954,9 @@ story(){
     <div class="story-card"><h2>Marcel</h2><p>Marcel has neurodivergent family members, and saw first-hand how a school system that's trying its best, but stretched too thin, leaves the child to struggle on their own.</p></div>
   </div>
   <h2>Why we started</h2>
-  <p>Teachers are the heroes in this story. Most are doing their best with a full class and not enough support. But a classroom built for one kind of brain can't give every child what they need, and small things, like a new seating plan, can feel huge.</p>
+  <p>Teachers are the heroes in this story. Most are doing their best with a full class and not enough support. But a classroom built for one kind of brain can't give every child what they need, and seemingly small things, like a new seating plan, can feel huge.</p>
   <p>So we're building what we wanted for our own families: a calm space outside school where neurodivergent young people are understood, meet others who think like them, and learn the skills to navigate a world that wasn't built for them.</p>
-  <blockquote class="why-belief">Get the environment right, and they grow into healthy, happy adults.</blockquote>
+  <blockquote class="why-belief">Get the environment right and your child will grow into a healthy, happy adult.</blockquote>
   <div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
 </div></article>`;
 },
@@ -1998,7 +2041,7 @@ function route(){
   const sv = $("#survey"); if(sv){ applyWho(sv); surveyLoad(sv); }
   if(synth) synth.cancel();
   setupListen();
-  const SEC = {story:"sessions",survey:"sessions",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
+  const SEC = {plan:"sessions",story:"sessions",survey:"sessions",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
   $("#app").dataset.sec = SEC[page] || "sessions";
   document.querySelectorAll("[data-form] [id]").forEach(el=>{
     if(!(el.id in DRAFT)) return;
