@@ -314,6 +314,23 @@ html.calm footer{border-top-color:var(--line)}
 .form.wide .full{grid-column:1/-1}
 .age-q{max-width:220px}
 .talk-instead{background:var(--sec-soft);border-radius:12px;padding:12px 14px}
+/* why we exist */
+.why{display:flex;flex-direction:column;gap:24px}
+.why-head{display:flex;flex-direction:column;gap:10px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.why-stat{background:var(--sec-soft);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.why-n{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,2.8rem);line-height:1;color:var(--sec);font-variant-numeric:tabular-nums}
+.why-story{display:flex;flex-direction:column;gap:12px;max-width:68ch}
+.why-story h3{font-size:1.3rem}
+.why-more{font-weight:700;align-self:flex-start}
+.story-people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.story-card{background:var(--sec-soft);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.story-card h2{font-size:1.4rem}
+@media (max-width:820px){.story-people{grid-template-columns:1fr}}
+.why-change{display:flex;flex-direction:column;gap:12px}
+.why-belief{margin:0;padding:22px 26px;border-left:6px solid var(--sec);background:var(--sec-soft);border-radius:0 18px 18px 0;font-family:var(--display);font-weight:700;font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.3;text-wrap:balance}
+.why-sources{margin:0;padding-left:1.3em;font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;gap:4px;overflow-wrap:anywhere}
+@media (max-width:820px){.why-grid{grid-template-columns:1fr}}
 /* questionnaire */
 .who{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .who legend{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:12px;text-align:center;width:100%}
@@ -378,6 +395,8 @@ nav.main a[aria-current="page"]::before{background:#fff}
 /* Where next? */
 .where{padding-block:8px 56px;display:flex;flex-direction:column;gap:18px}
 .where h2{text-align:center}
+.home-sources{padding-block:0 48px;display:flex;flex-direction:column;gap:10px}
+.home-sources h2{font-size:1.1rem}
 .where-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .where-tile{display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);background:var(--sec-soft);border-left:6px solid var(--sec);border-radius:12px;padding:14px 16px;font-size:.9rem;transition:transform .15s;min-width:0}
 .where-tile:hover{transform:translateY(-2px)}
@@ -426,6 +445,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
     <div class="wrap menu-inner">
       <nav class="main" aria-label="Main">
         <a href="#home" data-nav="home" class="sec-sessions">Home</a>
+        <a href="#story" data-nav="story" class="sec-sessions">Our story</a>
         <a href="#sessions" data-nav="sessions" class="sec-sessions">Sessions</a>
         <a href="#faq" data-nav="faq" class="sec-sessions">FAQ</a>
         <a href="#survey" data-nav="survey" class="sec-sessions">Have your say</a>
@@ -467,6 +487,16 @@ nav.main a[aria-current="page"]::before{background:#fff}
     <a class="where-tile sec-team" href="#team"><span class="where-k">Join the team</span><span>Teaching assistant and volunteer roles</span></a>
     <a class="where-tile sec-trust" href="#safeguarding"><span class="where-k">Safeguarding</span><span>How we keep your child safe</span></a>
   </div>
+</section>
+
+<section class="wrap home-sources sec-learn" id="home-sources" aria-labelledby="home-sources-h" hidden>
+  <h2 id="home-sources-h">Sources</h2>
+  <ol class="why-sources">
+    <li id="why-s1">NHS England, ADHD Management Information, August 2026 (referrals as at June 2026). <a href="https://digital.nhs.uk/data-and-information/publications/statistical/mi-adhd/august-2026" target="_blank" rel="noopener">digital.nhs.uk</a></li>
+    <li id="why-s2">Department for Education, Suspensions and permanent exclusions in England, 2024/25. <a href="https://explore-education-statistics.service.gov.uk/find-statistics/suspensions-and-permanent-exclusions-in-england" target="_blank" rel="noopener">explore-education-statistics.service.gov.uk</a></li>
+    <li id="why-s3">Valentin CR, Zanuttini JZ. Parents' insights on post-transition support for students on the autism spectrum in secondary schools. <i>Australasian Journal of Special and Inclusive Education</i>, 2025;49(2):111–125. A small study of four parents. <a href="https://doi.org/10.1017/jsi.2025.10004" target="_blank" rel="noopener">doi.org/10.1017/jsi.2025.10004</a></li>
+    <li id="why-s4">Autistica. What is autism. <a href="https://www.autistica.org.uk/what-is-autism/what-is-autism" target="_blank" rel="noopener">autistica.org.uk</a></li>
+  </ol>
 </section>
 
 <footer>
@@ -643,28 +673,26 @@ const GUIDES = [
   slug:"sensory-tools-evidence", title:"Sensory tools: what the evidence actually says",
   cat:"Sensory & regulation", ev:"mixed", mins:5,
   summary:"Weighted blankets, ear defenders, fidgets. Which have research behind them, and how to try them without wasting money.",
-  short:["Most sensory tools are low-risk comfort aids, but the evidence that they reduce anxiety is thin.", "Weighted blankets helped sleep in one ADHD trial but not in an autism trial.", "Try one tool at a time, ask your child, and see your GP if anxiety affects daily life."],
+  short:["Most sensory tools are low-risk comfort aids, but the evidence that they reduce anxiety is thin.", "A 2025 Swedish trial found weighted blankets improved sleep in children with ADHD. There is no recent trial in autistic children.", "Try one tool at a time, ask your child, and see your GP if anxiety affects daily life."],
   body:`
 <p>Most sensory tools are low-risk comfort aids. They can help a child feel settled. The research on whether they reduce anxiety is thinner than the marketing suggests: most studies measure sleep or behaviour, and very few look at children who are both autistic and have ADHD.</p>
 <h2>Weighted blankets</h2>
-<p>A Swedish randomised trial found weighted blankets improved sleep in children with ADHD.<sup><a href="#s1">1</a></sup> That trial left out children with autism or anxiety disorders, so the result may not carry over to them.</p>
-<p>A UK trial with autistic children found no measurable improvement in sleep, even though many families preferred the weighted blanket.<sup><a href="#s2">2</a></sup></p>
+<p>A 2025 Swedish randomised trial with children aged 6 to 14 found weighted blankets helped children with ADHD sleep longer and wake less in the night. They didn't fall asleep any faster.<sup><a href="#s1">1</a></sup></p>
+<p>There is no recent trial in autistic children, so we can't say whether the result carries over. Try one if your child likes the feeling, but don't expect a guarantee.</p>
 <h2>Ear defenders, headphones and fidgets</h2>
-<p>A 2025 review of sensory-based approaches found results that were specific and inconsistent.<sup><a href="#s3">3</a></sup> A tool that calms one child can irritate another. That is a reason to test, not a reason to avoid them.</p>
+<p>A 2025 review of sensory-based approaches found results that were specific and inconsistent.<sup><a href="#s2">2</a></sup> A tool that calms one child can irritate another. That is a reason to test, not a reason to avoid them.</p>
 <h2>Weighted vests and sensory programmes</h2>
-<p>A systematic review found weak evidence for single tools such as weighted vests, partly because many studies were poorly designed.<sup><a href="#s4">4</a></sup></p>
+<p>The same 2025 review found the evidence for single tools, such as weighted vests, is still weak, partly because many studies are small or poorly designed.<sup><a href="#s2">2</a></sup></p>
 <h2>What to do with this</h2>
 <ul>
 <li>Treat tools as comfort aids, not treatments.</li>
 <li>Try one at a time for a week or two, so you can tell what is helping.</li>
 <li>Ask your child. Their sensory profile matters more than any product review.</li>
-<li>If anxiety is getting in the way of daily life, talk to your GP. NICE guidance for autistic young people recommends considering adapted CBT for anxiety.<sup><a href="#s5">5</a></sup></li>
+<li>If anxiety is getting in the way of daily life, talk to your GP. NICE guidance for autistic young people recommends considering adapted CBT for anxiety.<sup><a href="#s3">3</a></sup></li>
 </ul>`,
   sources:[
-    `Lönn M, et al. The efficacy of weighted blankets for sleep in children with ADHD: a randomized controlled crossover trial. <i>Journal of Sleep Research</i>, 2024;33(2):e13990. <a href="https://doi.org/10.1111/jsr.13990" target="_blank" rel="noopener">doi.org/10.1111/jsr.13990</a>`,
-    `Gringras P, et al. Weighted blankets and sleep in autistic children: a randomized controlled trial. <i>Pediatrics</i>, 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Gringras+weighted+blankets+autistic+children" target="_blank" rel="noopener">Find on PubMed</a>`,
+    `Lönn M, Aili K, Svedberg P, Nygren J, Jarbin H, Larsson I. Förbättrad sömn med tyngdtäcke hos barn med ADHD (Improved sleep with weighted blankets in children with ADHD: a randomised controlled trial). <i>Sömn och Hälsa</i>, no. 13, March 2025, pp. 46–53. <a href="https://publicera.kb.se/soh/article/view/33793" target="_blank" rel="noopener">publicera.kb.se</a>`,
     `Systematic review of sensory-based interventions for children and youth, 2015–2024. <i>Frontiers in Pediatrics</i>, 2025. <a href="https://doi.org/10.3389/fped.2025.1720179" target="_blank" rel="noopener">doi.org/10.3389/fped.2025.1720179</a>`,
-    `Case-Smith J, Weaver LL, Fristad MA. A systematic review of sensory processing interventions for children with autism spectrum disorders. <i>Autism</i>, 2015;19(2):133–148. <a href="https://doi.org/10.1177/1362361313517762" target="_blank" rel="noopener">doi.org/10.1177/1362361313517762</a>`,
     `NICE. Autism spectrum disorder in under 19s: support and management (CG170). <a href="https://www.nice.org.uk/guidance/cg170" target="_blank" rel="noopener">nice.org.uk/guidance/cg170</a>`
   ]
 },
@@ -723,13 +751,13 @@ const GUIDES = [
   body:`
 <p>Research on keeping children calm in public places is mostly about changing the place, not about what the child carries. Much of it is qualitative or based on case studies, so treat it as a good guide rather than proof.</p>
 <h2>Where it gets hard</h2>
-<p>The Sensory Street project worked with autistic adults to map which places are difficult because of their sensory environment. Cafés, high streets, public transport, healthcare settings and shops came up again and again.<sup><a href="#s1">1</a></sup> Participants also said supermarket "quiet hours" often fall at awkward times and don't go far enough.</p>
+<p>Noise, crowds, bright lights and strong smells are the usual culprits, which is why shops, cafés, high streets and public transport are so often hard.<sup><a href="#s1">1</a></sup> Supermarket "quiet hours" help some families, but check the times suit you.</p>
 <h2>What seems to help</h2>
 <ul>
-<li><b>Less sensory load:</b> dimmer lights, less noise, no background music or strong smells.<sup><a href="#s2">2</a></sup></li>
-<li><b>Knowing what's coming:</b> photos, a visual guide or a list of possible triggers before you go. A study of relaxed performances found advance information was a major part of making events accessible.<sup><a href="#s3">3</a></sup></li>
+<li><b>Less sensory load:</b> dimmer lights, less noise, no background music or strong smells.<sup><a href="#s1">1</a></sup></li>
+<li><b>Knowing what's coming:</b> photos, a visual guide or a list of possible triggers before you go. Research on relaxed performances found advance information was a major part of making events accessible.<sup><a href="#s2">2</a></sup></li>
 <li><b>Control:</b> being free to move, talk, step out and come back.</li>
-<li><b>A calm space to retreat to,</b> which can help people stay longer.<sup><a href="#s2">2</a></sup></li>
+<li><b>A calm space to retreat to,</b> which can help people stay longer.<sup><a href="#s1">1</a></sup></li>
 </ul>
 <h2>A plan for your next trip</h2>
 <ul>
@@ -740,7 +768,6 @@ const GUIDES = [
 <li>Pack a small kit: ear defenders, a fidget, a snack, a comfort item.</li>
 </ul>`,
   sources:[
-    `Sensory Street project, Universities of Oxford and Reading. Published in <i>Autism</i>, 2023. <a href="https://doi.org/10.1177/13623613231183541" target="_blank" rel="noopener">doi.org/10.1177/13623613231183541</a>`,
     `Leicestershire Partnership NHS Trust. Making retail and public spaces more autism friendly. <a href="https://www.leicspart.nhs.uk/?p=53508" target="_blank" rel="noopener">leicspart.nhs.uk</a>`,
     `Fletcher-Watson B, May S. The elements of an autism-friendly relaxed performance. CultureCase, King's College London. <a href="https://culturecase.kdl.kcl.ac.uk/research/2025/09/elements-autism-friendly-relaxed-performance" target="_blank" rel="noopener">culturecase.kdl.kcl.ac.uk</a>`
   ]
@@ -751,23 +778,19 @@ const GUIDES = [
   summary:"Sound, light, clutter and choice. The changes with the most research behind them, and how to involve your child.",
   short:["Start with sound: rugs, curtains and soft furnishings help most.", "Use lamps instead of bright overhead lights, and keep walls uncluttered.", "Design the space with your child, especially from around age 9."],
   body:`
-<p>Design research on calm spaces mostly comes from schools and small studies, but a few themes come up consistently. None of these need a big budget.</p>
+<p>Design research on calm spaces mostly comes from classrooms, but the same themes apply at home. None of these need a big budget.</p>
 <h2>Sound first</h2>
-<p>Echo and background noise are among the most common stressors for autistic children. Rugs, curtains, soft furnishings and a closed door do more than most gadgets.</p>
+<p>A 2025 review of 35 studies found autistic children find it harder to follow speech in background noise, and that controlling noise and offering quiet spaces helps.<sup><a href="#s1">1</a></sup> Rugs, curtains, soft furnishings and a closed door do more than most gadgets.</p>
 <h2>Light</h2>
 <p>Use lamps and dimmable, flicker-free bulbs rather than bright overhead lights. Blinds help with glare.</p>
 <h2>Less on the walls</h2>
-<p>In one study, young children in a heavily decorated classroom were more distracted and learned less than in a sparse one.<sup><a href="#s1">1</a></sup> Keep the walls calm and put the busy, colourful things in one area.</p>
-<h2>Green and outside</h2>
-<p>A US study found parents reported fewer ADHD symptoms after their children spent time in green outdoor settings.<sup><a href="#s2">2</a></sup> It relied on parent reports, so treat it as encouraging rather than proven. Plants and outdoor time are low-cost to try.</p>
+<p>The same review found clearly defined areas and less visual clutter help, because clutter can trigger inattention and stress.<sup><a href="#s1">1</a></sup> Keep the walls calm and put the busy, colourful things in one area.</p>
 <h2>Choice</h2>
 <p>Give more than one way to sit: a beanbag, a floor cushion, a wobble stool, a corner with a canopy. Many children with ADHD regulate through movement, so a place to move is as useful as a place to be still.</p>
 <h2>Involve your child</h2>
-<p>From around age 9, children want privacy and a say, and they avoid anything that looks babyish. Designing the space with them is the best way to avoid buying things nobody uses. Designers of autism-friendly spaces often use the ASPECTSS framework, which includes escape spaces and zones with different sensory levels.<sup><a href="#s3">3</a></sup></p>`,
+<p>From around age 9, children want privacy and a say, and they avoid anything that looks babyish. Designing the space with them is the best way to avoid buying things nobody uses. Include an escape space: somewhere quieter they can go when it gets too much.</p>`,
   sources:[
-    `Fisher AV, Godwin KE, Seltman H. Visual environment, attention allocation, and learning in young children. <i>Psychological Science</i>, 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Fisher+Godwin+Seltman+visual+environment+attention+allocation" target="_blank" rel="noopener">Find on PubMed</a>`,
-    `Kuo FE, Taylor AF. A potential natural treatment for attention-deficit/hyperactivity disorder: evidence from a national study. <i>American Journal of Public Health</i>, 2004. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Kuo+Taylor+potential+natural+treatment+ADHD" target="_blank" rel="noopener">Find on PubMed</a>`,
-    `Mostafa M. Architecture for autism: Autism ASPECTSS design index for home environments. <i>Archnet-IJAR</i>, 2014.`
+    `Mealings K, Wilson W, Buchholz J. What we do and do not know about how the classroom environment affects listening, learning, and wellbeing in autistic children: a scoping review. <i>European Journal of Special Needs Education</i>, published online November 2025. <a href="https://doi.org/10.1080/08856257.2025.2577923" target="_blank" rel="noopener">doi.org/10.1080/08856257.2025.2577923</a>`
   ]
 },
 {
@@ -1133,7 +1156,7 @@ const GUIDES = [
   body:`
 <p>Friendship difficulties are often put down to the neurodivergent child. Research suggests it's more two-way than that.</p>
 <h2>The double empathy problem</h2>
-<p>The "double empathy problem" is the idea that misunderstandings between autistic and non-autistic people go both ways.<sup><a href="#s1">1</a></sup> In one study, information passed between autistic people as well as it did between non-autistic people. It broke down more in mixed pairs.<sup><a href="#s2">2</a></sup> For many neurodivergent children, friendships come more easily with others who think like them.</p>
+<p>The "double empathy problem" is the idea that misunderstandings between autistic and non-autistic people go both ways. A 2025 study found autistic people enjoyed group conversations more when everyone was autistic, and their sense of connection dropped as more non-autistic people joined.<sup><a href="#s1">1</a></sup> A 2026 study found autistic and non-autistic people read each other's emotions with similar accuracy, which challenges the idea that autistic people lack empathy.<sup><a href="#s2">2</a></sup> For many neurodivergent children, friendships come more easily with others who think like them.</p>
 <h2>Start from interests</h2>
 <p>Clubs and groups built around an interest, such as gaming, coding, art or Lego, give children something to do together. Talking becomes optional.</p>
 <h2>Side by side counts</h2>
@@ -1147,8 +1170,8 @@ const GUIDES = [
 <h2>Quality over quantity</h2>
 <p>One or two good friends matter more than being popular. Ask your child what friendship means to them before deciding there's a problem.</p>`,
   sources:[
-    `Milton DEM. On the ontological status of autism: the 'double empathy problem'. <i>Disability &amp; Society</i>, 2012. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Milton+double+empathy+problem" target="_blank" rel="noopener">Find on PubMed</a>`,
-    `Crompton CJ, et al. Autistic peer-to-peer information transfer is highly effective. <i>Autism</i>, 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Crompton+autistic+peer-to-peer+information+transfer" target="_blank" rel="noopener">Find on PubMed</a>`
+    `Foster SJ, et al. Rapport in same and mixed neurotype groups of autistic and non-autistic adults. <i>Autism</i>, 2025. <a href="https://doi.org/10.1177/13623613251320444" target="_blank" rel="noopener">doi.org/10.1177/13623613251320444</a>`,
+    `Rum Y, Feldman N, Genzer S, Allison C, Golan O, Perry A, Baron-Cohen S. Nuances of double empathy in autistic and non-autistic people. <i>Molecular Autism</i>, 2026. Reported by BFHU, August 2026. <a href="https://www.bfhu.org/2026/08/06/when-we-misread-autistic-people-it-may-not-be-a-lack-of-empathy-it-may-be-a-mismatch/" target="_blank" rel="noopener">bfhu.org</a>`
   ]
 },
 {
@@ -1157,7 +1180,7 @@ const GUIDES = [
   summary:"Many autistic people find it hard to identify their own emotions. Tools that make feelings visible.",
   short:["Around half of autistic people find it hard to identify their own emotions.", "Start with body signals, then link them to a possible feeling.", "Feelings cards, a 1 to 5 scale and talking about characters can help."],
   body:`
-<p>Difficulty identifying and describing your own emotions is called alexithymia. A review of studies estimated that around half of autistic people have it, compared with far fewer in the general population.<sup><a href="#s1">1</a></sup> A child who can't name a feeling can't easily ask for help with it.</p>
+<p>Difficulty identifying and describing your own emotions is called alexithymia. Roughly half of autistic people have significant alexithymic traits, far more than in the general population.<sup><a href="#s1">1</a></sup> A child who can't name a feeling can't easily ask for help with it.</p>
 <h2>Start with the body</h2>
 <p>Many children notice body signals before feelings: tight hands, a hot face, a fast heart. Name the signal first, then link it to a possible feeling. "Your fists are tight. I wonder if you're cross."</p>
 <h2>Make feelings visible</h2>
@@ -1171,7 +1194,7 @@ const GUIDES = [
 <h2>Model it</h2>
 <p>Name your own feelings out loud, including the small ones.</p>`,
   sources:[
-    `Kinnaird E, Stewart C, Tchanturia K. Investigating alexithymia in autism: a systematic review and meta-analysis. <i>European Psychiatry</i>, 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Kinnaird+alexithymia+autism+meta-analysis" target="_blank" rel="noopener">Find on PubMed</a>`
+    `Guy-Evans O. Autism and alexithymia: when emotions are hard to identify. <i>Simply Psychology</i>, reviewed by Saul McLeod PhD, July 2025. <a href="https://www.simplypsychology.org/autism-and-alexithymia.html" target="_blank" rel="noopener">simplypsychology.org</a>`
   ]
 },
 {
@@ -1208,7 +1231,7 @@ const GUIDES = [
 <li>Remember the goal isn't for your child to stop masking everywhere overnight. Unmasking is gradual, and it depends on the people around them being accepting.<sup><a href="#s1">1</a></sup></li>
 </ul>`,
   sources:[
-    `Guy-Evans O. Autism masking and how it can affect a diagnosis. <i>Simply Psychology</i>, reviewed by Saul McLeod PhD, updated 2026. Cites Hull et al. (2017), Cage &amp; Troxell-Whitman (2019) and Bradley et al. (2021). <a href="https://www.simplypsychology.org/autism-masking.html" target="_blank" rel="noopener">simplypsychology.org</a>`,
+    `Guy-Evans O. Autism masking and how it can affect a diagnosis. <i>Simply Psychology</i>, reviewed by Saul McLeod PhD, updated 2026. <a href="https://www.simplypsychology.org/autism-masking.html" target="_blank" rel="noopener">simplypsychology.org</a>`,
     `Psychology Today. Masking (Basics). <a href="https://www.psychologytoday.com/gb/basics/masking" target="_blank" rel="noopener">psychologytoday.com</a>`
   ]
 },
@@ -1218,9 +1241,9 @@ const GUIDES = [
   summary:"Months of masking and overload can lead to deep exhaustion. The signs in young people, how it differs from laziness, and what helps recovery.",
   short:["Autistic burnout is deep exhaustion from coping with a world that doesn't fit. It isn't a formal diagnosis, but the term comes from autistic people themselves.","In young people it can look like withdrawal, one-word answers, losing interest in special interests and saying no to everything.","Recovery means fewer demands, more rest and changing what caused it, not pushing them to do more."],
   body:`
-<p>Autistic burnout isn't a formal diagnosis. It's a term autistic people created to describe what happens after a long stretch of trying to cope with a world that doesn't fit them.<sup><a href="#s1">1</a></sup> Researchers have since studied how autistic people describe it.<sup><a href="#s2">2</a></sup></p>
+<p>Autistic burnout isn't a formal diagnosis. It's a term autistic people created to describe what happens after a long stretch of trying to cope with a world that doesn't fit them. A 2025 review brought together 48 studies and around 4,000 autistic people to map what it looks like.<sup><a href="#s1">1</a></sup> A 2026 UK study described it as both powering down and being overactivated, with a strong need for sensory and social rest.<sup><a href="#s2">2</a></sup></p>
 <h2>What causes it</h2>
-<p>A build-up over time of masking, pressure to meet neurotypical expectations, sensory overload, changes to routine and unkind or unaccepting surroundings.<sup><a href="#s1">1</a></sup></p>
+<p>A build-up over time of sensory and social overload without enough recovery, masking, unaccommodating schools and surroundings, and everyday demands. Difficulty noticing your own feelings can hide the early warning signs.<sup><a href="#s1">1</a>,<a href="#s3">3</a></sup></p>
 <h2>Signs in young people</h2>
 <ul>
 <li>Exhaustion that rest doesn't seem to fix</li>
@@ -1228,21 +1251,23 @@ const GUIDES = [
 <li>Saying no to things they used to manage</li>
 <li>Losing interest in their special interests</li>
 <li>Struggling with skills they had before, like getting organised or speaking</li>
+<li>Lower tolerance for noise and other sensory input, and more meltdowns or shutdowns<sup><a href="#s3">3</a></sup></li>
 </ul>
-<p>These signs are easy to mistake for laziness or a bad attitude.<sup><a href="#s1">1</a></sup> They're neither.</p>
+<p>These signs are easy to mistake for laziness or a bad attitude. They're neither.</p>
 <h2>Burnout or depression?</h2>
-<p>They can overlap and happen together. One difference matters: a common approach for depression is to do more activities, but for burnout, extra activity and social demands can make things worse.<sup><a href="#s1">1</a></sup> If you're worried about your child's mood, speak to your GP.</p>
+<p>They can overlap, and long-lasting burnout can lead to anxiety and depression.<sup><a href="#s3">3</a></sup> Burnout recovery depends on rest and low-demand time, so pushing more activity can backfire. If you're worried about your child's mood, speak to your GP.</p>
 <h2>What helps</h2>
 <ul>
-<li><b>Now:</b> cut demands to the essentials, protect sleep and food, and allow plenty of rest.</li>
+<li><b>Now:</b> cut demands to the essentials, protect sleep and food, and allow plenty of rest, time alone and sensory relief.<sup><a href="#s3">3</a></sup></li>
 <li><b>Gradually:</b> reintroduce favourite interests before anything else.</li>
-<li><b>Longer term:</b> work out what caused it and change that, for example adjustments at school, less masking and more time with people who accept them.<sup><a href="#s1">1</a></sup></li>
-<li>Let stims and other ways of regulating happen. Research with autistic adults found stimming helps with self-regulation.<sup><a href="#s1">1</a></sup></li>
+<li><b>Longer term:</b> work out what caused it and change that, for example adjustments at school, less masking and more time with people who accept them. Understanding themselves as autistic helps too.<sup><a href="#s2">2</a>,<a href="#s3">3</a></sup></li>
+<li>Let stims and other ways of regulating happen.</li>
 </ul>
 <p>The aim isn't to get back to exactly how things were. It's to make burnout less likely next time.</p>`,
   sources:[
-    `Gerlach J (LCSW). What is autistic burnout? <i>Psychology Today</i>, December 2023. Cites Raymaker et al. (2020) and Kapp et al. (2019). <a href="https://www.psychologytoday.com/gb/blog/beyond-mental-health/202312/what-is-autistic-burnout" target="_blank" rel="noopener">psychologytoday.com</a>`,
-    `Raymaker DM, et al. "Having all of your internal resources exhausted beyond measure and being left with no clean-up crew": defining autistic burnout. <i>Autism in Adulthood</i>, 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Raymaker+defining+autistic+burnout" target="_blank" rel="noopener">Find on PubMed</a>`
+    `Ali D, Bougoure M, Cooper B, Quinton AM, Tan D, Brett J, et al. Burnout as experienced by autistic people: a systematic review. <i>Clinical Psychology Review</i>, 2025, 102669.`,
+    `Ali D, Mandy W, Happé F. How does \u2018autistic burnout\u2019 feel? A qualitative study exploring experiences of earlier and later-diagnosed autistic adults. <i>Autism</i>, February 2026. <a href="https://doi.org/10.1177/13623613261422117" target="_blank" rel="noopener">doi.org/10.1177/13623613261422117</a>`,
+    `Guy-Evans O. A review of autistic burnout, exhaustion, and recovery. <i>Simply Psychology</i>, reviewed by Saul McLeod PhD, November 2025. <a href="https://www.simplypsychology.org/a-review-of-autistic-burnout-exhaustion-and-recovery.html" target="_blank" rel="noopener">simplypsychology.org</a>`
   ]
 },
 {
@@ -1259,24 +1284,25 @@ const GUIDES = [
 <li><b>Starting tasks:</b> getting going, especially on boring ones</li>
 <li><b>Flexibility:</b> switching between tasks or plans</li>
 <li><b>Emotional regulation and impulse control</b></li>
-<li><b>Self-monitoring:</b> noticing when you've gone off track<sup><a href="#s1">1</a></sup></li>
+<li><b>Time sense:</b> judging how long things take and how much time has passed<sup><a href="#s1">1</a></sup></li>
 </ul>
 <h2>What it looks like at home and school</h2>
 <p>Leaving homework until the last minute, losing kit, forgetting instructions halfway through, underestimating how long things take, and finding it hard to stop one activity and start another.<sup><a href="#s1">1</a></sup> Telling a child to "try harder" doesn't work, because the difficulty is with the skill, not the effort.</p>
 <h2>Strategies that help</h2>
 <ul>
 <li><b>Make it visible.</b> Checklists, visual timetables and a timer your child can see.</li>
-<li><b>Plan backwards.</b> Start from the deadline, break the task into steps and add spare time.<sup><a href="#s1">1</a></sup></li>
+<li><b>Plan backwards.</b> Start from the deadline, break the task into steps and add spare time.</li>
 <li><b>Shrink the first step.</b> "Open the book" is easier to start than "do your homework".</li>
 <li><b>Reduce distractions.</b> A clear workspace, and phones in another room.</li>
 <li><b>Short bursts.</b> Work for a set time, then take a break.<sup><a href="#s1">1</a></sup></li>
 <li><b>Same routine every day</b>, with warnings before transitions.</li>
-<li><b>Body doubling:</b> doing the task alongside someone else.</li>
+<li><b>Body doubling:</b> doing the task alongside someone else.<sup><a href="#s1">1</a></sup></li>
+<li><b>Count partial progress.</b> Notice what got done, not just whether it all got finished.<sup><a href="#s1">1</a></sup></li>
 </ul>
 <h2>Ask school for support too</h2>
 <p>Teachers can help with written instructions, homework planners and checklists. See <a href="#g-sen-support-secondary">SEN support at secondary school</a>.</p>`,
   sources:[
-    `Stavraki I. What is ADHD executive dysfunction? <i>Simply Psychology</i>, reviewed by Olivia Guy-Evans MSc and Saul McLeod PhD, February 2024. <a href="https://www.simplypsychology.org/adhd-executive-dysfunction.html" target="_blank" rel="noopener">simplypsychology.org</a>`,
+    `Guy-Evans O. Why does ADHD executive dysfunction make small tasks feel impossible? <i>Simply Psychology</i>, reviewed by Saul McLeod PhD, June 2025. <a href="https://www.simplypsychology.org/why-does-adhd-executive-dysfunction-make-small-tasks-feel-impossible.html" target="_blank" rel="noopener">simplypsychology.org</a>`,
     `Autistica. What is autism. <a href="https://www.autistica.org.uk/what-is-autism/what-is-autism" target="_blank" rel="noopener">autistica.org.uk</a>`
   ]
 },
@@ -1369,7 +1395,7 @@ function waitlistForm(){
   ${field("wl-email","Email address",`<input id="wl-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("wl-phone","Phone number (optional)",`<input id="wl-phone" name="phone" type="tel" autocomplete="tel">`)}
   <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="wl-c-email"><input type="checkbox" id="wl-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="wl-c-text"><input type="checkbox" id="wl-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="wl-c-call"><input type="checkbox" id="wl-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="wl-c-video"><input type="checkbox" id="wl-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
-  ${field("wl-age","How old is your child?",`<input id="wl-age" name="child_age" type="number" inputmode="numeric" min="1" max="25" required aria-describedby="wl-age-hint">`, "Our first sessions are for ages 11 to 14. If your child is younger or older, join anyway and we'll tell you when sessions for their age start.")}
+  ${field("wl-age","How old is your child?",`<input id="wl-age" name="child_age" type="number" inputmode="numeric" min="1" max="25" required aria-describedby="wl-age-hint">`, "Our first sessions are for ages 11 to 13 (Years 7 and 8). If your child is younger or older, join anyway and we'll tell you when sessions for their age start.")}
   ${field("wl-area","Your area or borough",`<input id="wl-area" name="area" placeholder="For example, Harrow">`)}
   ${field("wl-heard","How did you hear about us? (optional)",`<input id="wl-heard" name="heard_from">`)}
   ${consent("wl-consent")}
@@ -1494,7 +1520,7 @@ home(){
   return `
 <section class="hero">
   <div class="stack">
-    <span class="eyebrow">Sessions for ages 11 to 14 · launching early 2027</span>
+    <span class="eyebrow">Sessions for ages 11 to 13 · Years 7 and 8 · launching early 2027</span>
     <h1>The world wasn't built for their brains.</h1>
     <p class="lede">So every week, we teach the skills to navigate it, without asking them to be anyone else. Calm sessions for ADHD and autistic young people.</p>
     <div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
@@ -1505,6 +1531,33 @@ home(){
     <div class="row"><span class="k">DBS</span><span>Every member of staff holds an Enhanced DBS check.</span></div>
     <div class="row"><span class="k">£30</span><span>Per two-hour session, with an update for you after each one.</span></div>
   </aside>
+</section>
+<section class="why sec-learn" aria-labelledby="why-h">
+  <div class="why-head">
+    <span class="eyebrow">Why we exist</span>
+    <h2 id="why-h">School is built for one kind of brain.</h2>
+    <p class="lede">Classrooms and the curriculum are designed around neurotypical children. Teachers are the heroes in this story: most are doing their best with a full class and not enough support from the system. But when the system is stretched, it's the child who pays. That's where we come in: a place where they're understood, and where every week they build the skills to thrive.</p>
+    <a class="why-more" href="#story">Learn more about our story →</a>
+  </div>
+  <div class="why-grid">
+    <div class="why-stat"><span class="why-n">Up to 960k</span><p>open NHS referrals in England that may be for an ADHD assessment, across all ages, with new referrals up 47% in a year.<sup><a href="#why-s1">1</a></sup></p></div>
+    <div class="why-stat"><span class="why-n">4×</span><p>the suspension rate for pupils receiving SEN support, compared with pupils with no identified SEN.<sup><a href="#why-s2">2</a></sup></p></div>
+    <div class="why-stat"><span class="why-n">8 in 10</span><p>autistic people will experience mental health problems in their lifetime.<sup><a href="#why-s4">4</a></sup></p></div>
+  </div>
+  <div class="why-story">
+      <h3>Why Years 7 and 8</h3>
+      <p>The move to secondary school changes almost everything at once: a bigger, noisier building, a new teacher every lesson, new social groups, and often losing the one familiar adult who understood them. A 2025 study found parents were largely dissatisfied with support after the move, with help often dropping away after Year 7, and worries about meltdowns, school refusal and exhaustion from masking.<sup><a href="#why-s3">3</a></sup></p>
+      <p>For a neurodivergent child, even a small change can feel huge: a new seating plan, or a teacher wearing a different perfume. Suspensions peak in Year 9.<sup><a href="#why-s2">2</a></sup> We step in during Years 7 and 8, the formative years, before that point.</p>
+  </div>
+  <div class="why-change">
+    <h3>What a year with us gives them</h3>
+    <ul class="ticks">
+      <li><b>Confidence in who they are</b>, without having to hide it.</li>
+      <li><b>Skills for life</b>, starting with how to regulate their emotions.</li>
+      <li><b>Calm and independence</b>: practical tips and step-by-step routines for the things no one ever explained to them.</li>
+    </ul>
+  </div>
+  <blockquote class="why-belief">We believe every neurodivergent child deserves a chance to thrive in a neurotypical world. Get the environment right, and they grow into healthy, happy adults.</blockquote>
 </section>
 <section class="cta-band">
   <div class="stack">
@@ -1587,12 +1640,12 @@ sessions(){
 <section class="stack">
   <span class="eyebrow">Sessions · launching early 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Two hours for ages 11 to 14: a short life lesson, then games and play, in a space set up for kids who find busy places hard.</p>
+  <p class="lede">Two hours for ages 11 to 13: a short life lesson, then games and play, in a space set up for kids who find busy places hard.</p>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
   <div class="parts">
-    <div class="part"><span class="n">Part 1</span><h3>Level Up</h3><p>A short, hands-on lesson on a life skill, with an activity that makes it stick.</p></div>
+    <div class="part"><span class="n">Part 1</span><h3>Level Up</h3><p>A short, hands-on lesson on a life skill, starting with how to regulate emotions, plus an activity that makes it stick.</p></div>
     <div class="part"><span class="n">Part 2</span><h3>Host-led fun and open play</h3><p>Games run by our hosts, then consoles, co-op games and building. Options for active kids and quieter ones, with hosts joining in rather than watching.</p></div>
     <div class="part"><span class="n">After the session</span><h3>Your update</h3><p>What we covered and how your child got on, in person at pickup or written down, whichever your family prefers. We talk with your child, not about them.</p></div>
   </div>
@@ -1612,7 +1665,7 @@ sessions(){
   <div class="stack">
     <h2>The details</h2>
     <dl class="facts">
-      <dt>Who</dt><dd>Ages 11 to 14</dd>
+      <dt>Who</dt><dd>Ages 11 to 13 (Years 7 and 8)</dd>
       <dt>Length</dt><dd>2 hours, weekly</dd>
       <dt>Price</dt><dd>£30 per session</dd>
       <dt>Staffing</dt><dd>1 adult for every 5 children</dd>
@@ -1766,7 +1819,7 @@ faq(){
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#booking">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
   ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming.</p>`)}
-  ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 14. Their friend's parent needs to join the waiting list too, and you can tell us you'd like them to come together.</p>`)}
+  ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 13. Their friend's parent needs to join the waiting list too, and you can tell us you'd like them to come together.</p>`)}
   ${q("What do the staff know about ADHD and autism?", `<p>Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
   ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them.</p>`)}
 </section>`;
@@ -1847,6 +1900,23 @@ privacy(){
   <p>You can ask to see, correct or delete your information, and withdraw your consent at any time. Email <span class="sel">info@maverickminds.co.uk</span>. If you're unhappy with how we've used your information, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk</a>.</p>
 </div></article>`;
 },
+story(){
+  return `
+<article class="doc"><div class="stack">
+  <span class="eyebrow">Our story</span>
+  <h1>The place we wish they'd had.</h1>
+  <p class="lede">Maverick Minds started with two people, two families and one question: why does a neurodivergent child have to struggle on their own?</p>
+  <div class="story-people">
+    <div class="story-card"><h2>Elysse</h2><p>Elysse is neurodivergent. She grew up without a community of people who thought like her, and knows how much difference one would have made.</p></div>
+    <div class="story-card"><h2>Marcel</h2><p>Marcel has neurodivergent family members, and saw first-hand how a school system that's trying its best, but stretched too thin, leaves the child to struggle on their own.</p></div>
+  </div>
+  <h2>Why we started</h2>
+  <p>Teachers are the heroes in this story. Most are doing their best with a full class and not enough support. But a classroom built for one kind of brain can't give every child what they need, and small things, like a new seating plan, can feel huge.</p>
+  <p>So we're building what we wanted for our own families: a calm space outside school where neurodivergent young people are understood, meet others who think like them, and learn the skills to navigate a world that wasn't built for them.</p>
+  <blockquote class="why-belief">Get the environment right, and they grow into healthy, happy adults.</blockquote>
+  <div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
+</div></article>`;
+},
 accessibility(){
   return `
 <article class="doc"><div class="stack">
@@ -1924,10 +1994,11 @@ function route(){
   else if(h==="join"){ page="sessions"; html = PAGES.sessions(); }
   else { if(!PAGES[h] || h==="guide") page="home"; html = PAGES[page](); }
   $("#app").innerHTML = html;
+  $("#home-sources").hidden = page!=="home";
   const sv = $("#survey"); if(sv){ applyWho(sv); surveyLoad(sv); }
   if(synth) synth.cancel();
   setupListen();
-  const SEC = {survey:"sessions",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
+  const SEC = {story:"sessions",survey:"sessions",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
   $("#app").dataset.sec = SEC[page] || "sessions";
   document.querySelectorAll("[data-form] [id]").forEach(el=>{
     if(!(el.id in DRAFT)) return;
@@ -2008,7 +2079,7 @@ document.addEventListener("submit", async e=>{
 
 document.addEventListener("click", e=>{
   const sup = e.target.closest('sup a, .back');
-  if(sup && sup.getAttribute("href").startsWith("#s")){
+  if(sup && /^#(s\d|why-s)/.test(sup.getAttribute("href"))){
     e.preventDefault();
     const t = document.getElementById(sup.getAttribute("href").slice(1));
     if(t) t.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"center"});
