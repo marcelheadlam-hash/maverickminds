@@ -61,9 +61,10 @@
 .sec-learn,#app[data-sec="learn"]{--sec:var(--c-learn);--sec-soft:var(--c-learn-soft)}
 .sec-team,#app[data-sec="team"]{--sec:var(--c-team);--sec-soft:var(--c-team-soft)}
 .sec-trust,#app[data-sec="trust"]{--sec:var(--c-trust);--sec-soft:var(--c-trust-soft)}
-:root.big{--fs:20px; --lh:1.8}
+:root{font-size:17px}
+:root.big{font-size:22px; --lh:1.85}
 
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--fs);line-height:var(--lh)}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:var(--lh)}
 .wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
 a{color:var(--accent);text-underline-offset:3px}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px;border-radius:6px}
@@ -311,6 +312,7 @@ html.calm footer{border-top-color:var(--line)}
 .pref input{width:18px;height:18px;accent-color:var(--sec)}
 .pref:has(input:checked){border-color:var(--sec);background:var(--sec-soft)}
 .form.wide .full{grid-column:1/-1}
+.age-q{max-width:220px}
 .talk-instead{background:var(--sec-soft);border-radius:12px;padding:12px 14px}
 /* questionnaire */
 .who{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
@@ -1171,7 +1173,141 @@ const GUIDES = [
   sources:[
     `Kinnaird E, Stewart C, Tchanturia K. Investigating alexithymia in autism: a systematic review and meta-analysis. <i>European Psychiatry</i>, 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Kinnaird+alexithymia+autism+meta-analysis" target="_blank" rel="noopener">Find on PubMed</a>`
   ]
+},
+{
+  slug:"masking", title:"Masking: when your child hides who they are",
+  cat:"Understanding ADHD & autism", ev:"mixed",
+  summary:"Many neurodivergent children copy others to fit in. What masking looks like, what it costs, and how to make space to drop it.",
+  short:["Masking means hiding autistic or ADHD traits to fit in, such as forcing eye contact or holding in stims.","Research links more masking to more anxiety, depression and exhaustion, and it can delay diagnosis, especially in girls.","Children unmask where they feel safe, so make home and other spaces places where they don't have to perform."],
+  body:`
+<p>Masking, sometimes called camouflaging, is when someone hides or holds back their autistic or ADHD traits to fit in with people around them.<sup><a href="#s1">1</a></sup> It can be deliberate or completely automatic.<sup><a href="#s2">2</a></sup></p>
+<h2>What it can look like</h2>
+<ul>
+<li>Forcing eye contact</li>
+<li>Holding in stims like hand-flapping, rocking or humming</li>
+<li>Rehearsing or scripting conversations in advance</li>
+<li>Copying other people's facial expressions, tone and gestures</li>
+<li>Hiding special interests to seem "normal"</li>
+</ul>
+<h2>Why children do it</h2>
+<p>To avoid being judged, rejected or bullied, and to make friends.<sup><a href="#s2">2</a></sup> In the short term it can work. Over time it doesn't.</p>
+<h2>What it costs</h2>
+<ul>
+<li><b>Exhaustion.</b> Autistic adults describe masking as tiring and isolating.<sup><a href="#s1">1</a></sup></li>
+<li><b>Mental health.</b> Studies link higher levels of camouflaging with more anxiety and depression, and with lower self-esteem.<sup><a href="#s1">1</a>,<a href="#s2">2</a></sup></li>
+<li><b>Missed or late diagnosis.</b> When traits are hidden, professionals can miss them. Girls tend to mask more and are often diagnosed later.<sup><a href="#s1">1</a>,<a href="#s2">2</a></sup></li>
+</ul>
+<h2>The "after-school collapse"</h2>
+<p>A child who holds it together all day at school and falls apart at home is often a child who has been masking all day. Home is where they feel safe enough to stop. It isn't a sign home is the problem.</p>
+<h2>What helps</h2>
+<ul>
+<li>Let stims happen, and don't ask for eye contact.</li>
+<li>Create spaces, at home and outside it, where your child doesn't have to perform.</li>
+<li>Build in rest after demanding days.</li>
+<li>Spend time with other neurodivergent young people, where there's less need to mask.</li>
+<li>Remember the goal isn't for your child to stop masking everywhere overnight. Unmasking is gradual, and it depends on the people around them being accepting.<sup><a href="#s1">1</a></sup></li>
+</ul>`,
+  sources:[
+    `Guy-Evans O. Autism masking and how it can affect a diagnosis. <i>Simply Psychology</i>, reviewed by Saul McLeod PhD, updated 2026. Cites Hull et al. (2017), Cage &amp; Troxell-Whitman (2019) and Bradley et al. (2021). <a href="https://www.simplypsychology.org/autism-masking.html" target="_blank" rel="noopener">simplypsychology.org</a>`,
+    `Psychology Today. Masking (Basics). <a href="https://www.psychologytoday.com/gb/basics/masking" target="_blank" rel="noopener">psychologytoday.com</a>`
+  ]
+},
+{
+  slug:"autistic-burnout", title:"Autistic burnout: when everything stops working",
+  cat:"Understanding ADHD & autism", ev:"thin",
+  summary:"Months of masking and overload can lead to deep exhaustion. The signs in young people, how it differs from laziness, and what helps recovery.",
+  short:["Autistic burnout is deep exhaustion from coping with a world that doesn't fit. It isn't a formal diagnosis, but the term comes from autistic people themselves.","In young people it can look like withdrawal, one-word answers, losing interest in special interests and saying no to everything.","Recovery means fewer demands, more rest and changing what caused it, not pushing them to do more."],
+  body:`
+<p>Autistic burnout isn't a formal diagnosis. It's a term autistic people created to describe what happens after a long stretch of trying to cope with a world that doesn't fit them.<sup><a href="#s1">1</a></sup> Researchers have since studied how autistic people describe it.<sup><a href="#s2">2</a></sup></p>
+<h2>What causes it</h2>
+<p>A build-up over time of masking, pressure to meet neurotypical expectations, sensory overload, changes to routine and unkind or unaccepting surroundings.<sup><a href="#s1">1</a></sup></p>
+<h2>Signs in young people</h2>
+<ul>
+<li>Exhaustion that rest doesn't seem to fix</li>
+<li>Withdrawing, giving one-word answers, retreating into screens</li>
+<li>Saying no to things they used to manage</li>
+<li>Losing interest in their special interests</li>
+<li>Struggling with skills they had before, like getting organised or speaking</li>
+</ul>
+<p>These signs are easy to mistake for laziness or a bad attitude.<sup><a href="#s1">1</a></sup> They're neither.</p>
+<h2>Burnout or depression?</h2>
+<p>They can overlap and happen together. One difference matters: a common approach for depression is to do more activities, but for burnout, extra activity and social demands can make things worse.<sup><a href="#s1">1</a></sup> If you're worried about your child's mood, speak to your GP.</p>
+<h2>What helps</h2>
+<ul>
+<li><b>Now:</b> cut demands to the essentials, protect sleep and food, and allow plenty of rest.</li>
+<li><b>Gradually:</b> reintroduce favourite interests before anything else.</li>
+<li><b>Longer term:</b> work out what caused it and change that, for example adjustments at school, less masking and more time with people who accept them.<sup><a href="#s1">1</a></sup></li>
+<li>Let stims and other ways of regulating happen. Research with autistic adults found stimming helps with self-regulation.<sup><a href="#s1">1</a></sup></li>
+</ul>
+<p>The aim isn't to get back to exactly how things were. It's to make burnout less likely next time.</p>`,
+  sources:[
+    `Gerlach J (LCSW). What is autistic burnout? <i>Psychology Today</i>, December 2023. Cites Raymaker et al. (2020) and Kapp et al. (2019). <a href="https://www.psychologytoday.com/gb/blog/beyond-mental-health/202312/what-is-autistic-burnout" target="_blank" rel="noopener">psychologytoday.com</a>`,
+    `Raymaker DM, et al. "Having all of your internal resources exhausted beyond measure and being left with no clean-up crew": defining autistic burnout. <i>Autism in Adulthood</i>, 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Raymaker+defining+autistic+burnout" target="_blank" rel="noopener">Find on PubMed</a>`
+  ]
+},
+{
+  slug:"executive-function", title:"Executive function: why \"just get organised\" doesn't work",
+  cat:"Understanding ADHD & autism", ev:"practice",
+  summary:"Planning, starting tasks, remembering and switching are brain skills, not willpower. What executive function is and strategies that help teenagers.",
+  short:["Executive functions are brain skills like working memory, planning, starting tasks and switching between them.","Difficulty with them is a core part of ADHD, and common in autism. It isn't laziness or lack of effort.","Help from the outside works best: break tasks into steps, make time visible, and plan backwards from deadlines."],
+  body:`
+<p>Executive functions are a set of mental skills we use to manage daily life.<sup><a href="#s1">1</a></sup> Autistica lists them as working memory, planning, starting tasks, organisation and self-control.<sup><a href="#s2">2</a></sup></p>
+<h2>The skills involved</h2>
+<ul>
+<li><b>Working memory:</b> holding information in your head while you use it</li>
+<li><b>Planning and organisation:</b> deciding what comes first, and in what order</li>
+<li><b>Starting tasks:</b> getting going, especially on boring ones</li>
+<li><b>Flexibility:</b> switching between tasks or plans</li>
+<li><b>Emotional regulation and impulse control</b></li>
+<li><b>Self-monitoring:</b> noticing when you've gone off track<sup><a href="#s1">1</a></sup></li>
+</ul>
+<h2>What it looks like at home and school</h2>
+<p>Leaving homework until the last minute, losing kit, forgetting instructions halfway through, underestimating how long things take, and finding it hard to stop one activity and start another.<sup><a href="#s1">1</a></sup> Telling a child to "try harder" doesn't work, because the difficulty is with the skill, not the effort.</p>
+<h2>Strategies that help</h2>
+<ul>
+<li><b>Make it visible.</b> Checklists, visual timetables and a timer your child can see.</li>
+<li><b>Plan backwards.</b> Start from the deadline, break the task into steps and add spare time.<sup><a href="#s1">1</a></sup></li>
+<li><b>Shrink the first step.</b> "Open the book" is easier to start than "do your homework".</li>
+<li><b>Reduce distractions.</b> A clear workspace, and phones in another room.</li>
+<li><b>Short bursts.</b> Work for a set time, then take a break.<sup><a href="#s1">1</a></sup></li>
+<li><b>Same routine every day</b>, with warnings before transitions.</li>
+<li><b>Body doubling:</b> doing the task alongside someone else.</li>
+</ul>
+<h2>Ask school for support too</h2>
+<p>Teachers can help with written instructions, homework planners and checklists. See <a href="#g-sen-support-secondary">SEN support at secondary school</a>.</p>`,
+  sources:[
+    `Stavraki I. What is ADHD executive dysfunction? <i>Simply Psychology</i>, reviewed by Olivia Guy-Evans MSc and Saul McLeod PhD, February 2024. <a href="https://www.simplypsychology.org/adhd-executive-dysfunction.html" target="_blank" rel="noopener">simplypsychology.org</a>`,
+    `Autistica. What is autism. <a href="https://www.autistica.org.uk/what-is-autism/what-is-autism" target="_blank" rel="noopener">autistica.org.uk</a>`
+  ]
+},
+{
+  slug:"autism-anxiety", title:"Anxiety and autism: what the research says",
+  cat:"Sensory & regulation", ev:"guidance",
+  summary:"Most autistic people will face mental health difficulties at some point. How sensory differences and uncertainty feed anxiety, and what helps.",
+  short:["Almost 8 in 10 autistic people will experience mental health problems in their lifetime, according to Autistica.","Sensory overload and not knowing what's coming next are two big drivers of anxiety.","Change the environment, give advance warning, and ask your GP about therapy if anxiety is getting in the way."],
+  body:`
+<p>Anxiety affects many autistic people. The autism research charity Autistica says almost 8 in 10 autistic people will experience mental health problems in their lifetime.<sup><a href="#s1">1</a></sup></p>
+<h2>Sensory differences</h2>
+<p>About 9 in 10 autistic people process sensory information differently.<sup><a href="#s1">1</a></sup> Being over-sensitive can overload the senses, causing anxiety, stress and even physical pain, and can lead to meltdowns or a need to escape.<sup><a href="#s2">2</a></sup></p>
+<h2>Not knowing what's coming</h2>
+<p>Uncertainty is a major focus of autism anxiety research, and Autistica has funded work on why it leads to anxiety and how to manage it.<sup><a href="#s3">3</a></sup> Surprises, last-minute changes and vague plans can all raise anxiety.</p>
+<h2>Naming the feeling</h2>
+<p>Around half of autistic people find it hard to identify and describe their own emotions.<sup><a href="#s3">3</a></sup> A child may not be able to say "I'm anxious". They may show it through behaviour, stomach aches or wanting to leave. See <a href="#g-naming-feelings">helping your child name their feelings</a>.</p>
+<h2>What helps</h2>
+<ul>
+<li><b>Change the environment:</b> headphones, sunglasses, dimmer lighting, quieter spaces.<sup><a href="#s2">2</a></sup></li>
+<li><b>Allow movement:</b> pacing, rocking and stimming can help regulate.<sup><a href="#s2">2</a></sup></li>
+<li><b>Tell them in advance</b> what a place will be like, and let them bring what helps.<sup><a href="#s2">2</a></sup></li>
+<li><b>Professional support:</b> an occupational therapist can help understand a child's sensory profile, and adapted CBT may help with anxiety.<sup><a href="#s2">2</a></sup> Ask your GP.</li>
+<li><b>Peer support</b> from others with similar experiences.<sup><a href="#s2">2</a></sup></li>
+</ul>`,
+  sources:[
+    `Autistica. What is autism. <a href="https://www.autistica.org.uk/what-is-autism/what-is-autism" target="_blank" rel="noopener">autistica.org.uk</a>`,
+    `Autistica. Sensory differences (Anxiety and autism hub). <a href="https://www.autistica.org.uk/what-is-autism/anxiety-and-autism-hub/sensory-differences" target="_blank" rel="noopener">autistica.org.uk</a>`,
+    `Autistica. Anxiety and autism hub. <a href="https://www.autistica.org.uk/what-is-autism/anxiety-and-autism-hub" target="_blank" rel="noopener">autistica.org.uk</a>`
+  ]
 }
+
 ];
 EV.guidance = {label:"Guidance", cls:"ev-guidance", note:"Based on NHS and NICE guidance"};
 EV.history = {label:"History", cls:"ev-thin", note:"Historical record"};
@@ -1180,20 +1316,14 @@ const FAMOUS = {
   adhd:[
     {name:"Simone Biles", role:"Olympic gymnast", line:"Said she has ADHD and has taken medication since childhood, and that it is nothing to be ashamed of.", src:"https://www.understood.org/en/articles/simone-biles-says-adhd-is-nothing-to-be-ashamed-of", via:"Understood"},
     {name:"Michael Phelps", role:"Olympic swimmer", line:"Diagnosed as a child. Has talked about how swimming gave him a place to focus.", src:"https://childmind.org/news/michael-phelps-opens-adhd-diagnosis/", via:"Child Mind Institute"},
-    {name:"will.i.am", role:"Musician and producer", line:"Diagnosed as a child, and says ADHD feeds his creativity.", src:"https://understood.org/articles/en/celebrity-spotlight-why-william-says-adhd-fuels-his-creativity", via:"Understood"},
-    {name:"Sue Perkins", role:"Comedian and presenter", line:"Diagnosed as an adult and said that suddenly everything made sense.", src:"https://www.thepinknews.com/2023/01/09/sue-perkins-adhd-diagnosis/", via:"PinkNews"},
-    {name:"Rory Bremner", role:"Impressionist and comedian", line:"Diagnosed as an adult, has made a documentary about ADHD, and campaigns for better understanding.", src:"https://www.teachwire.net/news/rory-bremner-on-living-with-adhd-a-lot-of-mind-wandering-goes-on/", via:"Teachwire"},
+    {name:"will.i.am", role:"Musician and producer", line:"Diagnosed as a child, and says ADHD feeds his creativity.", src:"https://www.understood.org/en/articles/celebrity-spotlight-why-william-says-adhd-fuels-his-creativity", via:"Understood"},
     {name:"Paris Hilton", role:"Businesswoman", line:"Calls ADHD her superpower and has spoken about struggling at school before her diagnosis.", src:"https://www.healthline.com/health-news/paris-hilton-adhd-superpower", via:"Healthline"}
   ],
   autism:[
-    {name:"Chris Packham", role:"Naturalist and TV presenter", line:"Diagnosed in his forties. Made a BBC series about the inner world of autistic people.", src:"https://www.irishnews.com/entertainment/chris-packham-i-loathed-myself-and-thought-i-was-broken-before-autism-diagnosis-LS3ROZTOBFLZLO77CWTI5UA4JY/", via:"Irish News"},
-    {name:"Greta Thunberg", role:"Climate activist", line:"Has called being autistic her superpower.", src:"https://www.refinery29.com/en-ca/2019/09/8472991/greta-thunberg-says-aspergers-is-her-superpower", via:"Refinery29"},
-    {name:"Christine McGuinness", role:"TV personality and author", line:"Diagnosed as an adult after her children's diagnoses. Made a documentary about late diagnosis in women and girls.", src:"https://www.heart.co.uk/showbiz/celebrities/christine-mcguinness-autistic/", via:"Heart"},
-    {name:"Fern Brady", role:"Comedian and author", line:"Wrote a memoir, Strong Female Character, about growing up autistic without a diagnosis.", src:"https://www.chortle.co.uk/review/2023/02/27/52614/strong_female_character_by_fern_brady", via:"Chortle"},
-    {name:"Susan Boyle", role:"Singer", line:"Diagnosed as an adult and described the diagnosis as a relief.", src:"https://www.thewrap.com/susan-boyle-calls-aspergers-diagnosis-relief", via:"TheWrap"},
-    {name:"Dan Aykroyd", role:"Actor and writer", line:"Has spoken about being diagnosed as autistic and with Tourette's as a child.", src:"https://bapam.org.uk/dan-ackroyd-on-aspergers-syndrome", via:"BAPAM"},
-    {name:"Temple Grandin", role:"Scientist and author", line:"An animal scientist and one of the best-known autistic writers and speakers.", src:"https://www.biography.com/activists/a77656334/temple-grandin", via:"Biography.com"},
-    {name:"Stephen Wiltshire", role:"Artist", line:"A London artist known for drawing whole cityscapes in detail from memory.", src:"https://en.wikipedia.org/wiki/Stephen_Wiltshire", via:"Wikipedia"}
+    {name:"Greta Thunberg", role:"Climate activist", line:"Has spoken publicly about being autistic and called it her superpower.", src:"https://www.nbcnews.com/news/us-news/people-asperger-s-role-model-emerges-greta-thunberg-n1058276", via:"NBC News"},
+    {name:"Chris Packham", role:"Naturalist and TV presenter", line:"Diagnosed in his forties. Made BBC documentaries about the inner world of autistic people.", src:"https://rts.org.uk/article/chris-packham-championing-neurodiverse-talent-self-diagnosis-and-inside-our-autistic-minds", via:"Royal Television Society"},
+    {name:"Susan Boyle", role:"Singer", line:"Diagnosed as an adult and described the diagnosis as a relief.", src:"https://abcnews.go.com/blogs/entertainment/2013/12/5-surprising-revelations-from-susan-boyle", via:"ABC News"},
+    {name:"Christine McGuinness", role:"TV personality and author", line:"Diagnosed as an adult after her children's diagnoses. Made a documentary about late diagnosis in women and girls.", src:"https://www.heart.co.uk/showbiz/celebrities/christine-mcguinness-autistic/", via:"Heart"}
   ]
 };
 
@@ -1204,6 +1334,7 @@ const ORGS = [
   ["ADHD UK","https://adhduk.co.uk"],
   ["ADHD Foundation","https://www.adhdfoundation.org.uk"],
   ["National Autistic Society","https://www.autism.org.uk"],
+  ["Autistica (autism research charity)","https://www.autistica.org.uk"],
   ["IPSEA (SEND law)","https://www.ipsea.org.uk"],
   ["Contact (families with disabled children)","https://contact.org.uk"]
 ];
@@ -1238,7 +1369,7 @@ function waitlistForm(){
   ${field("wl-email","Email address",`<input id="wl-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("wl-phone","Phone number (optional)",`<input id="wl-phone" name="phone" type="tel" autocomplete="tel">`)}
   <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="wl-c-email"><input type="checkbox" id="wl-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="wl-c-text"><input type="checkbox" id="wl-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="wl-c-call"><input type="checkbox" id="wl-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="wl-c-video"><input type="checkbox" id="wl-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
-  ${field("wl-year","Your child's school year",`<select id="wl-year" name="school_year" required><option value="">Choose a year</option><option>Year 7</option><option>Year 8</option><option>Year 9</option></select>`)}
+  ${field("wl-age","How old is your child?",`<input id="wl-age" name="child_age" type="number" inputmode="numeric" min="1" max="25" required aria-describedby="wl-age-hint">`, "Our first sessions are for ages 11 to 14. If your child is younger or older, join anyway and we'll tell you when sessions for their age start.")}
   ${field("wl-area","Your area or borough",`<input id="wl-area" name="area" placeholder="For example, Harrow">`)}
   ${field("wl-heard","How did you hear about us? (optional)",`<input id="wl-heard" name="heard_from">`)}
   ${consent("wl-consent")}
@@ -1305,6 +1436,7 @@ function surveyForm(){
   </fieldset>
   <div class="q-list">
     <p class="hint q-note">Answer as many questions as you like, and skip any you'd rather not answer. Please don't include children's names.</p>
+    <div class="field age-q" data-only="parent"><label for="sv-child-age">How old is your child?</label><input id="sv-child-age" name="child_age" type="number" inputmode="numeric" min="1" max="25"></div>
     <p class="save-note" id="sv-save-note">Your answers are saved on this device as you type, so you can stop and come back later. <button type="button" class="linkish" id="sv-clear">Clear saved answers</button></p>
     ${items}
     <h3 class="q-group">Staying in touch (optional)</h3>
@@ -1326,7 +1458,7 @@ function applyWho(form){
   const r = form.querySelector('[name="respondent"]:checked');
   const who = r ? (r.id==="sv-role-teacher" ? "teacher" : "parent") : "";
   form.dataset.who = who;
-  form.querySelectorAll('[data-only] textarea').forEach(t=>t.disabled = who!=="parent");
+  form.querySelectorAll('[data-only] textarea, [data-only] input').forEach(t=>t.disabled = who!=="parent");
   form.querySelector('[name="form_type"]').value = who==="teacher" ? "Questionnaire – school staff" : "Questionnaire – parent";
   form.querySelector('[name="_subject"]').value = who==="teacher" ? "New questionnaire response (school staff) – Maverick Minds" : "New questionnaire response (parent) – Maverick Minds";
 }
@@ -1362,7 +1494,7 @@ home(){
   return `
 <section class="hero">
   <div class="stack">
-    <span class="eyebrow">Sessions for Years 7 to 9 · launching early 2027</span>
+    <span class="eyebrow">Sessions for ages 11 to 14 · launching early 2027</span>
     <h1>The world wasn't built for their brains.</h1>
     <p class="lede">So every week, we teach the skills to navigate it, without asking them to be anyone else. Calm sessions for ADHD and autistic young people.</p>
     <div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
@@ -1455,7 +1587,7 @@ sessions(){
 <section class="stack">
   <span class="eyebrow">Sessions · launching early 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Two hours for Years 7 to 9: a short life lesson, then games and play, in a space set up for kids who find busy places hard.</p>
+  <p class="lede">Two hours for ages 11 to 14: a short life lesson, then games and play, in a space set up for kids who find busy places hard.</p>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
@@ -1480,7 +1612,7 @@ sessions(){
   <div class="stack">
     <h2>The details</h2>
     <dl class="facts">
-      <dt>Who</dt><dd>Years 7 to 9</dd>
+      <dt>Who</dt><dd>Ages 11 to 14</dd>
       <dt>Length</dt><dd>2 hours, weekly</dd>
       <dt>Price</dt><dd>£30 per session</dd>
       <dt>Staffing</dt><dd>1 adult for every 5 children</dd>
@@ -1634,7 +1766,7 @@ faq(){
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#booking">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
   ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming.</p>`)}
-  ${q("Can they bring a friend?", `<p>Yes, if their friend is in Years 7 to 9. Their friend's parent needs to join the waiting list too, and you can tell us you'd like them to come together.</p>`)}
+  ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 14. Their friend's parent needs to join the waiting list too, and you can tell us you'd like them to come together.</p>`)}
   ${q("What do the staff know about ADHD and autism?", `<p>Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
   ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them.</p>`)}
 </section>`;
@@ -1687,7 +1819,7 @@ privacy(){
 
   <h2>What we collect</h2>
   <ul>
-    <li><b>Waiting list:</b> your name, email, phone number if you give it, how you'd like to be contacted, your child's school year, your area and how you heard about us.</li>
+    <li><b>Waiting list:</b> your name, email, phone number if you give it, how you'd like to be contacted, your child's age, your area and how you heard about us.</li>
     <li><b>Questionnaire:</b> whether you're a parent or work in a school, your answers, and your email if you choose to give it. Answers can describe a child's needs, so we ask you not to include names. We use answers to design our sessions and may quote them anonymously. While you fill it in, your answers are saved only on your own device so you can come back later. They're deleted from your device when you send them, or when you press "Clear saved answers".</li>
     <li><b>Team applications:</b> your name, contact details, the role you're interested in, your experience, DBS status and availability.</li>
     <li><b>Before your child's first session:</b> information about your child's needs, such as their sensory profile, what helps them, any diagnosis you choose to share, medication and who can collect them. We only ask for this when you're booking a place.</li>
@@ -1831,7 +1963,8 @@ document.addEventListener("submit", async e=>{
   e.preventDefault();
   const msg = form.querySelector(".form-msg");
   msg.className = "form-msg";
-  const bad = [...form.querySelectorAll("[required], input[type=email]")].find(el=>
+  const bad = [...form.querySelectorAll("[required], input[type=email], input[type=number]:not(:disabled)")].find(el=>
+    el.type==="number" ? (el.required && !el.value.trim()) || (el.value.trim() && !el.checkValidity()) :
     el.type==="checkbox" ? !el.checked :
     el.type==="radio" ? !form.querySelector(`[name="${el.name}"]:checked`) :
     el.type==="email" ? (el.required ? !el.value.trim() : false) || (el.value.trim() && !el.checkValidity()) :
@@ -1839,8 +1972,9 @@ document.addEventListener("submit", async e=>{
   if(bad){
     const lbl = form.querySelector(`label[for="${bad.id}"]`);
     msg.textContent =
+      bad.type==="number" && bad.value.trim() ? "Please enter your child's age as a number, for example 12." :
       bad.type==="radio" ? "Please choose whether you're a parent or work in a school." :
-      bad.type==="checkbox" ? "Please tick the box to agree to how we use your answers." :
+      bad.type==="checkbox" ? (form.dataset.form==="survey" ? "Please tick the box to agree to how we use your answers." : "Please tick the box to agree to us storing your details.") :
       bad.type==="email" && bad.value.trim() ? "Please check the email address. It doesn't look quite right." :
       `Please fill in “${lbl?lbl.textContent:"this field"}”.`;
     msg.classList.add("err"); bad.focus(); return;
