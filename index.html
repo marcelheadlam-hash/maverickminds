@@ -148,6 +148,7 @@ section+section{margin-top:64px}
 @media (prefers-reduced-motion: reduce){.btn,.card,.burger span{transition:none}.btn:hover,.card:hover{transform:none}.hero-note{transform:none}}
 .card p{color:var(--muted);font-size:.95em}
 .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:.8rem;color:var(--muted);margin-top:auto}
+.card>.pill{align-self:flex-start}
 .pill{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
 .ev-mixed{color:var(--warn)} .ev-thin{color:var(--muted)} .ev-law,.ev-guidance,.ev-practice{color:var(--accent)}
 
@@ -224,7 +225,8 @@ dl.facts dt{color:var(--muted)} dl.facts dd{margin:0;font-weight:700}
 .form-msg{font-size:.92rem;min-height:1.2em}
 .form-msg.ok{color:var(--accent);font-weight:700}
 .form-msg.err{color:var(--warn);font-weight:700}
-.roles{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.roles{grid-template-columns:1fr}}
 .role{background:var(--surface);border:2px solid var(--line);border-top:6px solid var(--spark);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
 .role + .role{border-top-color:var(--pop)}
 
@@ -327,6 +329,15 @@ html.calm footer{border-top-color:var(--line)}
 .why-story h3{font-size:1.3rem}
 .why-more{font-weight:700;align-self:flex-start}
 .btns-centre{justify-content:center}
+.thrive{background:var(--c-team-soft);border-radius:24px;padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;gap:16px}
+.thrive .eyebrow{color:var(--c-team)}
+.thrive h3{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;text-wrap:balance}
+.thrive-story{display:flex;flex-direction:column;gap:12px;border-left:5px solid var(--c-team);padding-left:22px}
+.thrive-story p{font-size:1.08em;line-height:1.55}
+.thrive-known{display:flex;flex-direction:column;gap:12px;background:var(--surface);border-radius:16px;padding:20px 22px}
+.thrive-known p{font-size:1.08em;line-height:1.55}
+.thrive-line{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--c-team)}
+@media (max-width:760px){.thrive-story{grid-template-columns:1fr}}
 .crosses li::before{content:"\2715";border:0;transform:none;width:auto;height:auto;left:3px;top:0;color:var(--sec);font-weight:700;font-size:.95em;line-height:inherit}
 .grid.four{grid-template-columns:repeat(4,1fr)}
 @media (max-width:980px){.grid.four{grid-template-columns:1fr 1fr}}
@@ -415,11 +426,39 @@ html.calm .hero-logo{box-shadow:none}
 .who-card b{display:block;font-size:1.05rem}
 .who-card small{color:var(--muted);font-size:.88rem}
 .who-card:has(input:checked){border-color:var(--sec);background:var(--sec-soft)}
-.survey[data-who=""] .q-list{display:none}
 .survey[data-who="teacher"] [data-only="parent"]{display:none}
 .survey[data-who="teacher"] [data-who="parent"]{display:none}
 .survey[data-who="parent"] [data-who="teacher"]{display:none}
-.q-list{display:flex;flex-direction:column;gap:18px;border-top:2px dashed var(--line);padding-top:20px}
+.survey{max-width:760px;margin-inline:auto;min-height:440px;scroll-margin-top:100px}
+.qz-top{display:flex;align-items:center;gap:14px}
+.qz-bar{flex:1;height:10px;border-radius:999px;background:var(--sec-soft);overflow:hidden}
+.qz-fill{display:block;height:100%;width:0;background:var(--sec);border-radius:999px;transition:width .3s ease}
+.qz-count{font-size:.85rem;font-weight:700;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.qz-step{display:none;flex-direction:column;gap:14px;flex:1}
+.qz-step.on{display:flex}
+.qz-group{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sec)}
+.survey .qz-q,.survey label.qz-q,.survey legend.qz-q{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.25;outline:none}
+.qz-step textarea{min-height:120px}
+.qz-chips{display:flex;flex-wrap:wrap;gap:8px}
+.qz-chip{cursor:pointer}
+.qz-chip input{position:absolute;opacity:0;width:1px;height:1px}
+.qz-chip span{display:inline-block;padding:8px 14px;border:2px solid var(--line);border-radius:999px;background:var(--surface);font-weight:700;font-size:.95rem}
+.qz-chip input:checked+span{border-color:var(--sec);background:var(--sec);color:#fff}
+.qz-chip input:checked+span::before{content:"✓ "}
+.qz-chip input:focus-visible+span{outline:3px solid var(--spark);outline-offset:2px}
+.qz-sub{font-weight:700;margin-top:4px}
+.qz-ex summary{cursor:pointer;color:var(--sec);font-weight:700;font-size:.92rem}
+.qz-ex p{margin-top:8px;background:var(--sec-soft);border-radius:12px;padding:12px 14px;font-style:italic}
+.qz-review{margin:0;display:flex;flex-direction:column;gap:10px}
+.qz-review div{border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:start}
+.qz-review dt{font-weight:700;font-size:.92rem}
+.qz-review dd{margin:0;grid-column:1;color:var(--muted);font-size:.92rem;white-space:pre-wrap}
+.qz-review dd.qz-skipped{font-style:italic}
+.qz-review button{grid-column:2;grid-row:1 / span 2;align-self:center}
+.qz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
+.qz-nav .btn[disabled]{opacity:.4;cursor:not-allowed}
+@media (prefers-reduced-motion: reduce){.qz-fill{transition:none}}
+html.calm .qz-fill{transition:none}
 .q-note{text-align:center}
 .q-group{font-size:1.1rem;color:var(--sec);margin-top:10px;padding-bottom:6px;border-bottom:2px solid var(--sec-soft)}
 .q label{display:flex;gap:12px;align-items:baseline;font-size:1rem}
@@ -527,6 +566,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
         <div class="nav-group sec-sessions"><span class="nav-h">Sessions</span>
           <a href="#sessions" data-nav="sessions" class="sec-sessions">How sessions work</a>
           <a href="#plan" data-nav="plan" class="sec-sessions">A typical session</a>
+          <a href="#approach" data-nav="approach" class="sec-sessions">Our approach</a>
           <a href="#fees" data-nav="fees" class="sec-sessions">Fees and help</a>
           <a href="#faq" data-nav="faq" class="sec-sessions">FAQ</a>
         </div>
@@ -1510,78 +1550,95 @@ function waitlistForm(){
 }
 const SURVEY = [
   {group:"Strengths first"},
-  {name:"loves_and_strengths",
+  {name:"loves_and_strengths", chips:["Drawing and art", "Building and making", "Gaming", "Sport and moving", "Music", "Animals", "Coding and tech", "Reading and stories", "Kind and caring", "Funny", "Honest", "Great memory", "Solving problems"], example:"She can spend hours drawing her own comics, and she's always the first to notice when someone is left out.",
    parent:"What does your child love, and what are they brilliant at?",
    teacher:"What do the children love, and what are they brilliant at?"},
   {group:"Social situations"},
-  {name:"hardest_social_situations",
+  {name:"hardest_social_situations", chips:["Joining a group", "Making friends", "Keeping friends", "Group work", "Break and lunch times", "Busy places", "Jokes and sarcasm", "Falling out and making up", "Being misunderstood", "Group chats online"], example:"Break times. He doesn't know how to join a game, so he walks around the edge of the playground. Last week someone took his ball and he got so upset he was sent inside.",
    parent:"What social situations does your child find hardest? Can you provide any recent examples of any difficult interactions?",
    teacher:"What social situations do the children find hardest? Can you provide any recent examples of any difficult interactions?"},
   {group:"Support so far"},
-  {name:"support_accessed",
+  {name:"support_accessed", chips:["SEN support at school", "EHC plan", "CAMHS", "GP", "Private assessment", "Speech and language therapy", "Occupational therapy", "Medication", "Parent courses or groups", "A charity", "Nothing yet"], example:"School gave her a time-out card, which helped for a term until her teacher changed. The parent course from the council was the most useful thing so far.",
    parent:"What type of support have you accessed so far, and what actually helped?",
    teacher:"What type of support do they have access to, and what actually helped?"},
-  {name:"obstacles_to_support",
+  {name:"obstacles_to_support", chips:["Cost", "Waiting lists", "Location or travel", "Time", "Not knowing what's out there", "No diagnosis yet", "School didn't agree", "Paperwork", "My child didn't want to go"], example:"We've been on the CAMHS waiting list for 18 months, and the private options cost more than we can afford.",
    parent:"What obstacles affected you accessing support for your child (cost, waiting lists, location, time)?",
    teacher:"What obstacles affected the children accessing support (cost, waiting lists, location, time)?"},
   {group:"Sensory needs"},
-  {name:"what_helps_calm",
+  {name:"what_helps_calm", chips:["A quiet space", "Time alone", "Moving around", "Music or headphones", "A fidget or sensory toy", "Screen time", "Deep pressure or a hug", "A favourite person", "Knowing the plan", "A snack or drink", "Being outside"], example:"Ten minutes alone in his room with headphones on. Talking to him straight away makes it worse.",
    parent:"During periods of overstimulation what helps your child calm down or self-soothe (objects, activities, routines, people)?",
    teacher:"During periods of overstimulation what helps the children calm down or self-soothe (objects, activities, routines, people)?"},
-  {name:"sensory_triggers_and_comfort",
+  {name:"sensory_triggers_and_comfort", chips:["Loud noise", "Bright lights", "Crowds", "Strong smells", "Clothing labels or textures", "Certain foods", "Being touched", "Echoey rooms", "Sudden changes", "Dim lighting helps", "Quiet spaces help", "Familiar places help"], example:"Hand dryers and school assemblies are the worst. She's at her best in small, quiet rooms with soft lighting.",
    parent:"What sounds, lights, smells, textures or crowds do they find overwhelming, and what environments help them feel comfortable?",
    teacher:"What sounds, lights, smells, textures or crowds do they find overwhelming, and what environments help them feel comfortable?"},
   {group:"You as a parent", only:"parent"},
-  {name:"hardest_as_parent", only:"parent",
+  {name:"hardest_as_parent", chips:["Mornings", "Meltdowns", "Getting support", "Talking to school", "Sleep", "Siblings", "Other people judging", "Time for myself", "Worrying about the future"], example:"Mornings. Getting out of the door on time takes everything I've got, and by 9am I feel like I've done a day's work.", only:"parent",
    parent:"What is hardest for you as a parent day to day?"},
-  {name:"connected_to_other_parents", only:"parent",
+  {name:"connected_to_other_parents", chips:["Very connected", "A little", "Not at all", "I'd like to be"], example:"Not really. I know one other mum from the school gate, but I'd love a group that understands.", only:"parent",
    parent:"How connected do you feel to other parents in a similar situation?"},
   {group:"Your ideas"},
-  {name:"great_service_looks_like",
+  {name:"great_service_looks_like", chips:["Small groups", "A calm space", "Trained staff", "Friends for my child", "Parent meet-ups", "Practical tips", "Regular updates", "Affordable", "Weekends", "After school"], example:"Somewhere he wants to go back to, with staff who get him, and a chance for me to meet parents going through the same thing.",
    parent:"What would a great social skills service and parent community look like?",
    teacher:"What would a great social skills service and community look like?"},
-  {name:"other_comments",
+  {name:"other_comments", chips:[], example:"",
    parent:"Any other comments?",
    teacher:"Any other comments?"}
 ];
 function surveyForm(){
-  let n = 0;
+  let group = "";
   const items = SURVEY.map(q=>{
+    if(q.group){ group = q.group; return ""; }
     const only = q.only ? ` data-only="${q.only}"` : "";
-    if(q.group) return `<h3 class="q-group"${only}>${q.group}</h3>`;
-    n++;
     const id = "sv-"+q.name;
     const label = `<span data-who="parent">${q.parent}</span>${q.teacher?`<span data-who="teacher">${q.teacher}</span>`:""}`;
-    return `<div class="field q"${only}><label for="${id}"><span class="q-n">${n}</span>${label}</label><textarea id="${id}" name="${q.name}" rows="4"></textarea></div>`;
+    const chips = (q.chips||[]).length ? `<div class="qz-chips" role="group" aria-label="Quick answers">${q.chips.map((c,k)=>`<label class="qz-chip" for="${id}-c${k}"><input type="checkbox" id="${id}-c${k}" data-chip="${q.name}" value="${c}"><span>${c}</span></label>`).join("")}</div><input type="hidden" name="${q.name}_selected" id="${id}-sel">` : "";
+    const ex = q.example ? `<details class="qz-ex"><summary>Show me an example</summary><p>"${q.example}"</p></details>` : "";
+    const head = chips ? `<p class="qz-q" tabindex="-1">${label}</p><span class="hint">Tap any that fit, or write your own. Optional.</span>${chips}<label for="${id}" class="qz-sub">Anything to add, in your own words?</label>` : `<label for="${id}" class="qz-q" tabindex="-1">${label}</label><span class="hint">Optional. Skip it if you'd rather not answer.</span>`;
+    return `<div class="qz-step field q" data-q="${q.name}"${only}><span class="qz-group">${group}</span>${head}<textarea id="${id}" name="${q.name}" rows="${chips?4:6}"></textarea>${ex}</div>`;
   }).join("");
   return `<form class="form wide survey" id="survey" data-form="survey" data-who="" action="${FORMS.survey}" method="POST" novalidate>
   <input type="hidden" name="form_type" value="Questionnaire">
   <input type="hidden" name="_subject" value="New questionnaire response – Maverick Minds">
   <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <fieldset class="who">
-    <legend>First, which describes you?</legend>
-    <div class="who-row">
-      <label class="who-card" for="sv-role-parent"><input type="radio" id="sv-role-parent" name="respondent" value="Parent or carer" required><span><b>I'm a parent or carer</b><small>of a neurodivergent child</small></span></label>
-      <label class="who-card" for="sv-role-teacher"><input type="radio" id="sv-role-teacher" name="respondent" value="Teacher or school staff" required><span><b>I work in a school</b><small>teacher, teaching assistant or SENCO</small></span></label>
-    </div>
-  </fieldset>
-  <div class="q-list">
-    <p class="hint q-note">Answer as many questions as you like, and skip any you'd rather not answer. Please don't include children's names.</p>
-    <div class="field age-q" data-only="parent"><label for="sv-child-age">How old is your child?</label><input id="sv-child-age" name="child_age" type="number" inputmode="numeric" min="1" max="25"></div>
-    <p class="save-note" id="sv-save-note">Your answers are saved on this device as you type, so you can stop and come back later. <button type="button" class="linkish" id="sv-clear">Clear saved answers</button></p>
-    ${items}
-    <h3 class="q-group">Staying in touch (optional)</h3>
+  <div class="qz-top">
+    <div class="qz-bar" role="progressbar" aria-label="Questionnaire progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="qz-fill"></span></div>
+    <span class="qz-count" aria-live="polite"></span>
+  </div>
+  <div class="qz-step">
+    <fieldset class="who">
+      <legend class="qz-q" tabindex="-1">First, which describes you?</legend>
+      <div class="who-row">
+        <label class="who-card" for="sv-role-parent"><input type="radio" id="sv-role-parent" name="respondent" value="Parent or carer" required><span><b>I'm a parent or carer</b><small>of a neurodivergent child</small></span></label>
+        <label class="who-card" for="sv-role-teacher"><input type="radio" id="sv-role-teacher" name="respondent" value="Teacher or school staff" required><span><b>I work in a school</b><small>teacher, teaching assistant or SENCO</small></span></label>
+      </div>
+    </fieldset>
+    <p class="hint q-note">One question at a time. Skip any you'd rather not answer, and go back whenever you like. Please don't include children's names.</p>
+    <p class="save-note" id="sv-save-note">Your answers are saved on this device as you go, so you can stop and come back later. <button type="button" class="linkish" id="sv-clear">Clear saved answers</button></p>
+  </div>
+  <div class="qz-step field age-q" data-only="parent" data-q="child_age"><span class="qz-group">About your child</span><label for="sv-child-age" class="qz-q" tabindex="-1">How old is your child?</label><input id="sv-child-age" name="child_age" type="number" inputmode="numeric" min="1" max="25"></div>
+  ${items}
+  <div class="qz-step" data-q="contact">
+    <span class="qz-group">Staying in touch (optional)</span>
+    <p class="qz-q" tabindex="-1">Would you like to hear from us?</p>
     <div class="field check talk-instead"><input type="checkbox" id="sv-talk" name="prefer_to_talk" value="Yes"><label for="sv-talk"><b>I'd rather talk than write.</b> Leave your email or phone number below and we'll arrange a call, or you can send us a voice note instead.</label></div>
-    <div class="fields">
-      ${field("sv-phone","Phone number, if you'd prefer a call or voice note",`<input id="sv-phone" name="phone" type="tel" autocomplete="tel">`)}
-      ${field("sv-email","Email address, if you're happy for us to follow up",`<input id="sv-email" name="email" type="email" autocomplete="email">`)}
-      <div class="field check"><input type="checkbox" id="sv-waitlist" name="join_waiting_list" value="Yes"><label for="sv-waitlist">Add me to the waiting list for sessions too</label></div>
-    </div>
+    ${field("sv-phone","Phone number, if you'd prefer a call or voice note",`<input id="sv-phone" name="phone" type="tel" autocomplete="tel">`)}
+    ${field("sv-email","Email address, if you're happy for us to follow up",`<input id="sv-email" name="email" type="email" autocomplete="email">`)}
+    <div class="field check"><input type="checkbox" id="sv-waitlist" name="join_waiting_list" value="Yes"><label for="sv-waitlist">Add me to the waiting list for sessions too</label></div>
+  </div>
+  <div class="qz-step">
+    <span class="qz-group">Last step</span>
+    <p class="qz-q" tabindex="-1">Check your answers</p>
+    <p class="hint">Tap Edit to change anything before you send.</p>
+    <dl class="qz-review"></dl>
     <div class="field check"><input type="checkbox" id="sv-consent" name="consent" required><label for="sv-consent">I agree to Maverick Minds using my answers to design its sessions and community. Answers may be quoted anonymously. See our <a href="#privacy">privacy notice</a>.</label></div>
     <div class="form-foot">
       <button type="submit" class="btn solid">Send my answers</button>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </div>
+  </div>
+  <div class="qz-nav">
+    <button type="button" class="btn qz-back">← Back</button>
+    <button type="button" class="btn solid qz-next"><span class="qz-next-t">Next</span> <span aria-hidden="true">→</span></button>
   </div>
 </form>`;
 }
@@ -1607,7 +1664,7 @@ function applyForm(){
   ${field("ap-email","Email address",`<input id="ap-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("ap-phone","Phone number (optional)",`<input id="ap-phone" name="phone" type="tel" autocomplete="tel">`)}
   <div class="full"><fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="ap-c-email"><input type="checkbox" id="ap-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="ap-c-text"><input type="checkbox" id="ap-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="ap-c-call"><input type="checkbox" id="ap-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="ap-c-video"><input type="checkbox" id="ap-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset></div>
-  ${field("ap-role","Which role?",`<select id="ap-role" name="role" required><option value="">Choose a role</option><option>Teaching assistant (paid)</option><option>Volunteer</option><option>Not sure yet</option></select>`)}
+  ${field("ap-role","Which role?",`<select id="ap-role" name="role" required><option value="">Choose a role</option><option>Teaching assistant (paid)</option><option>Volunteer</option><option>Professional adviser</option><option>Not sure yet</option></select>`)}
   ${field("ap-exp","Your experience with young people",`<textarea id="ap-exp" name="experience" rows="4" required></textarea>`, "Paid or unpaid, including SEN, youth work, tutoring or family.", "full")}
   ${field("ap-dbs","Do you have an Enhanced DBS?",`<select id="ap-dbs" name="dbs"><option value="">Choose one</option><option>Yes, on the Update Service</option><option>Yes, not on the Update Service</option><option>No</option></select>`)}
   ${field("ap-avail","When are you available?",`<input id="ap-avail" name="availability" placeholder="For example, Saturdays, school holidays">`)}
@@ -1659,6 +1716,23 @@ home(){
       <h3>Why Years 7 and 8</h3>
       <p>The move to secondary school changes almost everything at once: a bigger, noisier building, a new teacher every lesson, new social groups, and often losing the one familiar adult who understood them. A 2025 study found parents were largely dissatisfied with support after the move, with help often dropping away after Year 7, and worries about meltdowns, school refusal and exhaustion from masking.<sup><a href="#why-s3">3</a></sup></p>
       <p>For a neurodivergent child, even a seemingly small change can feel huge: a new seating plan, or a teacher wearing a different perfume. Suspensions peak in Year 9.<sup><a href="#why-s2">2</a></sup> We step in during Years 7 and 8, the formative years, before that point.</p>
+  </div>
+  <div class="thrive">
+    <span class="eyebrow">Picture this</span>
+    <h3>It's 3pm on a Saturday, and your child walks out smiling.</h3>
+    <div class="thrive-story">
+      <p>They're talking before they reach the car. Not about what went wrong, but about the game they made up with someone who just gets them.</p>
+      <p>The energy that gets them told to sit still in class won the game today. The question they're always told to stop asking started a friendship.</p>
+      <p>For two hours, they didn't have to hold it together. They fidgeted, they stimmed, they took a break when it got loud, and they came back when they were ready.</p>
+      <p>On the way home, they tell you the plan they made for when things feel too much. Then they ask if they can go early next week.</p>
+    </div>
+    <div class="thrive-known">
+      <p>This is the child who can lose four hours to one thing they love and still can't find their other shoe. Who tells you everything about it, in detail, all the way to school, and doesn't notice you stopped answering two streets ago. Who comes home at four and needs an hour alone in their room before they can say a word.</p>
+      <p>Maybe they hum while they work, chew their sleeves or bounce a leg under the table. Maybe the label in their jumper is unbearable, or dinner is ruined because the peas touched the rice. They ask why, then why again. They have five ideas before you finish your sentence, and forget the one thing you asked them to bring home.</p>
+      <p>At school, so much of that has to be held in. Here, nobody asks them to.</p>
+    </div>
+    <p class="thrive-line">It's not a different child. It's the same child, in the right environment.</p>
+    <a class="why-more" href="#parents">What it means for your family →</a>
   </div>
   <div class="why-change">
     <h3>What a year with us gives them</h3>
@@ -1762,11 +1836,11 @@ sessions(){
     <li class="stop"><span class="stop-pin" aria-hidden="true">1</span><div class="stop-card"><span class="stop-time">12:45</span><h3>Arrive</h3><p>Settle in. No rush.</p></div></li>
     <li class="stop"><span class="stop-pin" aria-hidden="true">2</span><div class="stop-card"><span class="stop-time">1:15</span><h3>Ice breaker</h3><p>Easy games. Joining in is optional.</p></div></li>
     <li class="stop"><span class="stop-pin" aria-hidden="true">3</span><div class="stop-card"><span class="stop-time">1:30</span><h3>Level Up</h3><p>A new life skill, with breaks.</p></div></li>
-    <li class="stop"><span class="stop-pin" aria-hidden="true">4</span><div class="stop-card"><span class="stop-time">2:15</span><h3>Play their way</h3><p>Built around what they love.</p><span class="chips"><span>Gaming</span><span>Lego</span><span>Art</span><span>Coding</span><span>+ theirs</span></span></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">4</span><div class="stop-card"><span class="stop-time">2:15</span><h3>Play their way</h3><p>Built around what they love.</p><span class="chips"><span>Gaming</span><span>Lego</span><span>Art</span><span>Coding</span><span>Outdoor</span><span>+ theirs</span></span></div></li>
     <li class="stop"><span class="stop-pin" aria-hidden="true">5</span><div class="stop-card"><span class="stop-time">3:00</span><h3>Your update</h3><p>How today went, at pickup.</p></div></li>
     </ol>
   </div>
-  <a class="why-more" href="#plan">See a typical session, minute by minute →</a>
+  <div class="btns"><a class="why-more" href="#plan">See a typical session, minute by minute →</a><a class="why-more" href="#approach">Our approach and curriculum →</a></div>
 </section>
 <section class="two">
   <div class="stack">
@@ -1846,6 +1920,16 @@ team(){
       <li>Interest in neurodivergence and youth work</li>
       <li>Reliable, and happy to follow our safeguarding guidelines</li>
       <li>Training and a reference provided</li>
+    </ul>
+  </div>
+  <div class="role">
+    <span class="eyebrow">Adviser role</span>
+    <h2>Professional adviser</h2>
+    <p>For occupational therapists, speech and language therapists and educational psychologists who want to help shape our sessions.</p>
+    <ul class="ticks">
+      <li>Review our sessions, curriculum and training a few times a year</li>
+      <li>Help run a parent workshop if you'd like to</li>
+      <li>Registered with your professional body, such as the HCPC</li>
     </ul>
   </div>
 </section>
@@ -2086,12 +2170,71 @@ complaints(){
   <p>We keep a confidential record of every complaint and what we did about it, and we use them to improve our sessions.</p>
 </div></article>`;
 },
+approach(){
+  const term=(h,items)=>`<div class="card"><h3>${h}</h3><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
+  return `
+<section class="stack">
+  <span class="eyebrow">Our approach</span>
+  <h1>Built on methods schools already trust.</h1>
+  <p class="lede">We don't invent our own theories. Our sessions are inspired by approaches widely used in UK schools to support autistic and ADHD young people, delivered by trained staff and reviewed by professionals.</p>
+</section>
+<section class="stack">
+  <h2>The approaches that inspire us</h2>
+  <div class="grid">
+    <div class="card"><span class="pill">Autism and ADHD</span><h3>Zones of Regulation</h3><p>A simple colour system for noticing feelings and choosing what helps, widely used in UK schools with both autistic and ADHD pupils.</p></div>
+    <div class="card"><span class="pill">Autism and ADHD</span><h3>Neurodiversity-affirming</h3><p>We don't try to make children less autistic or less ADHD. Stims and fidgets are welcome, and nobody is asked to mask.</p></div>
+    <div class="card"><span class="pill">Mainly autism</span><h3>SCERTS</h3><p>Social Communication, Emotional Regulation and Transactional Support. It inspires how we put regulation first and how adults adapt to each child.</p></div>
+    <div class="card"><span class="pill">Mainly autism</span><h3>TEACCH</h3><p>Structured, visual teaching: the same room layout every week, visual timetables and tasks in clear steps. Structure helps ADHD pupils too.</p></div>
+    <div class="card"><span class="pill">Mainly ADHD</span><h3>Executive function support</h3><p>Making time visible, shrinking the first step and planning backwards from a goal. <a href="#g-executive-function">Read our guide</a>.</p></div>
+    <div class="card"><span class="pill">Mainly ADHD</span><h3>Movement and short bursts</h3><p>Movement breaks, fidgets and 10 to 15 minute chunks, so focus isn't a test of willpower.</p></div>
+  </div>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>Trained staff</h2>
+    <ul class="ticks">
+      <li>Every member of staff completes recognised training in autism, ADHD and sensory needs before their first session</li>
+      <li>Refresher training every term</li>
+      <li>Safeguarding training and an Enhanced DBS check for everyone</li>
+      <li>Lived experience counts: we especially welcome neurodivergent staff</li>
+    </ul>
+  </div>
+  <div class="stack">
+    <h2>Our professional advisers</h2>
+    <p>We're building a panel of advisers to review our sessions and training, including an occupational therapist, a speech and language therapist and an educational psychologist.</p>
+    <p>Are you one of these professionals? <a href="#team">Join us as an adviser</a>.</p>
+  </div>
+</section>
+<section class="stack">
+  <h2>The Level Up curriculum</h2>
+  <p class="lede">Six themes across Years 7 and 8. Every group starts with feelings and regulation, then we choose the order of the rest with each group, based on what the children need and what comes up. Every lesson is hands-on, visual and broken into short steps.</p>
+  <div class="grid">
+    ${term("Feelings and regulation",["Noticing body signals","Naming feelings","A personal calm-down plan"])}
+    ${term("Friendships and communication",["Starting and joining in","Repairing a falling-out","Saying what you need"])}
+    ${term("Organisation and independence",["Planners and checklists","Making time visible","Getting ready on your own"])}
+    ${term("Change and the unexpected",["Coping when plans change","Trying new things","Asking for help"])}
+    ${term("Understanding my brain",["What ADHD and autism mean","Strengths and challenges","Speaking up for yourself"])}
+    ${term("Ready for what's next",["Travelling on your own","Money and everyday life","Staying safe online"])}
+  </div>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>Active and outdoor</h2>
+    <p>Play their way includes active and outdoor options when the venue allows, from games outside to nature walks, alongside quieter indoor choices.</p>
+  </div>
+  <div class="stack">
+    <h2>Workshops for parents</h2>
+    <p>Termly workshops for parents and carers, run by our team and advisers. Topics include understanding meltdowns, getting support at secondary school and EHC plans.</p>
+  </div>
+</section>`;
+},
 parents(){
   return `
 <section class="stack">
   <span class="eyebrow">For parents and carers</span>
   <h1>You know your child best. We'll build around them.</h1>
   <p class="lede">Weekly sessions for ADHD and autistic young people aged 11 to 13, where they learn skills for life, meet people who get them and can be themselves. And a community for you, too.</p>
+  <p class="spark"><b>Your child isn't the problem. The environment often is.</b> When neurodivergent young people feel they belong, with people who get them and space to be themselves, they grow in confidence and start to enjoy who they are.</p>
 </section>
 <section class="stack">
   <h2>How we support your family</h2>
@@ -2099,7 +2242,7 @@ parents(){
     <div class="card"><h3>Built around your child</h3><p>A get-to-know-you call, a one-page profile and a named host, so their sessions fit their interests and needs.</p></div>
     <div class="card"><h3>Skills they keep</h3><p>A Level Up life lesson every week, starting with how to regulate emotions. <a href="#plan">See a typical session</a>.</p></div>
     <div class="card"><h3>Friends who get them</h3><p>Small interest groups in Play their way, so friendships grow around the things they love.</p></div>
-    <div class="card"><h3>Support for you</h3><p>An update after every session, a monthly check-in, other parents at pickup, and our free <a href="#library">guides</a>.</p></div>
+    <div class="card"><h3>Support for you</h3><p>An update after every session, a monthly check-in, termly parent workshops and our free <a href="#library">guides</a>.</p></div>
   </div>
 </section>
 <section class="two">
@@ -2150,6 +2293,8 @@ schools(){
       <li>Weekly two-hour sessions with one adult for every five children</li>
       <li>Every member of staff holds an Enhanced DBS check</li>
       <li>A named Designated Safeguarding Lead, and a clear <a href="#safeguarding">safeguarding policy</a></li>
+      <li>Sessions inspired by SCERTS and TEACCH, with a flexible <a href="#approach">Level Up curriculum</a></li>
+      <li>Staff trained in autism, ADHD and sensory needs, with professional advisers</li>
     </ul>
   </div>
   <div class="stack">
@@ -2329,11 +2474,11 @@ function route(){
   else { if(!PAGES[h] || h==="guide") page="home"; html = PAGES[page](); }
   $("#app").innerHTML = html;
   $("#home-sources").hidden = page!=="home";
-  const sv = $("#survey"); if(sv){ applyWho(sv); surveyLoad(sv); }
+  const sv = $("#survey"); if(sv){ applyWho(sv); surveyLoad(sv); qzInit(sv); }
   if(synth) synth.cancel();
   setupListen();
   setupMotion();
-  const SEC = {parents:"sessions",contact:"trust",fees:"sessions",schools:"team",complaints:"trust",plan:"sessions",story:"sessions",survey:"team",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
+  const SEC = {approach:"sessions",parents:"sessions",contact:"trust",fees:"sessions",schools:"team",complaints:"trust",plan:"sessions",story:"sessions",survey:"team",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
   $("#app").dataset.sec = SEC[page] || "sessions";
   document.querySelectorAll("[data-form] [id]").forEach(el=>{
     if(!(el.id in DRAFT)) return;
@@ -2383,7 +2528,7 @@ document.addEventListener("submit", async e=>{
       bad.type==="checkbox" ? (form.dataset.form==="survey" ? "Please tick the box to agree to how we use your answers." : "Please tick the box to agree to us storing your details.") :
       bad.type==="email" && bad.value.trim() ? "Please check the email address. It doesn't look quite right." :
       `Please fill in “${lbl?lbl.textContent:"this field"}”.`;
-    msg.classList.add("err"); bad.focus(); return;
+    const st=bad.closest(".qz-step"); if(st && typeof qzGoTo==="function") qzGoTo(form, st); msg.classList.add("err"); bad.focus(); return;
   }
   const url = FORMS[form.dataset.form];
   if(!url){ msg.textContent = "Preview only: this form isn't connected yet. Nothing was sent."; msg.classList.add("err"); return; }
@@ -2534,11 +2679,73 @@ function surveySave(form){
 }
 function surveyClear(form){
   try{ localStorage.removeItem(SV_KEY); }catch(_){}
-  form.reset(); form.querySelectorAll("[id]").forEach(el=>delete DRAFT[el.id]); applyWho(form);
+  form.reset(); form.querySelectorAll("[id]").forEach(el=>delete DRAFT[el.id]); applyWho(form); try{ localStorage.removeItem("mm-survey-step"); }catch(_){} qzShow(form,0,false);
 }
 document.addEventListener("input", e=>{ const f=e.target.closest && e.target.closest("#survey"); if(f) surveySave(f); });
 document.addEventListener("change", e=>{ const f=e.target.closest && e.target.closest("#survey"); if(f) surveySave(f); });
 document.addEventListener("click", e=>{ if(e.target.id==="sv-clear"){ const f=$("#survey"); if(f){ surveyClear(f); const m=f.querySelector(".form-msg"); m.className="form-msg ok"; m.textContent="Saved answers cleared."; } } });
+
+
+/* Questionnaire: one question per screen */
+const QZ_KEY="mm-survey-step";
+function qzSteps(form){ return [...form.querySelectorAll(".qz-step")].filter(s=>!(s.dataset.only==="parent" && form.dataset.who==="teacher")); }
+function qzShow(form,i,focus){
+  const steps=qzSteps(form); i=Math.max(0,Math.min(i,steps.length-1));
+  form.querySelectorAll(".qz-step").forEach(s=>s.classList.remove("on"));
+  const cur=steps[i]; cur.classList.add("on"); form.dataset.step=i;
+  const pct=Math.round(i/(steps.length-1)*100);
+  form.querySelector(".qz-fill").style.width=pct+"%";
+  form.querySelector(".qz-bar").setAttribute("aria-valuenow",pct);
+  form.querySelector(".qz-count").textContent=`${i+1} of ${steps.length}`;
+  const back=form.querySelector(".qz-back"), next=form.querySelector(".qz-next");
+  back.style.visibility = i===0 ? "hidden" : ""; next.style.visibility = i===steps.length-1 ? "hidden" : "";
+  const chose=!!form.querySelector('[name="respondent"]:checked');
+  next.disabled = i===0 && !chose;
+  qzSync(form);
+  const box=cur.querySelector("textarea, input[type=number]");
+  const empty = !!box && !box.value.trim() && !cur.querySelector("[data-chip]:checked");
+  if(i===steps.length-1) qzReview(form);
+  form.querySelector(".qz-next-t").textContent = (i>0 && empty) ? "Skip" : "Next";
+  try{ localStorage.setItem(QZ_KEY,String(i)); }catch(_){}
+  if(focus){ const h=cur.querySelector(".qz-q"); if(h) h.focus({preventScroll:true}); form.scrollIntoView({block:"start",behavior:"auto"}); }
+}
+function qzSync(form){
+  form.querySelectorAll('input[type=hidden][id$="-sel"]').forEach(h=>{
+    const name=h.name.replace(/_selected$/,"");
+    h.value=[...form.querySelectorAll(`[data-chip="${name}"]:checked`)].map(c=>c.value).join(", ");
+  });
+}
+function qzText(el,who){ if(!el) return ""; const sp=el.querySelector(`[data-who="${who}"]`); return (sp||el).textContent.trim(); }
+function qzReview(form){
+  const who=form.dataset.who||"parent", steps=qzSteps(form), box=form.querySelector(".qz-review");
+  const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  box.innerHTML=steps.map((st,i)=>{
+    const k=st.dataset.q; if(!k) return "";
+    let q, a;
+    if(k==="contact"){ q="Staying in touch"; a=[form.querySelector("#sv-talk").checked?"I'd rather talk":"", form.querySelector("#sv-phone").value, form.querySelector("#sv-email").value, form.querySelector("#sv-waitlist").checked?"Add me to the waiting list":""].filter(Boolean).join("\n"); }
+    else { q=qzText(st.querySelector(".qz-q"),who); const sel=st.querySelector('input[type=hidden][id$="-sel"]'); const t=st.querySelector("textarea, input[type=number]"); a=[sel&&sel.value, t&&t.value.trim()].filter(Boolean).join("\n"); }
+    return `<div><dt>${esc(q)}</dt><dd class="${a?"":"qz-skipped"}">${a?esc(a):"Skipped"}</dd><button type="button" class="linkish" data-qz-goto="${i}">Edit</button></div>`;
+  }).join("");
+}
+function qzGoTo(form,step){ const i=qzSteps(form).indexOf(step); if(i>=0) qzShow(form,i,false); }
+function qzInit(form){
+  let i=0; try{ i=parseInt(localStorage.getItem(QZ_KEY)||"0",10)||0; }catch(_){}
+  if(!form.querySelector('[name="respondent"]:checked')) i=0;
+  qzShow(form,i,false);
+}
+document.addEventListener("click",e=>{
+  const f=e.target.closest && e.target.closest("#survey"); if(!f) return;
+  const g=e.target.closest("[data-qz-goto]");
+  if(g){ qzShow(f,+g.dataset.qzGoto,true); return; }
+  if(e.target.closest(".qz-next")) qzShow(f,(+f.dataset.step||0)+1,true);
+  else if(e.target.closest(".qz-back")) qzShow(f,(+f.dataset.step||0)-1,true);
+});
+document.addEventListener("input",e=>{ const f=e.target.closest && e.target.closest("#survey"); if(f) qzShow(f,+f.dataset.step||0,false); });
+document.addEventListener("change",e=>{ const f=e.target.closest && e.target.closest("#survey"); if(f && e.target.name==="respondent") qzShow(f,0,false); });
+document.addEventListener("keydown",e=>{
+  const f=e.target.closest && e.target.closest("#survey"); if(!f || e.key!=="Enter") return;
+  if(e.target.matches('input[type=number], input[type=tel], input[type=email]')){ e.preventDefault(); qzShow(f,(+f.dataset.step||0)+1,true); }
+});
 
 /* Burger menu */
 const burger = $("#burger"), menu = $("#menu");
