@@ -549,7 +549,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
       <span>Maverick <em>Minds</em></span>
     </a>
     <div class="bar-actions">
-      <a class="btn solid btn-sm" href="#join">Join the waiting list</a>
+      <a class="btn solid btn-sm" href="#join">Reserve a founding place</a>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -567,7 +567,8 @@ nav.main a[aria-current="page"]::before{background:#fff}
           <a href="#sessions" data-nav="sessions" class="sec-sessions">How sessions work</a>
           <a href="#plan" data-nav="plan" class="sec-sessions">A typical session</a>
           <a href="#approach" data-nav="approach" class="sec-sessions">Our approach</a>
-          <a href="#fees" data-nav="fees" class="sec-sessions">Fees and help</a>
+          <a href="#the-app" data-nav="the-app" class="sec-sessions">The app</a>
+          <a href="#fees" data-nav="fees" class="sec-sessions">Membership and fees</a>
           <a href="#faq" data-nav="faq" class="sec-sessions">FAQ</a>
         </div>
         <div class="nav-group sec-learn"><span class="nav-h">Learn</span>
@@ -612,9 +613,9 @@ nav.main a[aria-current="page"]::before{background:#fff}
 <section class="wrap where" aria-labelledby="where-h">
   <h2 id="where-h">Where next?</h2>
   <div class="where-row">
-    <a class="where-tile sec-sessions" href="#sessions"><span class="where-k">Sessions</span><span>How sessions work and the waiting list</span></a>
+    <a class="where-tile sec-sessions" href="#sessions"><span class="where-k">Sessions</span><span>How sessions work and founding places</span></a>
     <a class="where-tile sec-learn" href="#library"><span class="where-k">Guides</span><span>Free, sourced guides for parents</span></a>
-    <a class="where-tile sec-team" href="#team"><span class="where-k">Join the team</span><span>Teaching assistant and volunteer roles</span></a>
+    <a class="where-tile sec-team" href="#team"><span class="where-k">Join the team</span><span>Site head, teaching assistant and volunteer roles</span></a>
     <a class="where-tile sec-trust" href="#safeguarding"><span class="where-k">Safeguarding</span><span>How we keep your child safe</span></a>
   </div>
 </section>
@@ -638,7 +639,8 @@ nav.main a[aria-current="page"]::before{background:#fff}
       <a href="#privacy">Privacy notice</a>
       <a href="#accessibility">Accessibility</a>
       <a href="#complaints">Complaints</a>
-      <a href="#fees">Fees</a>
+      <a href="#fees">Membership and fees</a>
+      <a href="#the-app">The app</a>
       <a href="#parents">For parents</a>
       <a href="#schools">For schools</a>
       <a href="#contact">Contact us</a>
@@ -656,6 +658,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
 /* Formspree endpoints: one form per purpose, so each has its own inbox and CSV export. */
 const FORMS = {
   waitlist:"https://formspree.io/f/xoejwqwe",
+  reserve:"https://formspree.io/f/xoejwqwe",
   apply:"https://formspree.io/f/xppqrwaw",
   survey:"https://formspree.io/f/xeaekqyy",
   contact:"https://formspree.io/f/xoejwqwe"
@@ -1548,6 +1551,28 @@ function waitlistForm(){
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>`;
 }
+function reserveForm(){
+  return `<form class="form" id="reserve" data-form="reserve" action="${FORMS.reserve}" method="POST" novalidate>
+  <input type="hidden" name="form_type" value="Founding place reservation">
+  <input type="hidden" name="_subject" value="New founding place reservation – Maverick Minds">
+  <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <h2>Reserve a founding place</h2>
+  <p class="hint">It takes about two minutes. Please don't include medical details here. We'll ask for anything we need privately, on your get-to-know-you call.</p>
+  ${field("rs-name","Your name",`<input id="rs-name" name="parent_name" autocomplete="name" required>`)}
+  ${field("rs-email","Email address",`<input id="rs-email" name="email" type="email" autocomplete="email" required>`)}
+  ${field("rs-phone","Phone number (optional)",`<input id="rs-phone" name="phone" type="tel" autocomplete="tel">`)}
+  <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="rs-c-email"><input type="checkbox" id="rs-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="rs-c-text"><input type="checkbox" id="rs-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="rs-c-wa"><input type="checkbox" id="rs-c-wa" name="contact_preference" value="WhatsApp"> WhatsApp</label><label class="pref" for="rs-c-call"><input type="checkbox" id="rs-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="rs-c-video"><input type="checkbox" id="rs-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
+  ${field("rs-child","Your child's first name (optional)",`<input id="rs-child" name="child_first_name" autocomplete="off">`)}
+  ${field("rs-year","Your child's school year",`<select id="rs-year" name="school_year" required><option value="">Choose one</option><option>Year 7</option><option>Year 8</option><option>Another year</option></select>`, "Our founding places are for Years 7 and 8. If your child is in another year, reserve anyway and we'll tell you when sessions for their age start.")}
+  ${field("rs-area","Your postcode area",`<input id="rs-area" name="postcode_area" placeholder="For example, HA2" autocomplete="off" required>`, "Just the first part of your postcode. It helps us choose a venue that's easy to reach.")}
+  ${field("rs-time","Morning or afternoon session?",`<select id="rs-time" name="session_preference" required><option value="">Choose one</option><option>Morning</option><option>Afternoon</option><option>Either</option></select>`)}
+  ${field("rs-heard","How did you hear about us? (optional)",`<input id="rs-heard" name="heard_from">`)}
+  ${consent("rs-consent")}
+  <button type="submit" class="btn solid">Reserve my place</button>
+  <p class="hint">If all 40 founding places have gone, we'll add you to our waiting list and tell you as soon as a place opens up.</p>
+  <p class="form-msg" role="status" aria-live="polite"></p>
+</form>`;
+}
 const SURVEY = [
   {group:"Strengths first"},
   {name:"loves_and_strengths", chips:["Drawing and art", "Building and making", "Gaming", "Sport and moving", "Music", "Animals", "Coding and tech", "Reading and stories", "Kind and caring", "Funny", "Honest", "Great memory", "Solving problems"], example:"She can spend hours drawing her own comics, and she's always the first to notice when someone is left out.",
@@ -1664,7 +1689,7 @@ function applyForm(){
   ${field("ap-email","Email address",`<input id="ap-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("ap-phone","Phone number (optional)",`<input id="ap-phone" name="phone" type="tel" autocomplete="tel">`)}
   <div class="full"><fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="ap-c-email"><input type="checkbox" id="ap-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="ap-c-text"><input type="checkbox" id="ap-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="ap-c-call"><input type="checkbox" id="ap-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="ap-c-video"><input type="checkbox" id="ap-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset></div>
-  ${field("ap-role","Which role?",`<select id="ap-role" name="role" required><option value="">Choose a role</option><option>Teaching assistant (paid)</option><option>Volunteer</option><option>Professional adviser</option><option>Not sure yet</option></select>`)}
+  ${field("ap-role","Which role?",`<select id="ap-role" name="role" required><option value="">Choose a role</option><option>Site head (paid)</option><option>Teaching assistant (paid)</option><option>Volunteer</option><option>Professional adviser</option><option>Not sure yet</option></select>`)}
   ${field("ap-exp","Your experience with young people",`<textarea id="ap-exp" name="experience" rows="4" required></textarea>`, "Paid or unpaid, including SEN, youth work, tutoring or family.", "full")}
   ${field("ap-dbs","Do you have an Enhanced DBS?",`<select id="ap-dbs" name="dbs"><option value="">Choose one</option><option>Yes, on the Update Service</option><option>Yes, not on the Update Service</option><option>No</option></select>`)}
   ${field("ap-avail","When are you available?",`<input id="ap-avail" name="availability" placeholder="For example, Saturdays, school holidays">`)}
@@ -1688,23 +1713,30 @@ home(){
         <circle class="eye-l" cx="48" cy="52" r="4.5" fill="#fff"/><circle class="eye-r" cx="72" cy="52" r="4.5" fill="#fff"/>
         <g class="chat"><circle cx="54" cy="12" r="3.2"/><circle cx="60" cy="9" r="3.2"/><circle cx="66" cy="12" r="3.2"/></g>
       </svg></span>
-    <span class="eyebrow">Sessions for ages 11 to 13 · Years 7 and 8 · launching early 2027</span>
+    <span class="eyebrow">Saturdays in London for ages 11 to 13 · Years 7 and 8 · launching March 2027</span>
     <h1>The world wasn't built for their brains.</h1>
-    <p class="lede">So every week, we teach the skills to navigate it, without asking them to be anyone else. Calm sessions for ADHD and autistic young people.</p>
-    <div class="btns"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
+    <p class="lede">So every week, we teach the skills to navigate it, without asking them to be anyone else. Calm, SEN-friendly sessions for young people who think differently, whether they're ADHD, autistic, or simply finding school harder than it should be. No diagnosis needed.</p>
+    <div class="btns"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
   </div>
   <aside class="hero-note" aria-label="Session facts">
     <span class="eyebrow">Every session</span>
     <div class="row"><span class="k">1:5</span><span>One adult for every five children, never fewer than two adults in the room.</span></div>
-    <div class="row"><span class="k">DBS</span><span>Every member of staff holds an Enhanced DBS check.</span></div>
-    <div class="row"><span class="k">£30</span><span>Per two-hour session, with an update for you after each one.</span></div>
+    <div class="row"><span class="k">SEN</span><span>Run by trained SEN experts, all Enhanced DBS checked and trained in ADHD, autism and sensory needs.</span></div>
+    <div class="row"><span class="k">£129</span><span>A month for every Saturday session and our app, with an update for you after each session.</span></div>
   </aside>
+</section>
+<section class="stack sec-sessions" aria-labelledby="who-h">
+  <span class="eyebrow">Is this for my child?</span>
+  <h2 id="who-h">For the child who needs a little more than school can give.</h2>
+  <p class="lede">Maybe they're ADHD or autistic. Maybe they're on a waiting list, or you've never asked for an assessment at all. What matters is that they find busy places hard, need a bit more patience and attention than a classroom allows, and deserve somewhere they can be themselves.</p>
+  <p class="spark"><b>No diagnosis needed.</b> You don't need a diagnosis, a referral or an EHC plan to join. If your child needs one-to-one support for part of a session, we'll plan it with you, at no extra cost.</p>
+  <a class="why-more" href="#faq">Read answers to common questions →</a>
 </section>
 <section class="why sec-learn" aria-labelledby="why-h">
   <div class="why-head">
     <span class="eyebrow">Why we exist</span>
     <h2 id="why-h">School is built for one kind of brain.</h2>
-    <p class="lede">Classrooms and the curriculum are designed around neurotypical children. Teachers are the heroes in this story: most are doing their best with a full class and not enough support from the system. But when the system is stretched, it's the child who pays. That's where we come in: a place where they're understood, and where every week they build the skills to thrive.</p>
+    <p class="lede">Classrooms and the curriculum are designed around neurotypical children. Teachers are the heroes in this story: most are doing their best with a full class and not enough support from the system. But when the system is stretched, it's the child who pays. That's where we come in: a place alongside school where they're understood, and where every week they build the skills to thrive.</p>
     <a class="why-more" href="#story">Learn more about our story →</a>
   </div>
   <div class="why-grid">
@@ -1741,8 +1773,36 @@ home(){
       <li><b>Skills for life</b>, starting with how to regulate their emotions.</li>
       <li><b>Calm and independence</b>: practical tips and step-by-step routines for the things no one ever explained to them.</li>
     </ul>
+    <p><b>After Year 8:</b> your child doesn't have to leave. Young people who want to stay can become junior leaders, helping younger members feel welcome and building their own confidence as they do.</p>
   </div>
   <blockquote class="why-belief">We believe every neurodivergent child deserves a chance to thrive in a neurotypical world. Get the environment right and your child will grow into a healthy, happy adult.</blockquote>
+</section>
+<section class="two">
+  <div class="stack sec-sessions">
+    <span class="eyebrow">Learn it on Saturday</span>
+    <h2>Saturday sessions</h2>
+    <p>Two calm hours every week. A new life skill, time to play their way, and people who get them.</p>
+    <a href="#sessions">How sessions work</a>
+  </div>
+  <div class="stack sec-learn">
+    <span class="eyebrow">Practise it all week</span>
+    <h2>The Maverick Minds app</h2>
+    <p>About ten minutes a day at home. Short lessons, everyday challenges and rewards you choose together, so what they learn on Saturday sticks by Tuesday.</p>
+    <a href="#the-app">See how the app works</a>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="stack">
+    <span class="eyebrow">Founding families · March 2027</span>
+    <h2>40 founding places. Reserve yours for £50.</h2>
+    <p>Your deposit holds your child's place for our first sessions, and we'll give it back after their first month. Founding families also get the app a month early, a seat on our founding parent panel and a free parent workshop.</p>
+  </div>
+  <a class="btn solid" href="#join">Reserve a founding place</a>
+</section>
+<section class="stack">
+  <span class="eyebrow">Coming soon</span>
+  <h2>Half-term holiday days.</h2>
+  <p>Calm, structured days for the weeks when routines fall apart. We'll share dates with members first.</p>
 </section>
 <section class="cta-band">
   <div class="stack">
@@ -1766,7 +1826,7 @@ home(){
   </div>
   <div class="stack sec-team">
     <span class="eyebrow">Work with us</span>
-    <h2>Teaching assistants and volunteers wanted.</h2>
+    <h2>Site heads, teaching assistants and volunteers wanted.</h2>
     <p>We're building a team of people who get neurodivergent kids. Psychology and education students are welcome.</p>
     <a href="#team">Join the team</a>
   </div>
@@ -1825,12 +1885,13 @@ famous(){
 sessions(){
   return `
 <section class="stack">
-  <span class="eyebrow">Sessions · launching early 2027</span>
+  <span class="eyebrow">Sessions · Saturdays from March 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Two hours for ages 11 to 13: an ice breaker, a life skills lesson with breaks built in, then play planned around your child, in a space set up for kids who find busy places hard.</p>
+  <p class="lede">Two hours every Saturday for ages 11 to 13: an ice breaker, a life skills lesson with breaks built in, then play planned around your child, in a space set up for young people who find busy places hard. SEN-friendly, and no diagnosis needed.</p>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
+  <p>Example times. We run two sessions each Saturday.</p>
   <div class="road">
     <ol class="stops">
     <li class="stop"><span class="stop-pin" aria-hidden="true">1</span><div class="stop-card"><span class="stop-time">12:45</span><h3>Arrive</h3><p>Settle in. No rush.</p></div></li>
@@ -1857,23 +1918,28 @@ sessions(){
   <div class="stack">
     <h2>The details</h2>
     <dl class="facts">
-      <dt>Who</dt><dd>Ages 11 to 13 (Years 7 and 8)</dd>
-      <dt>Length</dt><dd>2 hours, weekly</dd>
-      <dt>Price</dt><dd>£30 per session</dd>
-      <dt>Staffing</dt><dd>1 adult for every 5 children</dd>
-      <dt>Checks</dt><dd>All staff hold a DBS</dd>
-      <dt>Where</dt><dd>Venue TBC</dd>
+      <dt>Who</dt><dd>Ages 11 to 13 (Years 7 and 8). No diagnosis needed.</dd>
+      <dt>When</dt><dd>Every Saturday, 2 hours. Two sessions a day.</dd>
+      <dt>Price</dt><dd>£129 a month, including the app. Or £35 a session, pay as you go.</dd>
+      <dt>Staffing</dt><dd>1 adult for every 5 children, with one-to-one support where needed</dd>
+      <dt>Checks</dt><dd>Every member of staff holds an Enhanced DBS check</dd>
+      <dt>Where</dt><dd>London. We'll share the venue before launch.</dd>
     </dl>
     <p>Read our <a href="#safeguarding">safeguarding policy</a>, <a href="#booking">booking terms</a> and <a href="#faq">answers to common questions</a>.</p>
-    <div class="spark">We'll tell everyone on the waiting list first when dates are confirmed.</div>
+    <div class="spark">Founding families get first choice of places. <a href="#join">Reserve a founding place</a>.</div>
   </div>
 </section>
 <section class="stack">
-  <h2>From waiting list to first session</h2>
+  <h2>Who runs your child's session</h2>
+  <p class="lede">People who get it. Every session is run by trained SEN experts: experienced special educational needs staff, with a site head at every venue. There's one adult for every five children, and never fewer than two adults in the room.</p>
+  <p>Every member of the team is Enhanced DBS checked and trained in ADHD, autism, sensory needs and safeguarding. Some children need one-to-one support for part of a session, perhaps to settle in or through a tricky moment. We'll plan it with you on your get-to-know-you call, and it's included at no extra cost.</p>
+</section>
+<section class="stack">
+  <h2>From founding place to first session</h2>
   <p class="lede">No two children get the same sessions. Before your child joins, we get to know them properly, so their time with us is built around their interests and needs.</p>
   <ol class="steps steps-progress" style="--p:0">
-    <li><span><b>Join the waiting list.</b> It's free. Elysse or Marcel will confirm you're on it, in the way you've chosen.</span></li>
-    <li><span><b>Claim a space.</b> When the venue and dates are confirmed, families on the waiting list get first choice of places.</span></li>
+    <li><span><b>Reserve your place.</b> Fill in our short form. A £50 deposit holds your child's place, and we give it back after their first month.</span></li>
+    <li><span><b>We say hello.</b> Elysse or Marcel will confirm your place within 3 working days, in the way you've chosen, with a secure link to pay your deposit.</span></li>
     <li><span><b>Tell us about your child.</b> A private questionnaire about their interests, sensory needs and what helps them.</span></li>
     <li><span><b>Get-to-know-you call.</b> One of our team meets you by video or phone, for up to an hour. Your child is welcome to join if they'd like to, but they don't have to. We'll ask about anything that helps us build a picture of your child: their hobbies and interests, sensory needs, what calms them, what can upset them, how they like to communicate and the support they get at school.</span></li>
     <li><span><b>We build their plan.</b> Your child gets a one-page profile, shared only with the staff who work with them, so nobody asks the same questions twice. They also get a named host as their go-to adult.</span></li>
@@ -1881,8 +1947,9 @@ sessions(){
     <li><span><b>Monthly check-ins.</b> After their fourth session, and then once a month, we meet with you to talk about how it's going and adjust their plan.</span></li>
   </ol>
 </section>
-<section class="centre">
-  ${waitlistForm()}
+<section class="cta-band">
+  <div class="stack"><span class="eyebrow">Founding families · 40 places</span><h2>Ready to save your child a place?</h2></div>
+  <a class="btn solid" href="#join">Reserve a founding place</a>
 </section>`;
 },
 team(){
@@ -1904,12 +1971,22 @@ team(){
 <section class="roles">
   <div class="role">
     <span class="eyebrow">Paid role</span>
+    <h2>Site head</h2>
+    <p>You'll lead our team at one venue every Saturday, keep sessions safe and calm, and be the first person parents talk to.</p>
+    <ul class="ticks">
+      <li>Experience leading SEN support for children, ideally ADHD or autism</li>
+      <li>You'll train as our deputy safeguarding lead</li>
+      <li>Available on Saturdays, with some half-term days</li>
+    </ul>
+  </div>
+  <div class="role">
+    <span class="eyebrow">Paid role</span>
     <h2>Teaching assistant</h2>
     <p>You'll help run Level Up lessons and games, and be the steady adult a child can go to.</p>
     <ul class="ticks">
       <li>Experience supporting children with SEN, ideally ADHD or autism. Lived and family experience counts.</li>
       <li>Calm, patient and happy to join in with play</li>
-      <li>Available for weekly sessions</li>
+      <li>Available on Saturdays, with some half-term days</li>
     </ul>
   </div>
   <div class="role">
@@ -2017,55 +2094,64 @@ faq(){
 <section class="stack">
   <span class="eyebrow">FAQ</span>
   <h1>Questions parents ask us</h1>
-  <p class="lede">If your question isn't here, <a href="#join">join the waiting list</a> and ask Elysse or Marcel when they get in touch.</p>
+  <p class="lede">If your question isn't here, <a href="#contact">send us a message</a> and Elysse or Marcel will get back to you.</p>
 </section>
 <section class="faq">
-  ${q("Does my child need a diagnosis?", `<p>We're finalising who our first sessions are for. <mark class="tbc">diagnosed only, or also waiting list and self-identified</mark>. Tell us about your child when you join the waiting list and we'll let you know.</p>`)}
+  ${q("Does my child need a diagnosis?", `<p>No. Our sessions are for young people who think differently, whether they're ADHD, autistic, waiting for an assessment, or have never been assessed at all. If your child finds busy places hard and needs a bit more patience than a classroom can give, they're welcome.</p>`)}
+  ${q("My child doesn't have SEN. Can they still come?", `<p>Yes. We're SEN-friendly, which means everything is designed so children with additional needs feel at home. That makes it a calm, understanding place for any young person who finds school hard.</p>`)}
+  ${q("What if my child needs one-to-one support?", `<p>We'll plan it with you on your get-to-know-you call. One-to-one support for part of a session is included at no extra cost. If your child needs one-to-one support for the whole session, every week, we'll talk honestly with you about whether we're the right fit.</p>`)}
+  ${q("How does the £50 deposit work?", `<p>It holds your child's founding place. We give it back after their first month. If we don't launch, or your child doesn't start with us, you get it back in full. If you change your mind, tell us before their first session and we'll refund it.</p>`)}
+  ${q("Can I cancel my membership?", `<p>Yes, any time. There's no minimum term.</p>`)}
+  ${q("What if my child misses a Saturday?", `<p>Members can book a make-up session in another slot, so you don't lose out.</p>`)}
+  ${q("What's the app, and who gets it?", `<p>A ten-minute daily companion to Saturday sessions, so the skills your child learns stick at home. It's included in membership. Founding families get it a month early, in February 2027. <a href="#the-app">See how the app works</a>.</p>`)}
+  ${q("What happens after Year 8?", `<p>Your child doesn't have to leave. Young people who want to stay can become junior leaders, helping younger members feel welcome and building their own confidence.</p>`)}
+  ${q("Do you run holiday clubs?", `<p>Half-term holiday days are coming. Members will hear about dates first.</p>`)}
   ${q("Can I stay for the first session?", `<p><mark class="tbc">confirm</mark> Yes. Many children feel better knowing you're close by the first time. You can wait nearby in the venue, and we'll come and get you if your child needs you.</p>`)}
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#booking">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
-  ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming.</p>`)}
-  ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 13. Their friend's parent needs to join the waiting list too, and you can tell us you'd like them to come together.</p>`)}
-  ${q("What do the staff know about ADHD and autism?", `<p>Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
-  ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them.</p>`)}
+  ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming, and you can cancel your membership at any time.</p>`)}
+  ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 13. Their friend's parent needs to reserve a place too, and you can tell us you'd like them to come together.</p>`)}
+  ${q("What do the staff know about ADHD and autism?", `<p>Our sessions are run by trained SEN experts. Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
+  ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them. You'll also see it in the app.</p>`)}
 </section>`;
 },
 booking(){
   return `
 <article class="doc"><div class="stack">
   <span class="eyebrow">Booking terms</span>
-  <h1>What you get, and how cancellations work</h1>
+  <h1>What you get, and how cancelling works</h1>
   <p class="updated">Last updated: <mark class="tbc">date</mark></p>
 
-  <h2>What £30 covers</h2>
+  <h2>Founding place deposit</h2>
   <ul>
-    <li>A two-hour session: an ice breaker, a Level Up life lesson and Play their way</li>
-    <li>All activities, games, consoles and materials</li>
-    <li>Staffing at one adult for every five children</li>
-    <li>An update for you after each session, in person or written</li>
-    <li>Your child's sensory profile, kept up to date with you</li>
+    <li>A £50 deposit holds your child's founding place. We'll send you a secure link to pay it by card once we've confirmed your place.</li>
+    <li>We refund it after your child's first month.</li>
+    <li>If we don't launch, or your child doesn't start with us, we refund it in full.</li>
+    <li>If you change your mind before your child's first session, tell us and we'll refund it.</li>
+    <li>Refunds go back to the card you paid with, within <mark class="tbc">10</mark> working days.</li>
   </ul>
 
-  <h2>Paying</h2>
-  <p>You pay by card online when you book. We'll send you a secure payment link.</p>
-  <h2>Block bookings</h2>
+  <h2>Membership: £129 a month</h2>
   <ul>
-    <li>Book a half-term block (usually 6 sessions) and get one session free. For example, 6 sessions for £150 instead of £180.</li>
-    <li>Your child's place is held every week of the block, with the same group and the same host, so their routine stays the same.</li>
-    <li>If your child misses a block session, our cancellation terms below still apply.</li>
+    <li>Includes every Saturday session, the Maverick Minds app, one-to-one support where needed, an update after every session and a monthly check-in.</li>
+    <li>Taken by card on the same date each month, starting from your child's first session.</li>
+    <li>The price is the same every month, whether it has four Saturdays or five.</li>
+    <li><b>Cancel any time.</b> There's no minimum term. Your membership ends at the end of the month you've paid for, and you won't be charged again.</li>
+    <li><b>Missed a Saturday?</b> Book a make-up session in another slot within <mark class="tbc">4 weeks</mark>. Make-up sessions depend on places being free.</li>
   </ul>
 
-  <h2>If you need to cancel</h2>
+  <h2>Pay as you go: £35 a session</h2>
   <ul>
+    <li>Paid by card when you book. We'll send you a secure payment link.</li>
     <li>Cancel at least <mark class="tbc">48 hours</mark> before the session for a full refund or a credit for another session.</li>
     <li>If you cancel with less notice, we can't usually give a refund, because we've arranged staff for your child's place. If we can fill the place, we'll give you a credit.</li>
-    <li>If your child is ill on the day, tell us before the session starts and we'll offer a credit <mark class="tbc">confirm</mark>.</li>
+    <li>If your child is ill on the day, tell us before the session starts and we'll offer a credit.</li>
   </ul>
 
   <h2>If we need to cancel</h2>
-  <p>If we cancel a session for any reason, you'll get a full refund or credit, whichever you prefer.</p>
+  <p>If we cancel a session for any reason, members get a make-up session or a refund for that week, and pay-as-you-go families get a full refund or credit, whichever you prefer.</p>
 
-  <h2>If a session isn't right for your child</h2>
+  <h2>If sessions aren't right for your child</h2>
   <p>We'll talk with you about what we can change. If we agree together that the sessions aren't right for your child, we'll refund any sessions you've paid for and not used.</p>
 
   <h2>Our part</h2>
@@ -2084,6 +2170,7 @@ privacy(){
 
   <h2>What we collect</h2>
   <ul>
+    <li><b>Founding place reservations:</b> your name, email, phone number if you give it, how you'd like to be contacted, your child's first name if you give it, their school year, your postcode area, the session time you'd prefer and how you heard about us.</li>
     <li><b>Waiting list:</b> your name, email, phone number if you give it, how you'd like to be contacted, your child's age, your area and how you heard about us.</li>
     <li><b>Questionnaire:</b> whether you're a parent or work in a school, your answers, and your email if you choose to give it. Answers can describe a child's needs, so we ask you not to include names. We use answers to design our sessions and may quote them anonymously. While you fill it in, your answers are saved only on your own device so you can come back later. They're deleted from your device when you send them, or when you press "Clear saved answers".</li>
     <li><b>Team applications:</b> your name, contact details, the role you're interested in, your experience, DBS status and availability.</li>
@@ -2098,10 +2185,11 @@ privacy(){
   </ul>
 
   <h2>Who can see it</h2>
-  <p>Only Elysse Lawrence and Marcel Headlam, plus session staff who need your child's profile to look after them. Our form provider, Formspree, stores form submissions on our behalf. We never sell your information. We only share it with others where the law requires, for example a safeguarding referral.</p>
+  <p>Only Elysse Lawrence and Marcel Headlam, plus session staff who need your child's profile to look after them. Our form provider, Formspree, stores form submissions on our behalf. When you pay a deposit or membership, our payment provider processes your card details, and we never see your full card number. We never sell your information. We only share it with others where the law requires, for example a safeguarding referral.</p>
 
   <h2>How long we keep it</h2>
   <ul>
+    <li>Founding place reservations: while your child attends, or <mark class="tbc">12 months</mark> after we last contacted you if they don't start.</li>
     <li>Waiting list details: until you ask us to remove them, or <mark class="tbc">12 months</mark> after we last contacted you.</li>
     <li>Unsuccessful applications: <mark class="tbc">6 months</mark>.</li>
     <li>Child profiles: while your child attends, then <mark class="tbc">period</mark>.</li>
@@ -2113,7 +2201,7 @@ privacy(){
 </div></article>`;
 },
 contact(){
-  const topics=["A question about sessions","Fees and help with costs","I'm from a school or SENCO","A complaint","Press or partnerships","Something else"];
+  const topics=["A question about sessions","Founding places and deposits","Membership and fees","I'm from a school or SENCO","A complaint","Press or partnerships","Something else"];
   return `
 <section class="stack">
   <span class="eyebrow">Contact us</span>
@@ -2196,6 +2284,7 @@ approach(){
       <li>Every member of staff completes recognised training in autism, ADHD and sensory needs before their first session</li>
       <li>Refresher training every term</li>
       <li>Safeguarding training and an Enhanced DBS check for everyone</li>
+      <li>A site head at every venue, trained as a deputy safeguarding lead</li>
       <li>Lived experience counts: we especially welcome neurodivergent staff</li>
     </ul>
   </div>
@@ -2233,23 +2322,29 @@ parents(){
 <section class="stack">
   <span class="eyebrow">For parents and carers</span>
   <h1>You know your child best. We'll build around them.</h1>
-  <p class="lede">Weekly sessions for ADHD and autistic young people aged 11 to 13, where they learn skills for life, meet people who get them and can be themselves. And a community for you, too.</p>
-  <p class="spark"><b>Your child isn't the problem. The environment often is.</b> When neurodivergent young people feel they belong, with people who get them and space to be themselves, they grow in confidence and start to enjoy who they are.</p>
+  <p class="lede">Weekly Saturday sessions and a daily app for young people aged 11 to 13 who think differently. They learn skills for life, meet people who get them and can simply be themselves. And there's a community for you, too.</p>
+  <p class="spark"><b>Your child isn't the problem. The environment often is.</b> When young people feel they belong, with people who get them and space to be themselves, they grow in confidence and start to enjoy who they are.</p>
+</section>
+<section class="stack">
+  <h2>You don't need a label</h2>
+  <p>Your child might be ADHD, autistic, waiting for an assessment, or none of these. If they need a little more patience and attention than a classroom can give, they're welcome here. You don't need a diagnosis, a referral or an EHC plan.</p>
 </section>
 <section class="stack">
   <h2>How we support your family</h2>
   <div class="grid four">
     <div class="card"><h3>Built around your child</h3><p>A get-to-know-you call, a one-page profile and a named host, so their sessions fit their interests and needs.</p></div>
-    <div class="card"><h3>Skills they keep</h3><p>A Level Up life lesson every week, starting with how to regulate emotions. <a href="#plan">See a typical session</a>.</p></div>
+    <div class="card"><h3>Skills they keep</h3><p>A Level Up life lesson every Saturday, starting with how to regulate emotions, and ten minutes a day on <a href="#the-app">the app</a> to practise at home.</p></div>
     <div class="card"><h3>Friends who get them</h3><p>Small interest groups in Play their way, so friendships grow around the things they love.</p></div>
     <div class="card"><h3>Support for you</h3><p>An update after every session, a monthly check-in, termly parent workshops and our free <a href="#library">guides</a>.</p></div>
   </div>
+  <p class="spark"><b>Room to grow.</b> After Year 8, your child can stay on as a junior leader, helping younger members feel welcome.</p>
 </section>
 <section class="two">
   <div class="stack">
     <h2>What we are</h2>
     <ul class="ticks">
-      <li>Weekly two-hour sessions with one adult for every five children</li>
+      <li>Weekly two-hour Saturday sessions, with one adult for every five children</li>
+      <li>Run by trained SEN experts, with one-to-one support included where needed</li>
       <li>A calm, sensory-friendly space, set up the same way every week</li>
       <li>Every member of staff holds an Enhanced DBS check</li>
       <li>A named Designated Safeguarding Lead, and a clear <a href="#safeguarding">safeguarding policy</a></li>
@@ -2258,7 +2353,7 @@ parents(){
   <div class="stack">
     <h2>What we're not</h2>
     <ul class="ticks crosses">
-      <li>A replacement for SEN support, an EHC plan or CAMHS</li>
+      <li>A replacement for school, SEN support, an EHC plan or CAMHS. We work alongside them.</li>
       <li>Therapy or a medical service</li>
       <li>A drop-in club: every child's place is planned in advance</li>
     </ul>
@@ -2267,7 +2362,7 @@ parents(){
 </section>
 <section class="cta-band">
   <div class="stack"><span class="eyebrow">Get started</span><h2>Ready to save your child a place?</h2></div>
-  <a class="btn solid" href="#join">Join the waiting list</a>
+  <a class="btn solid" href="#join">Reserve a founding place</a>
 </section>`;
 },
 schools(){
@@ -2275,7 +2370,7 @@ schools(){
 <section class="stack">
   <span class="eyebrow">For schools and SENCOs</span>
   <h1>Teachers are the heroes. We're the backup.</h1>
-  <p class="lede">We run weekly sessions outside school for ADHD and autistic young people aged 11 to 13. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
+  <p class="lede">We run weekly Saturday sessions outside school for young people aged 11 to 13 who think differently, including ADHD and autistic young people. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
 </section>
 <section class="stack">
   <h2>How we can work together</h2>
@@ -2315,29 +2410,55 @@ schools(){
 fees(){
   return `
 <section class="stack">
-  <span class="eyebrow">Fees and help with costs</span>
-  <h1>£30 a session. Here's what it pays for.</h1>
-  <p class="lede">We've kept the price as low as we can while keeping one adult for every five children. If cost is a barrier, talk to us.</p>
+  <span class="eyebrow">Membership and fees</span>
+  <h1>One simple price. Every Saturday, and the app.</h1>
+  <p class="lede">We've kept our prices as low as we can while keeping one adult for every five children. If cost is a barrier, please talk to us.</p>
 </section>
 <section class="two">
   <div class="stack">
-    <h2>What's included</h2>
+    <span class="eyebrow">Membership</span>
+    <h2>£129 a month</h2>
+    <ul class="ticks">
+      <li>Every Saturday session</li>
+      <li>The Maverick Minds app, included</li>
+      <li>Missed a Saturday? Book a make-up session</li>
+      <li>One-to-one support where needed, at no extra cost</li>
+      <li>A monthly check-in with you</li>
+      <li>No commitment. Cancel any time.</li>
+    </ul>
+    <p>Membership works out at about £30 a Saturday, with the app included. Months with five Saturdays cost the same as months with four.</p>
+  </div>
+  <div class="stack">
+    <span class="eyebrow">Pay as you go</span>
+    <h2>£35 a session</h2>
+    <ul class="ticks">
+      <li>The Saturdays you book</li>
+      <li>One-to-one support where needed, at no extra cost</li>
+      <li>A monthly check-in with you</li>
+      <li>No commitment</li>
+    </ul>
+    <p>The app isn't included with pay as you go.</p>
+  </div>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>Everything comes with</h2>
     <ul class="ticks">
       <li>Two hours: an ice breaker, a Level Up life lesson and Play their way</li>
       <li>All activities, games, consoles and materials</li>
-      <li>One adult for every five children, all Enhanced DBS checked</li>
+      <li>Trained SEN experts, one adult for every five children, all Enhanced DBS checked</li>
       <li>A get-to-know-you call and a one-page profile for your child</li>
-      <li>An update after each session, and a monthly check-in with you</li>
+      <li>An update after every session</li>
     </ul>
   </div>
   <div class="stack">
-    <h2>Paying</h2>
-    <dl class="facts">
-      <dt>Per session</dt><dd>£30</dd>
-      <dt>Block booking</dt><dd>Book a half-term block and get one session free, with the same place held every week</dd>
-      <dt>How to pay</dt><dd>Card online when you book</dd>
-    </dl>
-    <p>See our <a href="#booking">booking terms</a> for cancellations and refunds.</p>
+    <h2>Coming soon</h2>
+    <ul class="ticks">
+      <li><b>Half-term holiday days.</b> Members will hear about dates first.</li>
+      <li><b>The app for everyone.</b> At launch, the app is for members only. We'll open it to other families later.</li>
+    </ul>
+    <h2>How to pay</h2>
+    <p>By card. Membership is taken monthly, and pay as you go is paid when you book. See our <a href="#booking">booking terms</a> for cancellations and refunds.</p>
   </div>
 </section>
 <section class="stack">
@@ -2347,6 +2468,10 @@ fees(){
     <div class="card"><h3>Tax-Free Childcare</h3><p>For disabled children up to 16, the government adds up to £4,000 a year, but only for registered providers. We'll tell you if we become eligible. <a href="https://www.gov.uk/tax-free-childcare" target="_blank" rel="noopener">gov.uk</a></p></div>
     <div class="card"><h3>Your council</h3><p>Many councils fund short breaks and activities for disabled children. Search "short breaks" on your council's Local Offer.</p></div>
   </div>
+</section>
+<section class="cta-band">
+  <div class="stack"><span class="eyebrow">Founding families · 40 places</span><h2>Ready to save your child a place?</h2></div>
+  <a class="btn solid" href="#join">Reserve a founding place</a>
 </section>`;
 },
 plan(){
@@ -2355,7 +2480,7 @@ plan(){
 <section class="stack">
   <span class="eyebrow">Sessions · an example</span>
   <h1>A typical session, minute by minute.</h1>
-  <p class="lede">So you and your child know exactly what to expect. This example starts at 1pm. Every session follows the same shape, so it feels familiar from week one.</p>
+  <p class="lede">So you and your child know exactly what to expect. This example starts at 1pm. We run two sessions each Saturday, so your child's times may differ. Every session follows the same shape, so it feels familiar from week one.</p>
 </section>
 <ol class="timeline">
 ${T("12:45 – 1:15pm","Arrive and check in",[
@@ -2371,13 +2496,105 @@ ${T("1:30 – 2:15pm","Level Up",[
  "A five-minute break every 10 to 15 minutes, so kids can step away, reset their focus and come back."])}
 ${T("2:15 – 3:00pm","Play their way",[
  "Time to find kids with similar interests, in a sensory-friendly space planned around what each child loves.",
- "Our teaching assistants and volunteers, experienced in supporting children with special educational needs, help with joining in and with emotional support.",
+ "Our trained SEN experts and volunteers help with joining in and with emotional support.",
  "A space to unmask and feel at home, without judgement."])}
 ${T("3:00pm","Pickup and your update",[
  "You collect your child, and we share how today went, including who they've started to bond with.",
  "It's also a chance for parents to get to know each other. The community doesn't stop when the session does."])}
 </ol>
-<div class="btns btns-centre"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">Back to sessions</a></div>`;
+<div class="btns btns-centre"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">Back to sessions</a></div>`;
+},
+reserve(){
+  return `
+<section class="stack">
+  <span class="eyebrow">Founding families · 40 places · March 2027</span>
+  <h1>Be one of our first 40 families.</h1>
+  <p class="lede">We're opening Maverick Minds with 40 places across two Saturday sessions in London. A £50 deposit holds your child's place, and we'll give it back once they've finished their first month.</p>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>What founding families get</h2>
+    <ul class="ticks">
+      <li><b>The app a month early.</b> Your child can start exploring it from February 2027, before sessions begin.</li>
+      <li><b>A seat on our founding parent panel.</b> Help choose the themes we teach, and test the app before anyone else.</li>
+      <li><b>A free parent workshop</b>, just for founding families, on the things parents tell us matter most.</li>
+      <li><b>First choice of place</b>, before we open to everyone else.</li>
+    </ul>
+  </div>
+  <div class="stack">
+    <h2>Your deposit, simply</h2>
+    <dl class="facts">
+      <dt>Deposit</dt><dd>£50. Once we've confirmed your place, we'll send you a secure link to pay by card.</dd>
+      <dt>Given back</dt><dd>After your child's first month with us.</dd>
+      <dt>In full</dt><dd>If we don't launch, or your child doesn't start with us.</dd>
+      <dt>Changed your mind?</dt><dd>Tell us before your child's first session and we'll refund it.</dd>
+    </dl>
+    <p>Then it's £129 a month, with every Saturday session and the app included. See <a href="#fees">membership and fees</a> and our <a href="#booking">booking terms</a>.</p>
+  </div>
+</section>
+<section class="stack">
+  <h2>What happens next</h2>
+  <ol class="steps steps-progress" style="--p:0">
+    <li><span><b>Reserve your place.</b> Fill in the short form below. It takes about two minutes.</span></li>
+    <li><span><b>We say hello.</b> Elysse or Marcel will confirm your place within 3 working days, in the way you've chosen, with a secure link to pay your £50 deposit.</span></li>
+    <li><span><b>Tell us about your child.</b> A private questionnaire about their interests, sensory needs and what helps them.</span></li>
+    <li><span><b>Get-to-know-you call.</b> Up to an hour, by video or phone. Your child is welcome to join, but they don't have to.</span></li>
+    <li><span><b>We build their plan.</b> A one-page profile and a named host, their go-to adult.</span></li>
+    <li><span><b>Get ready together.</b> Venue photos to look through with your child, and an optional visit before the first session.</span></li>
+  </ol>
+</section>
+<section class="centre">
+  ${reserveForm()}
+</section>`;
+},
+"the-app"(){
+  return `
+<section class="stack">
+  <span class="eyebrow">The Maverick Minds app · included in membership</span>
+  <h1>Ten minutes a day, between Saturdays.</h1>
+  <p class="lede">A child can learn a calming strategy on Saturday and still not reach for it on Tuesday. Skills stick when they're practised in real life, so the app keeps Saturday's lesson going all week, at home.</p>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>For your child</h2>
+    <ul class="ticks">
+      <li><b>Short lessons.</b> Quick videos on the same skill they learned on Saturday, in the same words.</li>
+      <li><b>Apply it.</b> A real-life situation, and they say out loud what they'd do. If they're stuck, they get a hint and an example answer. Nothing is marked wrong.</li>
+      <li><b>Quests and rewards.</b> Daily routines earn points towards rewards you choose together. Streaks and levels show how far they've come.</li>
+      <li><b>Calm by design.</b> A calm mode, an easier-to-read font and audio for every lesson.</li>
+    </ul>
+  </div>
+  <div class="stack">
+    <h2>For you</h2>
+    <ul class="ticks">
+      <li>Help set up their routine, and confirm tasks when they're done.</li>
+      <li>See their answers and how they're getting on.</li>
+      <li>Read the update from every Saturday session.</li>
+    </ul>
+  </div>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>Safe by design</h2>
+    <ul class="ticks">
+      <li>The app checks your child's spoken answers, but it never chats with them.</li>
+      <li>Childline and 999 are one tap away on every practice screen.</li>
+      <li>Our Designated Safeguarding Lead is alerted to anything that needs a closer look.</li>
+    </ul>
+  </div>
+  <div class="stack">
+    <h2>Who can use it</h2>
+    <dl class="facts">
+      <dt>Members</dt><dd>Included, from March 2027, on iPhone and Android.</dd>
+      <dt>Founding families</dt><dd>From February 2027, a month before sessions start.</dd>
+      <dt>Everyone else</dt><dd>We'll open the app to other families later.</dd>
+    </dl>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="stack"><span class="eyebrow">Founding families · 40 places</span><h2>Get the app a month early.</h2></div>
+  <a class="btn solid" href="#join">Reserve a founding place</a>
+</section>`;
 },
 story(){
   return `
@@ -2393,7 +2610,7 @@ story(){
   <p>Teachers are the heroes in this story. Most are doing their best with a full class and not enough support. But a classroom built for one kind of brain can't give every child what they need, and seemingly small things, like a new seating plan, can feel huge.</p>
   <p>So we're building what we wanted for our own families: a calm space outside school where neurodivergent young people are understood, meet others who think like them, and learn the skills to navigate a world that wasn't built for them.</p>
   <blockquote class="why-belief">Get the environment right and your child will grow into a healthy, happy adult.</blockquote>
-  <div class="btns btns-centre"><a class="btn solid" href="#join">Join the waiting list</a><a class="btn" href="#sessions">How sessions work</a></div>
+  <div class="btns btns-centre"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
 </div></article>`;
 },
 accessibility(){
@@ -2470,7 +2687,7 @@ function route(){
   let page = h, html;
   if(h.startsWith("g-")){ page="library"; html = PAGES.guide(h.slice(2)); }
   else if(h.startsWith("s") && /^s\d+$/.test(h)){ return; }
-  else if(h==="join"){ page="sessions"; html = PAGES.sessions(); }
+  else if(h==="join"){ page="reserve"; html = PAGES.reserve(); }
   else { if(!PAGES[h] || h==="guide") page="home"; html = PAGES[page](); }
   $("#app").innerHTML = html;
   $("#home-sources").hidden = page!=="home";
@@ -2478,7 +2695,7 @@ function route(){
   if(synth) synth.cancel();
   setupListen();
   setupMotion();
-  const SEC = {approach:"sessions",parents:"sessions",contact:"trust",fees:"sessions",schools:"team",complaints:"trust",plan:"sessions",story:"sessions",survey:"team",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
+  const SEC = {reserve:"sessions","the-app":"sessions",approach:"sessions",parents:"sessions",contact:"trust",fees:"sessions",schools:"team",complaints:"trust",plan:"sessions",story:"sessions",survey:"team",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
   $("#app").dataset.sec = SEC[page] || "sessions";
   document.querySelectorAll("[data-form] [id]").forEach(el=>{
     if(!(el.id in DRAFT)) return;
@@ -2495,7 +2712,6 @@ function route(){
     });
     renderResults();
   }
-  if(h==="join"){ const f=$("#waitlist"); if(f){ f.scrollIntoView({block:"start"}); $("#wl-name").focus({preventScroll:true}); return; } }
   window.scrollTo(0,0);
 }
 
@@ -2547,6 +2763,7 @@ document.addEventListener("submit", async e=>{
     msg.innerHTML = `<svg class="tick-anim" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>`;
     msg.append({
       waitlist:"Thank you, you're on the list. Elysse or Marcel will be in touch soon.",
+      reserve:"Thank you, your place is reserved. Elysse or Marcel will be in touch within 3 working days with a secure link to pay your £50 deposit.",
       apply:"Thank you, we've got your application. Elysse or Marcel will be in touch soon.",
       survey:"Thank you. Your answers will help shape Maverick Minds.",
       contact:"Thank you, we've got your message. One of our team will reply within 5 working days."
