@@ -2424,10 +2424,7 @@ function renderResults(){
 }
 
 function route(){
-  const MOVED = {plan:"sessions", approach:"sessions", booking:"fees", parents:"faq"};
-  const h0 = (location.hash||"#home").slice(1);
-  if(MOVED[h0]){ history.replaceState(null,"","#"+MOVED[h0]); }
-  const h = MOVED[h0] || h0;
+  const h = (location.hash||"#home").slice(1);
   let page = h, html;
   if(h.startsWith("g-")){ page="library"; html = PAGES.guide(h.slice(2)); }
   else if(h.startsWith("s") && /^s\d+$/.test(h)){ return; }
@@ -2439,7 +2436,7 @@ function route(){
   if(synth) synth.cancel();
   setupListen();
   setupMotion();
-  const SEC = {reserve:"sessions","the-app":"sessions",approach:"sessions",parents:"sessions",contact:"trust",fees:"sessions",schools:"team",complaints:"trust",plan:"sessions",story:"sessions",survey:"team",home:"sessions",sessions:"sessions",faq:"sessions",booking:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
+  const SEC = {reserve:"sessions","the-app":"sessions",contact:"trust",fees:"sessions",schools:"team",complaints:"trust",story:"sessions",survey:"team",home:"sessions",sessions:"sessions",faq:"sessions",library:"learn",famous:"learn",team:"team",safeguarding:"trust",privacy:"trust",accessibility:"trust"};
   $("#app").dataset.sec = SEC[page] || "sessions";
   document.querySelectorAll("[data-form] [id]").forEach(el=>{
     if(!(el.id in DRAFT)) return;
