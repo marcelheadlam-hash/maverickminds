@@ -251,8 +251,6 @@ footer a{color:#fff}
 .foot-legal{display:flex;flex-direction:column;gap:4px}
 .sel{user-select:all;color:inherit;font-weight:700}
 footer .sel{color:#fff}
-mark.tbc{background:var(--pop-soft);color:var(--ink);border:1px dashed var(--warn);border-radius:4px;padding:0 5px}
-mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
 .doc{max-width:none}
 .doc .stack{gap:14px}
 .doc h2{font-size:1.35rem;margin-top:24px}
@@ -2016,7 +2014,7 @@ faq(){
   ${q("Is this therapy, or instead of school?", `<p>No. We're not therapy or a medical service, and we don't replace school, SEN support, an EHC plan or CAMHS. We work alongside them. We'll never share anything about your child without your consent, unless we have a safeguarding concern.</p>`)}
   ${q("Is there anything for parents?", `<p>Yes. An update after every session, a monthly check-in, termly parent workshops on things like meltdowns and EHC plans, and our free <a href="#library">guides</a>. Pickup is also a chance to meet other parents.</p>`)}
   ${q("Do you run holiday clubs?", `<p>Half-term holiday days are coming. Members will hear about dates first.</p>`)}
-  ${q("Can I stay for the first session?", `<p><mark class="tbc">confirm</mark> Yes. Many children feel better knowing you're close by the first time. You can wait nearby in the venue, and we'll come and get you if your child needs you.</p>`)}
+  ${q("Can I stay for the first session?", `<p>Yes. Many children feel better knowing you're close by the first time. You can wait nearby in the venue, and we'll come and get you if your child needs you.</p>`)}
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#fees">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
   ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming, and you can cancel your membership at any time.</p>`)}
@@ -2030,10 +2028,10 @@ privacy(){
 <article class="doc"><div class="stack">
   <span class="eyebrow">Privacy notice</span>
   <h1>How we use your information</h1>
-  <p class="updated">Last updated: <mark class="tbc">date</mark></p>
+  <p class="updated">Last updated: 26 October 2026</p>
 
   <h2>Who we are</h2>
-  <p>Maverick Minds is a trading name of Afterglow LTD (Company No. 16506837). We decide how your information is used, which makes us the data controller. ICO registration number: <mark class="tbc">ICO number</mark>. Contact us at <span class="sel">info@maverickminds.co.uk</span>.</p>
+  <p>Maverick Minds is a trading name of Afterglow LTD (Company No. 16506837). We decide how your information is used, which makes us the data controller. Contact us at <span class="sel">info@maverickminds.co.uk</span>.</p>
 
   <h2>What we collect</h2>
   <ul>
@@ -2056,10 +2054,10 @@ privacy(){
 
   <h2>How long we keep it</h2>
   <ul>
-    <li>Founding place reservations: while your child attends, or <mark class="tbc">12 months</mark> after we last contacted you if they don't start.</li>
-    <li>Waiting list details: until you ask us to remove them, or <mark class="tbc">12 months</mark> after we last contacted you.</li>
-    <li>Unsuccessful applications: <mark class="tbc">6 months</mark>.</li>
-    <li>Child profiles: while your child attends, then <mark class="tbc">period</mark>.</li>
+    <li>Founding place reservations: while your child attends, or 12 months after we last contacted you if they don't start.</li>
+    <li>Waiting list details: until you ask us to remove them, or 12 months after we last contacted you.</li>
+    <li>Unsuccessful applications: 6 months.</li>
+    <li>Child profiles: while your child attends, then 12 months after they leave.</li>
     <li>Safeguarding records: as long as the law and safeguarding guidance require.</li>
   </ul>
 
@@ -2209,11 +2207,11 @@ fees(){
 </section>
 <section class="stack">
   <h2>Booking terms</h2>
-  <p class="updated">Last updated: <mark class="tbc">date</mark>. We take payment by card.</p>
+  <p class="updated">Last updated: 26 October 2026. We take payment by card.</p>
   <div class="faq">
-    ${t("Founding place deposit: £50",`<ul><li>Holds your child's founding place. Once we've confirmed it, we send a secure link to pay by card.</li><li>We refund it after your child's first month.</li><li>If we don't launch, or your child doesn't start with us, we refund it in full.</li><li>Changed your mind? Tell us before your child's first session and we'll refund it.</li><li>Refunds go back to your card within <mark class="tbc">10</mark> working days.</li></ul>`)}
-    ${t("Membership",`<ul><li>Taken by card on the same date each month, from your child's first session.</li><li><b>Cancel any time.</b> Your membership ends at the end of the month you've paid for, and you won't be charged again.</li><li><b>Missed a Saturday?</b> Book a make-up session in another slot within <mark class="tbc">4 weeks</mark>, if places are free.</li></ul>`)}
-    ${t("Pay as you go",`<ul><li>Paid by card when you book, by secure link.</li><li>Cancel at least <mark class="tbc">48 hours</mark> before for a full refund or a credit.</li><li>With less notice we can't usually refund, because we've arranged staff for your child. If we fill the place, you get a credit.</li><li>If your child is ill on the day, tell us before the session starts and we'll offer a credit.</li></ul>`)}
+    ${t("Founding place deposit: £50",`<ul><li>Holds your child's founding place. Once we've confirmed it, we send a secure link to pay by card.</li><li>We refund it after your child's first month.</li><li>If we don't launch, or your child doesn't start with us, we refund it in full.</li><li>Changed your mind? Tell us before your child's first session and we'll refund it.</li><li>Refunds go back to your card within 10 working days.</li></ul>`)}
+    ${t("Membership",`<ul><li>Taken by card on the same date each month, from your child's first session.</li><li><b>Cancel any time.</b> Your membership ends at the end of the month you've paid for, and you won't be charged again.</li><li><b>Missed a Saturday?</b> Book a make-up session in another slot within 4 weeks, if places are free.</li></ul>`)}
+    ${t("Pay as you go",`<ul><li>Paid by card when you book, by secure link.</li><li>Cancel at least 48 hours before for a full refund or a credit.</li><li>With less notice we can't usually refund, because we've arranged staff for your child. If we fill the place, you get a credit.</li><li>If your child is ill on the day, tell us before the session starts and we'll offer a credit.</li></ul>`)}
     ${t("If we need to cancel",`<p>Members get a make-up session or a refund for that week. Pay-as-you-go families get a full refund or credit, whichever you prefer.</p>`)}
     ${t("If sessions aren't right for your child",`<p>We'll talk with you about what we can change. If we agree together that sessions aren't right, we'll refund any sessions you've paid for and not used.</p>`)}
     ${t("Our part",`<p>We'll follow our <a href="#safeguarding">safeguarding policy</a>, keep to our staffing ratio and tell you about any changes to times or venue as early as we can.</p>`)}
@@ -2357,7 +2355,7 @@ accessibility(){
   <span class="eyebrow">Accessibility</span>
   <h1>Accessibility statement</h1>
   <p class="lede">Many of the families we work with are neurodivergent, so we want this website and our sessions to be easy to use for everyone.</p>
-  <p class="updated">Last updated: <mark class="tbc">date</mark></p>
+  <p class="updated">Last updated: 26 October 2026</p>
 
   <h2>This website</h2>
   <ul>
@@ -2375,7 +2373,7 @@ accessibility(){
   <p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA. The site hasn't been independently tested yet. If something doesn't work for you, tell us and we'll fix it.</p>
 
   <h2>Our sessions</h2>
-  <p>We'll publish full access information for our venue once it's confirmed, including step-free access, toilets, parking and photos of every room. <mark class="tbc">venue access details</mark></p>
+  <p>We'll publish full access information for our venue once it's confirmed, including step-free access, toilets, parking and photos of every room.</p>
 
   <h2>Contact us</h2>
   <p>If you need information in a different format, or you find a problem, email <span class="sel">info@maverickminds.co.uk</span>.</p>
