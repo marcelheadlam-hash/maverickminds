@@ -97,10 +97,10 @@ header.site{background:var(--surface);border-bottom:3px solid var(--accent);posi
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .menu{background:var(--surface);border-top:1px solid var(--line);box-shadow:0 16px 30px -18px rgba(20,10,40,.35);max-height:calc(100vh - 80px);overflow:auto}
 .menu-inner{display:grid;grid-template-columns:1fr auto;gap:24px;padding-block:20px 24px;align-items:start}
-nav.main{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 16px;align-items:start}
+nav.main{display:flex;flex-direction:column;gap:4px;align-items:stretch;max-width:26rem}
 .nav-group{display:flex;flex-direction:column;gap:2px;min-width:0}
 .nav-h{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sec);padding:0 12px 4px;border-bottom:2px solid var(--sec);margin-bottom:4px}
-@media (max-width:1100px){nav.main{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
 nav.main a{text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.1rem;padding:8px 12px;border-radius:12px}
 nav.main a:hover{background:var(--accent-soft)}
 nav.main a[aria-current="page"]{background:var(--accent);color:var(--on-accent)}
@@ -109,7 +109,7 @@ nav.main a[aria-current="page"]{background:var(--accent);color:var(--on-accent)}
 .comfort button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);font-weight:700}
 @media (max-width:640px){
   .menu-inner{grid-template-columns:1fr}
-  nav.main{grid-template-columns:1fr 1fr}
+
   .comfort{flex-direction:row;flex-wrap:wrap;align-items:center}
   .bar-actions .btn-sm{display:none}
 }
@@ -260,6 +260,7 @@ mark.tbc::before{content:"TBC: ";font-weight:700;color:var(--warn)}
 .updated{color:var(--muted);font-size:.88rem}
 .faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);padding-block:16px}
+.faq summary .pill{margin-left:auto;align-self:center;font-size:.75rem}
 .faq summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.15rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1}
@@ -573,32 +574,11 @@ nav.main a[aria-current="page"]::before{background:#fff}
   <div class="menu" id="menu" hidden>
     <div class="wrap menu-inner">
       <nav class="main" aria-label="Main">
-        <div class="nav-group sec-sessions"><span class="nav-h">About us</span>
-          <a href="#home" data-nav="home" class="sec-sessions">Home</a>
-          <a href="#story" data-nav="story" class="sec-sessions">Our story</a>
-          <a href="#parents" data-nav="parents" class="sec-sessions">For parents</a>
-        </div>
-        <div class="nav-group sec-sessions"><span class="nav-h">Sessions</span>
-          <a href="#sessions" data-nav="sessions" class="sec-sessions">How sessions work</a>
-          <a href="#plan" data-nav="plan" class="sec-sessions">A typical session</a>
-          <a href="#approach" data-nav="approach" class="sec-sessions">Our approach</a>
-          <a href="#the-app" data-nav="the-app" class="sec-sessions">The app</a>
-          <a href="#fees" data-nav="fees" class="sec-sessions">Membership and fees</a>
-          <a href="#faq" data-nav="faq" class="sec-sessions">FAQ</a>
-        </div>
-        <div class="nav-group sec-learn"><span class="nav-h">Learn</span>
-          <a href="#library" data-nav="library" class="sec-learn">Library</a>
-          <a href="#famous" data-nav="famous" class="sec-learn">Famous minds</a>
-        </div>
-        <div class="nav-group sec-team"><span class="nav-h">Get involved</span>
-          <a href="#survey" data-nav="survey" class="sec-team">Have your say</a>
-          <a href="#schools" data-nav="schools" class="sec-team">For schools</a>
-          <a href="#team" data-nav="team" class="sec-team">Join the team</a>
-        </div>
-        <div class="nav-group sec-trust"><span class="nav-h">Trust</span>
-          <a href="#safeguarding" data-nav="safeguarding" class="sec-trust">Safeguarding</a>
-          <a href="#contact" data-nav="contact" class="sec-trust">Contact us</a>
-        </div>
+        <a href="#sessions" data-nav="sessions" class="sec-sessions">Sessions</a>
+        <a href="#fees" data-nav="fees" class="sec-sessions">Fees</a>
+        <a href="#story" data-nav="story" class="sec-team">About us</a>
+        <a href="#library" data-nav="library" class="sec-learn">Guides</a>
+        <a href="#contact" data-nav="contact" class="sec-trust">Contact</a>
       </nav>
       <div class="comfort" role="group" aria-label="Comfort settings">
         <div class="comfort-row">
@@ -644,17 +624,18 @@ nav.main a[aria-current="page"]::before{background:#fff}
 
 <footer>
   <div class="wrap">
-    <nav class="foot-links" aria-label="Policies">
-      <a href="#safeguarding">Safeguarding</a>
+    <nav class="foot-links" aria-label="More">
+      <a href="#the-app">The app</a>
       <a href="#faq">FAQ</a>
-      <a href="#booking">Booking terms</a>
+      <a href="#team">Join the team</a>
+      <a href="#schools">For schools</a>
+      <a href="#famous">Famous minds</a>
+      <a href="#survey">Have your say</a>
+      <a href="#safeguarding">Safeguarding</a>
+      <a href="#fees">Fees and booking terms</a>
       <a href="#privacy">Privacy notice</a>
       <a href="#accessibility">Accessibility</a>
       <a href="#complaints">Complaints</a>
-      <a href="#fees">Membership and fees</a>
-      <a href="#the-app">The app</a>
-      <a href="#parents">For parents</a>
-      <a href="#schools">For schools</a>
       <a href="#contact">Contact us</a>
     </nav>
     <div class="foot-legal">
@@ -1790,6 +1771,7 @@ library(){
     <div class="key">${Object.values(EV).map(e=>`<span><span class="pill ${e.cls}">${e.label}</span>${e.note}</span>`).join("")}</div>
   </div>
   <div class="grid" id="results"></div>
+  <button type="button" class="btn" id="more-guides" hidden>Show all guides</button>
   <p class="empty" id="none" hidden>No guides match that yet. Try another word, or pick “All”.</p>
 </section>
 <section class="stack">
@@ -1826,15 +1808,16 @@ famous(){
 </section>`;
 },
 sessions(){
+  const M=(t,h,items)=>`<li><b>${t} · ${h}.</b> ${items}</li>`;
   return `
 <section class="stack">
-  <span class="eyebrow">Weekend workshops · Saturdays from summer 2027</span>
+  <span class="eyebrow">Saturday workshops · from summer 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Two hours every Saturday for children aged 11 to 13 with ADHD, autism, or both, focused on social and emotional development and the move to secondary school. An ice breaker, a life skills lesson with breaks built in, then play planned around your child, in a space set up for children who find busy places hard. No diagnosis needed.</p>
+  <p class="lede">Two calm hours every Saturday for children aged 11 to 13 with ADHD, autism, or both. No diagnosis needed.</p>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
-  <p>Example times. We run two sessions each Saturday.</p>
+  <p>Every session follows the same shape, so it feels familiar from week one. Example times; we run two sessions each Saturday.</p>
   <div class="road">
     <ol class="stops">
     <li class="stop"><span class="stop-pin" aria-hidden="true">1</span><div class="stop-card"><span class="stop-time">12:45</span><h3>Arrive</h3><p>Settle in. No rush.</p></div></li>
@@ -1844,7 +1827,16 @@ sessions(){
     <li class="stop"><span class="stop-pin" aria-hidden="true">5</span><div class="stop-card"><span class="stop-time">3:00</span><h3>Your update</h3><p>How today went, at pickup.</p></div></li>
     </ol>
   </div>
-  <div class="btns"><a class="why-more" href="#plan">See a typical session, minute by minute →</a><a class="why-more" href="#approach">Our approach and curriculum →</a></div>
+  <div class="faq">
+    <details><summary>See it minute by minute</summary><div><ul class="ticks">
+      ${M("12:45 – 1:15pm","Arrive","Up to 15 minutes before or after the start. Delays happen, and nobody misses out.")}
+      ${M("1:15 – 1:25pm","Ice breaker","A simple game like people bingo, so kids can talk without having to think up questions. Instructions are written down, and they can play in a pair, with a host, or watch until they're ready.")}
+      ${M("1:25 – 1:30pm","Break","Five minutes to reset.")}
+      ${M("1:30 – 2:15pm","Level Up","A hands-on lesson on feelings, friendships or everyday life, with a five-minute break every 10 to 15 minutes. Some weeks include a guest speaker, always with our team in the room.")}
+      ${M("2:15 – 3:00pm","Play their way","Time with kids who share their interests, in a sensory-friendly space. Staff help with joining in and emotional support.")}
+      ${M("3:00pm","Pickup","We share how today went, including who they've started to bond with.")}
+    </ul></div></details>
+  </div>
 </section>
 <section class="two">
   <div class="stack">
@@ -1855,7 +1847,6 @@ sessions(){
       <li>Badges so kids can show whether they feel like chatting today.</li>
       <li>Games that don't need talking, for kids who want to join in quietly.</li>
       <li>Spare ear defenders, hand dryers off, no strong scents.</li>
-      <li>A questionnaire and a get-to-know-you call before the first session, so we know your child's needs.</li>
     </ul>
   </div>
   <div class="stack">
@@ -1863,35 +1854,40 @@ sessions(){
     <dl class="facts">
       <dt>Who</dt><dd>Ages 11 to 13, preparing for or settling into secondary school. ADHD, autistic or AuDHD, diagnosed or not.</dd>
       <dt>When</dt><dd>Every Saturday, 2 hours. Two sessions a day.</dd>
-      <dt>Price</dt><dd>£129 a month, including the app. Or £35 a session, pay as you go.</dd>
-      <dt>Staffing</dt><dd>1 adult for every 5 children, with one-to-one support where needed</dd>
-      <dt>Checks</dt><dd>Every member of staff holds an Enhanced DBS check</dd>
+      <dt>Price</dt><dd>£129 a month, including the app. Or £35 a session. <a href="#fees">See fees</a>.</dd>
+      <dt>Staff</dt><dd>Trained SEN experts, 1 adult for every 5 children, all Enhanced DBS checked. One-to-one support included where needed.</dd>
       <dt>Where</dt><dd>London. We'll share the venue before launch.</dd>
     </dl>
-    <p>Read our <a href="#safeguarding">safeguarding policy</a>, <a href="#booking">booking terms</a> and <a href="#faq">answers to common questions</a>.</p>
-    <div class="spark">Founding families get first choice of places. <a href="#join">Reserve a founding place</a>.</div>
   </div>
 </section>
 <section class="stack">
-  <h2>Who runs your child's session</h2>
-  <p class="lede">People who get it. Every session is run by trained SEN experts: experienced special educational needs staff, with a site head at every venue. There's one adult for every five children, and never fewer than two adults in the room.</p>
-  <p>Every member of the team is Enhanced DBS checked and trained in ADHD, autism, sensory needs and safeguarding. Some children need one-to-one support for part of a session, perhaps to settle in or through a tricky moment. We'll plan it with you on your get-to-know-you call, and it's included at no extra cost.</p>
-</section>
-<section class="stack">
-  <h2>From founding place to first session</h2>
-  <p class="lede">No two children get the same sessions. Before your child joins, we get to know them properly, so their time with us is built around their interests and needs.</p>
-  <ol class="steps steps-progress" style="--p:0">
-    <li><span><b>Reserve your place.</b> Fill in our short form. A £50 deposit holds your child's place, and we give it back after their first month.</span></li>
-    <li><span><b>We say hello.</b> Elysse or Marcel will confirm your place within 3 working days, in the way you've chosen, with a secure link to pay your deposit.</span></li>
-    <li><span><b>Tell us about your child.</b> A private questionnaire about their interests, sensory needs and what helps them.</span></li>
-    <li><span><b>Get-to-know-you call.</b> One of our team meets you by video or phone, for up to an hour. Your child is welcome to join if they'd like to, but they don't have to. We'll ask about anything that helps us build a picture of your child: their hobbies and interests, sensory needs, what calms them, what can upset them, how they like to communicate and the support they get at school.</span></li>
-    <li><span><b>We build their plan.</b> Your child gets a one-page profile, shared only with the staff who work with them, so nobody asks the same questions twice. They also get a named host as their go-to adult.</span></li>
-    <li><span><b>Get ready together.</b> Photos of the venue to look through with your child, and an optional visit before the first session.</span></li>
-    <li><span><b>Monthly check-ins.</b> After their fourth session, and then once a month, we meet with you to talk about how it's going and adjust their plan.</span></li>
-  </ol>
+  <h2>Our approach</h2>
+  <p class="lede">We don't invent our own theories. Sessions draw on methods UK schools already use with autistic and ADHD pupils, and nobody is asked to mask.</p>
+  <span class="chips"><span>Zones of Regulation</span><span>Neurodiversity-affirming</span><span>SCERTS</span><span>TEACCH</span><span>Executive function support</span><span>Movement and short bursts</span></span>
+  <div class="faq">
+    <details><summary>The six Level Up themes</summary><div>
+      <p>Every group starts with feelings and regulation. We choose the order of the rest with each group.</p>
+      <ul class="ticks">
+        <li><b>Feelings and regulation:</b> body signals, naming feelings, a personal calm-down plan</li>
+        <li><b>Friendships and communication:</b> joining in, repairing a falling-out, saying what you need</li>
+        <li><b>Organisation and independence:</b> planners, making time visible, getting ready on your own</li>
+        <li><b>Change and the unexpected:</b> coping when plans change, trying new things, asking for help</li>
+        <li><b>Understanding my brain:</b> what ADHD and autism mean, strengths, speaking up for yourself</li>
+        <li><b>Ready for what's next:</b> travelling alone, money, staying safe online</li>
+      </ul>
+    </div></details>
+    <details><summary>Who runs the sessions</summary><div>
+      <ul class="ticks">
+        <li>Trained SEN experts, with a site head at every venue trained as a deputy safeguarding lead</li>
+        <li>Recognised training in autism, ADHD and sensory needs before their first session, refreshed every term</li>
+        <li>Never fewer than two adults in the room</li>
+        <li>A panel of advisers, including an occupational therapist, a speech and language therapist and an educational psychologist, reviews our sessions and training</li>
+      </ul>
+    </div></details>
+  </div>
 </section>
 <section class="cta-band">
-  <div class="stack"><span class="eyebrow">Founding families · 40 places</span><h2>Ready to save your child a place?</h2></div>
+  <div class="stack"><span class="eyebrow">Founding families · 40 places</span><h2>Ready to save your child a place?</h2><p>After you reserve, we have a get-to-know-you call and build a plan around your child.</p></div>
   <a class="btn solid" href="#join">Reserve a founding place</a>
 </section>`;
 },
@@ -1911,46 +1907,13 @@ team(){
     <li><span class="need-k">Induction</span><span>Our induction training before your first session.</span></li>
   </ul>
 </section>
-<section class="roles">
-  <div class="role">
-    <span class="eyebrow">Paid role</span>
-    <h2>Site head</h2>
-    <p>You'll lead our team at one venue every Saturday, keep sessions safe and calm, and be the first person parents talk to.</p>
-    <ul class="ticks">
-      <li>Experience leading SEN support for children, ideally ADHD or autism</li>
-      <li>You'll train as our deputy safeguarding lead</li>
-      <li>Available on Saturdays, with some half-term days</li>
-    </ul>
-  </div>
-  <div class="role">
-    <span class="eyebrow">Paid role</span>
-    <h2>Teaching assistant</h2>
-    <p>You'll help run Level Up lessons and games, and be the steady adult a child can go to.</p>
-    <ul class="ticks">
-      <li>Experience supporting children with SEN, ideally ADHD or autism. Lived and family experience counts.</li>
-      <li>Calm, patient and happy to join in with play</li>
-      <li>Available on Saturdays, with some half-term days</li>
-    </ul>
-  </div>
-  <div class="role">
-    <span class="eyebrow">Volunteer role</span>
-    <h2>Volunteer</h2>
-    <p>Ideal for psychology, education or social work students who want real experience with neurodivergent young people.</p>
-    <ul class="ticks">
-      <li>Interest in neurodivergence and youth work</li>
-      <li>Reliable, and happy to follow our safeguarding guidelines</li>
-      <li>Training and a reference provided</li>
-    </ul>
-  </div>
-  <div class="role">
-    <span class="eyebrow">Adviser role</span>
-    <h2>Professional adviser</h2>
-    <p>For occupational therapists, speech and language therapists and educational psychologists who want to help shape our sessions.</p>
-    <ul class="ticks">
-      <li>Review our sessions, curriculum and training a few times a year</li>
-      <li>Help run a parent workshop if you'd like to</li>
-      <li>Registered with your professional body, such as the HCPC</li>
-    </ul>
+<section class="stack">
+  <h2>The roles</h2>
+  <div class="faq">
+    <details><summary>Site head <span class="pill">Paid</span></summary><div><p>You'll lead our team at one venue every Saturday, keep sessions safe and calm, and be the first person parents talk to.</p><ul class="ticks"><li>Experience leading SEN support for children, ideally ADHD or autism</li><li>You'll train as our deputy safeguarding lead</li><li>Available on Saturdays, with some half-term days</li></ul></div></details>
+    <details><summary>Teaching assistant <span class="pill">Paid</span></summary><div><p>You'll help run Level Up lessons and games, and be the steady adult a child can go to.</p><ul class="ticks"><li>Experience supporting children with SEN, ideally ADHD or autism. Lived and family experience counts.</li><li>Calm, patient and happy to join in with play</li><li>Available on Saturdays, with some half-term days</li></ul></div></details>
+    <details><summary>Volunteer <span class="pill">Unpaid</span></summary><div><p>Ideal for psychology, education or social work students who want real experience with neurodivergent young people.</p><ul class="ticks"><li>Interest in neurodivergence and youth work</li><li>Reliable, and happy to follow our safeguarding guidelines</li><li>Training and a reference provided</li></ul></div></details>
+    <details><summary>Professional adviser <span class="pill">Adviser</span></summary><div><p>For occupational therapists, speech and language therapists and educational psychologists who want to help shape our sessions.</p><ul class="ticks"><li>Review our sessions, curriculum and training a few times a year</li><li>Help run a parent workshop if you'd like to</li><li>Registered with your professional body, such as the HCPC</li></ul></div></details>
   </div>
 </section>
 <section>
@@ -2050,58 +2013,17 @@ faq(){
   ${q("What if my child misses a Saturday?", `<p>Members can book a make-up session in another slot, so you don't lose out.</p>`)}
   ${q("What's the app, and who gets it?", `<p>A ten-minute daily companion to Saturday sessions, so the skills your child learns stick at home. It's included in membership, from summer 2027. Founding families get it first. <a href="#the-app">See how the app works</a>.</p>`)}
   ${q("What happens after Year 8?", `<p>Your child doesn't have to leave. Young people who want to stay can become junior leaders, helping younger members feel welcome and building their own confidence.</p>`)}
+  ${q("Is this therapy, or instead of school?", `<p>No. We're not therapy or a medical service, and we don't replace school, SEN support, an EHC plan or CAMHS. We work alongside them. We'll never share anything about your child without your consent, unless we have a safeguarding concern.</p>`)}
+  ${q("Is there anything for parents?", `<p>Yes. An update after every session, a monthly check-in, termly parent workshops on things like meltdowns and EHC plans, and our free <a href="#library">guides</a>. Pickup is also a chance to meet other parents.</p>`)}
   ${q("Do you run holiday clubs?", `<p>Half-term holiday days are coming. Members will hear about dates first.</p>`)}
   ${q("Can I stay for the first session?", `<p><mark class="tbc">confirm</mark> Yes. Many children feel better knowing you're close by the first time. You can wait nearby in the venue, and we'll come and get you if your child needs you.</p>`)}
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
-  ${q("How do refunds and cancellations work?", `<p>See our <a href="#booking">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
+  ${q("How do refunds and cancellations work?", `<p>See our <a href="#fees">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
   ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming, and you can cancel your membership at any time.</p>`)}
   ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 13. Their friend's parent needs to reserve a place too, and you can tell us you'd like them to come together.</p>`)}
   ${q("What do the staff know about ADHD and autism?", `<p>Our sessions are run by trained SEN experts. Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
   ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them. You'll also see it in the app.</p>`)}
 </section>`;
-},
-booking(){
-  return `
-<article class="doc"><div class="stack">
-  <span class="eyebrow">Booking terms</span>
-  <h1>What you get, and how cancelling works</h1>
-  <p class="updated">Last updated: <mark class="tbc">date</mark></p>
-
-  <h2>Founding place deposit</h2>
-  <ul>
-    <li>A £50 deposit holds your child's founding place. We'll send you a secure link to pay it by card once we've confirmed your place.</li>
-    <li>We refund it after your child's first month.</li>
-    <li>If we don't launch, or your child doesn't start with us, we refund it in full.</li>
-    <li>If you change your mind before your child's first session, tell us and we'll refund it.</li>
-    <li>Refunds go back to the card you paid with, within <mark class="tbc">10</mark> working days.</li>
-  </ul>
-
-  <h2>Membership: £129 a month</h2>
-  <ul>
-    <li>Includes every Saturday session, the Maverick Minds app, one-to-one support where needed, an update after every session and a monthly check-in.</li>
-    <li>Taken by card on the same date each month, starting from your child's first session.</li>
-    <li>The price is the same every month, whether it has four Saturdays or five.</li>
-    <li><b>Cancel any time.</b> There's no minimum term. Your membership ends at the end of the month you've paid for, and you won't be charged again.</li>
-    <li><b>Missed a Saturday?</b> Book a make-up session in another slot within <mark class="tbc">4 weeks</mark>. Make-up sessions depend on places being free.</li>
-  </ul>
-
-  <h2>Pay as you go: £35 a session</h2>
-  <ul>
-    <li>Paid by card when you book. We'll send you a secure payment link.</li>
-    <li>Cancel at least <mark class="tbc">48 hours</mark> before the session for a full refund or a credit for another session.</li>
-    <li>If you cancel with less notice, we can't usually give a refund, because we've arranged staff for your child's place. If we can fill the place, we'll give you a credit.</li>
-    <li>If your child is ill on the day, tell us before the session starts and we'll offer a credit.</li>
-  </ul>
-
-  <h2>If we need to cancel</h2>
-  <p>If we cancel a session for any reason, members get a make-up session or a refund for that week, and pay-as-you-go families get a full refund or credit, whichever you prefer.</p>
-
-  <h2>If sessions aren't right for your child</h2>
-  <p>We'll talk with you about what we can change. If we agree together that the sessions aren't right for your child, we'll refund any sessions you've paid for and not used.</p>
-
-  <h2>Our part</h2>
-  <p>We'll follow our <a href="#safeguarding">safeguarding policy</a>, keep to our staffing ratio and tell you about any changes to times or venue as early as we can.</p>
-</div></article>`;
 },
 privacy(){
   return `
@@ -2203,113 +2125,6 @@ complaints(){
   <p>We keep a confidential record of every complaint and what we did about it, and we use them to improve our sessions.</p>
 </div></article>`;
 },
-approach(){
-  const term=(h,items)=>`<div class="card"><h3>${h}</h3><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
-  return `
-<section class="stack">
-  <span class="eyebrow">Our approach</span>
-  <h1>Built on methods schools already trust.</h1>
-  <p class="lede">We don't invent our own theories. Our sessions are inspired by approaches widely used in UK schools to support autistic and ADHD young people, delivered by trained staff and reviewed by professionals.</p>
-</section>
-<section class="stack">
-  <h2>The approaches that inspire us</h2>
-  <div class="grid">
-    <div class="card"><span class="pill">Autism and ADHD</span><h3>Zones of Regulation</h3><p>A simple colour system for noticing feelings and choosing what helps, widely used in UK schools with both autistic and ADHD pupils.</p></div>
-    <div class="card"><span class="pill">Autism and ADHD</span><h3>Neurodiversity-affirming</h3><p>We don't try to make children less autistic or less ADHD. Stims and fidgets are welcome, and nobody is asked to mask.</p></div>
-    <div class="card"><span class="pill">Mainly autism</span><h3>SCERTS</h3><p>Social Communication, Emotional Regulation and Transactional Support. It inspires how we put regulation first and how adults adapt to each child.</p></div>
-    <div class="card"><span class="pill">Mainly autism</span><h3>TEACCH</h3><p>Structured, visual teaching: the same room layout every week, visual timetables and tasks in clear steps. Structure helps ADHD pupils too.</p></div>
-    <div class="card"><span class="pill">Mainly ADHD</span><h3>Executive function support</h3><p>Making time visible, shrinking the first step and planning backwards from a goal. <a href="#g-executive-function">Read our guide</a>.</p></div>
-    <div class="card"><span class="pill">Mainly ADHD</span><h3>Movement and short bursts</h3><p>Movement breaks, fidgets and 10 to 15 minute chunks, so focus isn't a test of willpower.</p></div>
-  </div>
-</section>
-<section class="two">
-  <div class="stack">
-    <h2>Trained staff</h2>
-    <ul class="ticks">
-      <li>Every member of staff completes recognised training in autism, ADHD and sensory needs before their first session</li>
-      <li>Refresher training every term</li>
-      <li>Safeguarding training and an Enhanced DBS check for everyone</li>
-      <li>A site head at every venue, trained as a deputy safeguarding lead</li>
-      <li>Lived experience counts: we especially welcome neurodivergent staff</li>
-    </ul>
-  </div>
-  <div class="stack">
-    <h2>Our professional advisers</h2>
-    <p>We're building a panel of advisers to review our sessions and training, including an occupational therapist, a speech and language therapist and an educational psychologist.</p>
-    <p>Are you one of these professionals? <a href="#team">Join us as an adviser</a>.</p>
-  </div>
-</section>
-<section class="stack">
-  <h2>The Level Up curriculum</h2>
-  <p class="lede">Six themes, built around social and emotional development and the move to secondary school. Every group starts with feelings and regulation, then we choose the order of the rest with each group, based on what the children need and what comes up. Every lesson is hands-on, visual and broken into short steps.</p>
-  <div class="grid">
-    ${term("Feelings and regulation",["Noticing body signals","Naming feelings","A personal calm-down plan"])}
-    ${term("Friendships and communication",["Starting and joining in","Repairing a falling-out","Saying what you need"])}
-    ${term("Organisation and independence",["Planners and checklists","Making time visible","Getting ready on your own"])}
-    ${term("Change and the unexpected",["Coping when plans change","Trying new things","Asking for help"])}
-    ${term("Understanding my brain",["What ADHD and autism mean","Strengths and challenges","Speaking up for yourself"])}
-    ${term("Ready for what's next",["Travelling on your own","Money and everyday life","Staying safe online"])}
-  </div>
-</section>
-<section class="two">
-  <div class="stack">
-    <h2>Active and outdoor</h2>
-    <p>Play their way includes active and outdoor options when the venue allows, from games outside to nature walks, alongside quieter indoor choices.</p>
-  </div>
-  <div class="stack">
-    <h2>Workshops for parents</h2>
-    <p>Termly workshops for parents and carers, run by our team and advisers. Topics include understanding meltdowns, getting support at secondary school and EHC plans.</p>
-  </div>
-</section>`;
-},
-parents(){
-  return `
-<section class="stack">
-  <span class="eyebrow">For parents and carers</span>
-  <h1>You know your child best. We'll build around them.</h1>
-  <p class="lede">Weekend workshops and a daily app for children aged 11 to 13 with ADHD, autism, or both (AuDHD). They build social and emotional skills as they prepare for and settle into secondary school, meet people who get them and can simply be themselves. And there's a community for you, too.</p>
-  <p class="spark"><b>Your child isn't the problem. The environment often is.</b> When young people feel they belong, with people who get them and space to be themselves, they grow in confidence and start to enjoy who they are.</p>
-</section>
-<section class="stack">
-  <h2>You don't need a label</h2>
-  <p>Your child might be ADHD, autistic or AuDHD, waiting for an assessment, or you might not be sure yet. If they need a little more patience and attention than a classroom can give, they're welcome here. You don't need a diagnosis, a referral or an EHC plan.</p>
-</section>
-<section class="stack">
-  <h2>How we support your family</h2>
-  <div class="grid four">
-    <div class="card"><h3>Built around your child</h3><p>A get-to-know-you call, a one-page profile and a named host, so their sessions fit their interests and needs.</p></div>
-    <div class="card"><h3>Skills they keep</h3><p>A Level Up life lesson every Saturday, starting with how to regulate emotions, and ten minutes a day on <a href="#the-app">the app</a> to practise at home.</p></div>
-    <div class="card"><h3>Friends who get them</h3><p>Small interest groups in Play their way, so friendships grow around the things they love.</p></div>
-    <div class="card"><h3>Support for you</h3><p>An update after every session, a monthly check-in, termly parent workshops and our free <a href="#library">guides</a>.</p></div>
-  </div>
-  <p class="spark"><b>Room to grow.</b> After Year 8, your child can stay on as a junior leader, helping younger members feel welcome.</p>
-</section>
-<section class="two">
-  <div class="stack">
-    <h2>What we are</h2>
-    <ul class="ticks">
-      <li>Weekly two-hour Saturday sessions, with one adult for every five children</li>
-      <li>Run by trained SEN experts, with one-to-one support included where needed</li>
-      <li>A calm, sensory-friendly space, set up the same way every week</li>
-      <li>Every member of staff holds an Enhanced DBS check</li>
-      <li>A named Designated Safeguarding Lead, and a clear <a href="#safeguarding">safeguarding policy</a></li>
-    </ul>
-  </div>
-  <div class="stack">
-    <h2>What we're not</h2>
-    <ul class="ticks crosses">
-      <li>A replacement for school, SEN support, an EHC plan or CAMHS. We work alongside them.</li>
-      <li>Therapy or a medical service</li>
-      <li>A drop-in club: every child's place is planned in advance</li>
-    </ul>
-    <p>We'll never share anything about your child without your consent, unless we have a safeguarding concern.</p>
-  </div>
-</section>
-<section class="cta-band">
-  <div class="stack"><span class="eyebrow">Get started</span><h2>Ready to save your child a place?</h2></div>
-  <a class="btn solid" href="#join">Reserve a founding place</a>
-</section>`;
-},
 schools(){
   return `
 <section class="stack">
@@ -2334,7 +2149,7 @@ schools(){
       <li>Weekly two-hour sessions with one adult for every five children</li>
       <li>Every member of staff holds an Enhanced DBS check</li>
       <li>A named Designated Safeguarding Lead, and a clear <a href="#safeguarding">safeguarding policy</a></li>
-      <li>Sessions inspired by SCERTS and TEACCH, with a flexible <a href="#approach">Level Up curriculum</a></li>
+      <li>Sessions inspired by SCERTS and TEACCH, with a flexible <a href="#sessions">Level Up curriculum</a></li>
       <li>Staff trained in autism, ADHD and sensory needs, with professional advisers</li>
     </ul>
   </div>
@@ -2354,25 +2169,24 @@ schools(){
 </section>`;
 },
 fees(){
+  const t=(title,body)=>`<details><summary>${title}</summary><div>${body}</div></details>`;
   return `
 <section class="stack">
-  <span class="eyebrow">Membership and fees</span>
+  <span class="eyebrow">Fees and booking terms</span>
   <h1>One simple price. Every Saturday, and the app.</h1>
-  <p class="lede">We've kept our prices as low as we can while keeping one adult for every five children. If cost is a barrier, please talk to us.</p>
+  <p class="lede">We've kept prices as low as we can while keeping one adult for every five children. If cost is a barrier, please <a href="#contact">talk to us</a>.</p>
 </section>
 <section class="two">
   <div class="stack">
     <span class="eyebrow">Membership</span>
     <h2>£129 a month</h2>
     <ul class="ticks">
-      <li>Every Saturday session</li>
-      <li>The Maverick Minds app, included</li>
+      <li>Every Saturday session, and the app</li>
       <li>Missed a Saturday? Book a make-up session</li>
       <li>One-to-one support where needed, at no extra cost</li>
-      <li>A monthly check-in with you</li>
-      <li>No commitment. Cancel any time.</li>
+      <li>No minimum term. Cancel any time.</li>
     </ul>
-    <p>Membership works out at about £30 a Saturday, with the app included. Months with five Saturdays cost the same as months with four.</p>
+    <p>About £30 a Saturday. Months with five Saturdays cost the same.</p>
   </div>
   <div class="stack">
     <span class="eyebrow">Pay as you go</span>
@@ -2380,31 +2194,29 @@ fees(){
     <ul class="ticks">
       <li>The Saturdays you book</li>
       <li>One-to-one support where needed, at no extra cost</li>
-      <li>A monthly check-in with you</li>
       <li>No commitment</li>
     </ul>
     <p>The app isn't included with pay as you go.</p>
   </div>
 </section>
-<section class="two">
-  <div class="stack">
-    <h2>Everything comes with</h2>
-    <ul class="ticks">
-      <li>Two hours: an ice breaker, a Level Up life lesson and Play their way</li>
-      <li>All activities, games, consoles and materials</li>
-      <li>Trained SEN experts, one adult for every five children, all Enhanced DBS checked</li>
-      <li>A get-to-know-you call and a one-page profile for your child</li>
-      <li>An update after every session</li>
-    </ul>
-  </div>
-  <div class="stack">
-    <h2>Coming soon</h2>
-    <ul class="ticks">
-      <li><b>Half-term holiday days.</b> Members will hear about dates first.</li>
-      <li><b>The app for everyone.</b> At launch, the app is for members only. We'll open it to other families later.</li>
-    </ul>
-    <h2>How to pay</h2>
-    <p>By card. Membership is taken monthly, and pay as you go is paid when you book. See our <a href="#booking">booking terms</a> for cancellations and refunds.</p>
+<section class="stack">
+  <h2>Both include</h2>
+  <ul class="ticks">
+    <li>Two hours of ice breaker, Level Up and Play their way, with all activities and materials</li>
+    <li>A get-to-know-you call, a one-page profile and a named host for your child</li>
+    <li>An update after every session, and a monthly check-in with you</li>
+  </ul>
+</section>
+<section class="stack">
+  <h2>Booking terms</h2>
+  <p class="updated">Last updated: <mark class="tbc">date</mark>. We take payment by card.</p>
+  <div class="faq">
+    ${t("Founding place deposit: £50",`<ul><li>Holds your child's founding place. Once we've confirmed it, we send a secure link to pay by card.</li><li>We refund it after your child's first month.</li><li>If we don't launch, or your child doesn't start with us, we refund it in full.</li><li>Changed your mind? Tell us before your child's first session and we'll refund it.</li><li>Refunds go back to your card within <mark class="tbc">10</mark> working days.</li></ul>`)}
+    ${t("Membership",`<ul><li>Taken by card on the same date each month, from your child's first session.</li><li><b>Cancel any time.</b> Your membership ends at the end of the month you've paid for, and you won't be charged again.</li><li><b>Missed a Saturday?</b> Book a make-up session in another slot within <mark class="tbc">4 weeks</mark>, if places are free.</li></ul>`)}
+    ${t("Pay as you go",`<ul><li>Paid by card when you book, by secure link.</li><li>Cancel at least <mark class="tbc">48 hours</mark> before for a full refund or a credit.</li><li>With less notice we can't usually refund, because we've arranged staff for your child. If we fill the place, you get a credit.</li><li>If your child is ill on the day, tell us before the session starts and we'll offer a credit.</li></ul>`)}
+    ${t("If we need to cancel",`<p>Members get a make-up session or a refund for that week. Pay-as-you-go families get a full refund or credit, whichever you prefer.</p>`)}
+    ${t("If sessions aren't right for your child",`<p>We'll talk with you about what we can change. If we agree together that sessions aren't right, we'll refund any sessions you've paid for and not used.</p>`)}
+    ${t("Our part",`<p>We'll follow our <a href="#safeguarding">safeguarding policy</a>, keep to our staffing ratio and tell you about any changes to times or venue as early as we can.</p>`)}
   </div>
 </section>
 <section class="stack">
@@ -2420,74 +2232,32 @@ fees(){
   <a class="btn solid" href="#join">Reserve a founding place</a>
 </section>`;
 },
-plan(){
-  const T=(t,h,items)=>`<li class="tl-item"><span class="tl-time">${t}</span><div class="tl-body"><h2>${h}</h2><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div></li>`;
-  return `
-<section class="stack">
-  <span class="eyebrow">Sessions · an example</span>
-  <h1>A typical session, minute by minute.</h1>
-  <p class="lede">So you and your child know exactly what to expect. This example starts at 1pm. We run two sessions each Saturday, so your child's times may differ. Every session follows the same shape, so it feels familiar from week one.</p>
-</section>
-<ol class="timeline">
-${T("12:45 – 1:15pm","Arrive and check in",[
- "Arrive up to 15 minutes before the start, or up to 15 minutes after. Delays happen, and nobody misses out."])}
-${T("1:15 – 1:25pm","Ice breaker",[
- "A simple game to help everyone get to know each other, like people bingo: each child gets a sheet of facts, such as \"born in August\" or \"has an older sibling\", and finds someone who matches each one.",
- "It gets kids talking without having to think up questions themselves, which takes away a lot of the worry of meeting new people.",
- "Instructions are clear and written down. Joining in is optional: kids can play in a pair, with a host, or watch until they're ready."])}
-${T("1:25 – 1:30pm","Break",["Five minutes to reset before Level Up."])}
-${T("1:30 – 2:15pm","Level Up",[
- "A lesson on the skills that help with feelings, friendships and everyday life. Some sessions explore what it means to have ADHD or autism.",
- "Some weeks feature a workshop with a guest speaker, always with our team in the room.",
- "A five-minute break every 10 to 15 minutes, so kids can step away, reset their focus and come back."])}
-${T("2:15 – 3:00pm","Play their way",[
- "Time to find kids with similar interests, in a sensory-friendly space planned around what each child loves.",
- "Our trained SEN experts and volunteers help with joining in and with emotional support.",
- "A space to unmask and feel at home, without judgement."])}
-${T("3:00pm","Pickup and your update",[
- "You collect your child, and we share how today went, including who they've started to bond with.",
- "It's also a chance for parents to get to know each other. The community doesn't stop when the session does."])}
-</ol>
-<div class="btns btns-centre"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">Back to sessions</a></div>`;
-},
 reserve(){
   return `
 <section class="stack">
   <span class="eyebrow">Founding families · 40 places · summer 2027</span>
   <h1>Be one of our first 40 families.</h1>
-  <p class="lede">We're opening Maverick Minds with 40 places across two Saturday workshops in London. A £50 deposit holds your child's place, and we'll give it back once they've finished their first month.</p>
+  <p class="lede">A £50 deposit holds your child's place. We give it back after their first month, or in full if we don't launch or your child doesn't start.</p>
 </section>
 <section class="two">
   <div class="stack">
-    <h2>What founding families get</h2>
+    <h2>Founding families get</h2>
     <ul class="ticks">
-      <li><b>The app first.</b> Your child gets it before anyone else, when we launch in summer 2027.</li>
-      <li><b>A seat on our founding parent panel.</b> Help choose the themes we teach, and test the app before anyone else.</li>
-      <li><b>A free parent workshop</b>, just for founding families, on the things parents tell us matter most.</li>
-      <li><b>First choice of place</b>, before we open to everyone else.</li>
+      <li><b>The app first</b>, before anyone else</li>
+      <li><b>A seat on our parent panel</b>, to help choose what we teach</li>
+      <li><b>A free parent workshop</b>, just for founding families</li>
+      <li><b>First choice of place</b></li>
     </ul>
   </div>
   <div class="stack">
-    <h2>Your deposit, simply</h2>
-    <dl class="facts">
-      <dt>Deposit</dt><dd>£50. Once we've confirmed your place, we'll send you a secure link to pay by card.</dd>
-      <dt>Given back</dt><dd>After your child's first month with us.</dd>
-      <dt>In full</dt><dd>If we don't launch, or your child doesn't start with us.</dd>
-      <dt>Changed your mind?</dt><dd>Tell us before your child's first session and we'll refund it.</dd>
-    </dl>
-    <p>Then it's £129 a month, with every Saturday session and the app included. See <a href="#fees">membership and fees</a> and our <a href="#booking">booking terms</a>.</p>
+    <h2>What happens next</h2>
+    <ol class="steps">
+      <li><span>Elysse or Marcel confirms your place within 3 working days, with a link to pay the deposit.</span></li>
+      <li><span>A short questionnaire and a get-to-know-you call about your child.</span></li>
+      <li><span>We build their plan, with a named host as their go-to adult.</span></li>
+    </ol>
+    <p>Then it's £129 a month. <a href="#fees">Fees and booking terms</a>.</p>
   </div>
-</section>
-<section class="stack">
-  <h2>What happens next</h2>
-  <ol class="steps steps-progress" style="--p:0">
-    <li><span><b>Reserve your place.</b> Fill in the short form below. It takes about two minutes.</span></li>
-    <li><span><b>We say hello.</b> Elysse or Marcel will confirm your place within 3 working days, in the way you've chosen, with a secure link to pay your £50 deposit.</span></li>
-    <li><span><b>Tell us about your child.</b> A private questionnaire about their interests, sensory needs and what helps them.</span></li>
-    <li><span><b>Get-to-know-you call.</b> Up to an hour, by video or phone. Your child is welcome to join, but they don't have to.</span></li>
-    <li><span><b>We build their plan.</b> A one-page profile and a named host, their go-to adult.</span></li>
-    <li><span><b>Get ready together.</b> Venue photos to look through with your child, and an optional visit before the first session.</span></li>
-  </ol>
 </section>
 <section class="centre">
   ${reserveForm()}
@@ -2573,7 +2343,7 @@ story(){
     <p class="thrive-line">It's not a different child. It's the same child, in the right environment.</p>
   </div>
   <blockquote class="why-belief">Get the environment right and your child will grow into a healthy, happy adult.</blockquote>
-  <div class="btns btns-centre"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
+  <div class="btns btns-centre"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#team">Join the team</a></div>
 <h2>Sources</h2>
   <ol class="why-sources">
     <li id="story-s1">Valentin CR, Zanuttini JZ. Parents' insights on post-transition support for students on the autism spectrum in secondary schools. <i>Australasian Journal of Special and Inclusive Education</i>, 2025;49(2):111–125. A small study of four parents. <a href="https://doi.org/10.1017/jsi.2025.10004" target="_blank" rel="noopener">doi.org/10.1017/jsi.2025.10004</a></li>
@@ -2646,12 +2416,18 @@ function renderResults(){
   const q = state.q.trim().toLowerCase();
   const list = GUIDES.filter(g => (state.cat==="All"||g.cat===state.cat) &&
     (!q || (g.title+" "+g.summary+" "+g.body).toLowerCase().includes(q)));
-  $("#results").innerHTML = list.map(card).join("");
+  const cut = !state.all && !q && state.cat==="All" && list.length>6;
+  $("#results").innerHTML = (cut ? list.slice(0,6) : list).map(card).join("");
   $("#none").hidden = list.length>0;
+  const more=$("#more-guides");
+  if(more){ more.hidden=!cut; more.textContent=`Show all ${list.length} guides`; more.onclick=()=>{state.all=true;renderResults();}; }
 }
 
 function route(){
-  const h = (location.hash||"#home").slice(1);
+  const MOVED = {plan:"sessions", approach:"sessions", booking:"fees", parents:"faq"};
+  const h0 = (location.hash||"#home").slice(1);
+  if(MOVED[h0]){ history.replaceState(null,"","#"+MOVED[h0]); }
+  const h = MOVED[h0] || h0;
   let page = h, html;
   if(h.startsWith("g-")){ page="library"; html = PAGES.guide(h.slice(2)); }
   else if(h.startsWith("s") && /^s\d+$/.test(h)){ return; }
