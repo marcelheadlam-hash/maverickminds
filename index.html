@@ -89,9 +89,7 @@ header.site{background:var(--surface);border-bottom:3px solid var(--accent);posi
 .brand em{font-style:normal;color:var(--accent)}
 .brand svg{flex:none}
 .bar-actions{display:flex;align-items:center;gap:10px}
-.btn-sm{padding:8px 16px;font-size:.92rem;white-space:nowrap}
-.brand{white-space:nowrap}
-@media (max-width:900px){.bar-actions .btn-sm:not(.btn-say){display:none}}
+.btn-sm{padding:8px 16px;font-size:.92rem}
 .burger{width:46px;height:46px;border-radius:12px;border:2px solid var(--ink);background:var(--pop);cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
 .burger span{display:block;width:20px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
@@ -113,17 +111,8 @@ nav.main a[aria-current="page"]{background:var(--accent);color:var(--on-accent)}
   .menu-inner{grid-template-columns:1fr}
 
   .comfort{flex-direction:row;flex-wrap:wrap;align-items:center}
-  .bar-actions .btn-sm:not(.btn-say){display:none}
+  .bar-actions .btn-sm{display:none}
 }
-@media (max-width:480px){
-  .brand{font-size:1rem;gap:6px;white-space:nowrap}
-  .brand svg{width:30px;height:30px}
-  .bar{gap:8px}
-  .bar-actions{gap:8px}
-  .bar-actions .btn-say{padding:6px 9px;font-size:.78rem;white-space:nowrap;min-height:0}
-  .burger{width:42px;height:42px}
-}
-@media (max-width:359px){.brand{font-size:.85rem;gap:4px}.brand svg{width:24px;height:24px}.bar-actions .btn-say{font-size:.72rem;padding:5px 7px}.burger{width:38px;height:38px}.bar,.bar-actions{gap:6px}}
 .cw-picker{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;background:var(--ink);color:#fff;padding:8px 10px;border-radius:999px;font-size:.82rem;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:calc(100% - 32px)}
 .cw-picker span{padding-inline:6px;font-weight:700}
 .cw-picker button{font:inherit;font-weight:700;border:2px solid transparent;border-radius:999px;padding:4px 12px;cursor:pointer;color:#fff;display:flex;gap:6px;align-items:center;background:rgba(255,255,255,.08)}
@@ -589,7 +578,6 @@ nav.main a[aria-current="page"]::before{background:#fff}
       <span>Maverick <em>Minds</em></span>
     </a>
     <div class="bar-actions">
-      <a class="btn btn-sm btn-say" href="#survey" data-nav="survey">Have your say</a>
       <a class="btn solid btn-sm" href="#join">Reserve a founding place</a>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -603,6 +591,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
         <a href="#fees" data-nav="fees" class="sec-sessions">Fees</a>
         <a href="#story" data-nav="story" class="sec-team">About us</a>
         <a href="#library" data-nav="library" class="sec-learn">Guides</a>
+        <a href="#survey" data-nav="survey" class="sec-team">Have your say</a>
         <a href="#contact" data-nav="contact" class="sec-trust">Contact</a>
       </nav>
       <div class="comfort" role="group" aria-label="Comfort settings">
@@ -655,6 +644,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
       <a href="#team">Join the team</a>
       <a href="#schools">For schools</a>
       <a href="#famous">Famous minds</a>
+      <a href="#survey">Have your say</a>
       <a href="#safeguarding">Safeguarding</a>
       <a href="#fees">Fees and booking terms</a>
       <a href="#privacy">Privacy notice</a>
