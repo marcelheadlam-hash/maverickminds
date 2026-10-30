@@ -629,12 +629,6 @@ nav.main a[aria-current="page"]::before{background:#fff}
   </div>
 </section>
 
-<section class="wrap home-sources sec-learn" id="home-sources" aria-labelledby="home-sources-h" hidden>
-  <h2 id="home-sources-h">Sources</h2>
-  <ol class="why-sources">
-    <li id="why-s1">Schools Week, New curriculum to be introduced in 2028 as review published, November 2025. <a href="https://schoolsweek.co.uk/new-curriculum-to-be-introduced-in-2028-as-review-published" target="_blank" rel="noopener">schoolsweek.co.uk</a></li>
-  </ol>
-</section>
 
 <footer>
   <div class="wrap">
@@ -1739,7 +1733,7 @@ home(){
 <section class="stack sec-learn" aria-labelledby="why-h">
   <span class="eyebrow">Why we exist</span>
   <h2 id="why-h">The world has changed. The timetable is catching up.</h2>
-  <p class="lede">Teachers are doing their best with full classes and a packed timetable. England's national curriculum is being updated for the first time in over a decade, but the new version won't reach classrooms until September 2028.<sup><a href="#why-s1">1</a></sup> Until then, life skills like handling big feelings, managing time and staying safe online fall between lessons. And it's hardest at the move to secondary school, when almost everything changes at once.</p>
+  <p class="lede">A hundred years ago, children learned algebra, and the fastest way to send a message was a telegram. A hundred years later, children still learn algebra, and it still matters. But now a message crosses the world in a second, AI can write an essay, and every phone opens a door to the whole internet. The skills to handle that world, like managing big feelings, time and life online, mostly fall between lessons. That's where we come in.</p>
   <blockquote class="why-belief">It's not a different child. It's the same child, in the right environment.</blockquote>
   <a class="why-more" href="#story">Read our story →</a>
 </section>
@@ -2465,7 +2459,6 @@ function route(){
   else if(h==="join"){ page="reserve"; html = PAGES.reserve(); }
   else { if(!PAGES[h] || h==="guide") page="home"; html = PAGES[page](); }
   $("#app").innerHTML = html;
-  $("#home-sources").hidden = page!=="home";
   const sv = $("#survey"); if(sv){ applyWho(sv); surveyLoad(sv); qzInit(sv); }
   if(synth) synth.cancel();
   setupListen();
