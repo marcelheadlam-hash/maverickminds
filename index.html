@@ -1946,7 +1946,7 @@ team(){
     <details><summary>Site head <span class="pill">Paid</span></summary><div><p>You'll lead our team at one venue every Saturday, keep sessions safe and calm, and be the first person parents talk to.</p><ul class="ticks"><li>Experience leading SEN support for children, ideally ADHD or autism</li><li>You'll train as our deputy safeguarding lead</li><li>Available on Saturdays, with some half-term days</li></ul></div></details>
     <details><summary>Teaching assistant <span class="pill">Paid</span></summary><div><p>You'll help run Level Up lessons and games, and be the steady adult a child can go to.</p><ul class="ticks"><li>Experience supporting children with SEN, ideally ADHD or autism. Lived and family experience counts.</li><li>Calm, patient and happy to join in with play</li><li>Available on Saturdays, with some half-term days</li></ul></div></details>
     <details><summary>Volunteer <span class="pill">Unpaid</span></summary><div><p>Ideal for psychology, education or social work students who want real experience with neurodivergent young people.</p><ul class="ticks"><li>Interest in neurodivergence and youth work</li><li>Reliable, and happy to follow our safeguarding guidelines</li><li>Training and a reference provided</li></ul></div></details>
-    <details><summary>Professional adviser <span class="pill">Adviser</span></summary><div><p>For occupational therapists, speech and language therapists and educational psychologists who want to help shape our sessions.</p><ul class="ticks"><li>Review our sessions, curriculum and training a few times a year</li><li>Help run a parent workshop if you'd like to</li><li>Registered with your professional body, such as the HCPC</li></ul></div></details>
+    <details><summary>Professional adviser <span class="pill">Adviser</span></summary><div><p>For occupational therapists, speech and language therapists, educational psychologists and digital or online safety specialists who want to help shape our sessions.</p><ul class="ticks"><li>Review our sessions, curriculum and training a few times a year</li><li>Help run a parent workshop if you'd like to</li><li>Registered with your professional body where one applies, such as the HCPC</li></ul></div></details>
   </div>
 </section>
 <section>
@@ -2039,6 +2039,8 @@ faq(){
 <section class="faq">
   ${q("Does my child need a diagnosis?", `<p>No. Our workshops are open to every child. Many of the children we design for have ADHD, autism, or both (AuDHD), whether they're diagnosed, waiting for an assessment, or have never been assessed at all. Nobody has to prove anything to join.</p>`)}
   ${q("My child is still in Year 6. Can they come?", `<p>Yes, once they're 11. Our workshops help children prepare for the move to secondary school, as well as settle in once they're there.</p>`)}
+  ${q("What will my child actually learn?", `<p>Seven life skills: feelings and regulation, friendships and communication, organisation and independence, change and the unexpected, understanding their brain, getting ready for what's next, and living with tech. Every group starts with feelings and regulation, then we choose the order with the group. See <a href="#sessions">how sessions work</a>.</p>`)}
+  ${q("Will my child be on screens?", `<p>A little, and on purpose. Level Up lessons are hands-on, including "Living with tech", which teaches children to use AI well, spot fake content and stay safe online. Gaming is one option during "Play their way", alongside Lego, art, coding and outdoor play, never the only one. The app is about ten minutes a day.</p>`)}
   ${q("Is it only for neurodivergent kids?", `<p>No. Maverick Minds is for every 11 to 13-year-old. We design every session around how ADHD and autistic kids learn best: short bursts, movement, hands-on activities and a calm room. That's how most children learn best, so every child gets more out of it.</p>`)}
   ${q("What if my child needs one-to-one support?", `<p>We'll plan it with you on your get-to-know-you call. One-to-one support for part of a session is included at no extra cost. If your child needs one-to-one support for the whole session, every week, we'll talk honestly with you about whether we're the right fit.</p>`)}
   ${q("How does the £50 deposit work?", `<p>It holds your child's founding place. We give it back after their first month. If we don't launch, or your child doesn't start with us, you get it back in full. If you change your mind, tell us before their first session and we'll refund it.</p>`)}
@@ -2054,7 +2056,7 @@ faq(){
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#fees">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
   ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming, and you can cancel your membership at any time.</p>`)}
   ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 13. Their friend's parent needs to reserve a place too, and you can tell us you'd like them to come together.</p>`)}
-  ${q("What do the staff know about ADHD and autism?", `<p>Our sessions are run by trained SEN experts. Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
+  ${q("What do the staff know about ADHD and autism?", `<p>Our sessions are run by staff trained in ADHD, autism and SEN. Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
   ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them. You'll also see it in the app.</p>`)}
 </section>`;
 },
@@ -2161,15 +2163,16 @@ complaints(){
 schools(){
   return `
 <section class="stack">
-  <span class="eyebrow">For schools and SENCOs</span>
+  <span class="eyebrow">For SENCOs, PSHE and pastoral leads</span>
   <h1>Teachers are the heroes. We're the backup.</h1>
-  <p class="lede">We run weekend workshops outside school for every child aged 11 to 13, designed around children with ADHD, autism, or both (AuDHD), focused on social and emotional development and the move to secondary school. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
+  <p class="lede">We run weekend workshops outside school for every child aged 11 to 13, designed around children with ADHD, autism, or both (AuDHD). They learn seven life skills, from handling big feelings to living with tech, with extra support around the move to secondary school. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
 </section>
 <section class="stack">
   <h2>How we can work together</h2>
   <div class="grid four">
     <div class="card"><h3>Tell your families about us</h3><p>Share our website or ask us for a flyer. Families sign up themselves, so there's no referral form to fill in.</p></div>
     <div class="card"><h3>Share what works</h3><p>With a parent's consent, we can share the strategies that help a child with us, and you can share what helps at school.</p></div>
+    <div class="card"><h3>Back up your PSHE lessons</h3><p>We cover feelings, friendships, money and online safety in small groups, so children get more time to practise what you've started in class.</p></div>
     <div class="card"><h3>Support the move to Year 7</h3><p>Let your Year 6 families know about us before the move, so their child has somewhere steady during a big change.</p></div>
     <div class="card"><h3>Help us hear from families</h3><p>Share a short invitation with parents and carers for a 20 to 30 minute informal chat, in person, by phone or online. We can send you a parent-friendly flyer. Conversations are confidential and voluntary.</p></div>
     <div class="card"><h3>Shape our workshops</h3><p>Tell us what you see in your school community. <a href="#contact">Get in touch</a> for a short call, or answer our <a href="#survey">questionnaire</a>, which has questions just for school staff.</p></div>
