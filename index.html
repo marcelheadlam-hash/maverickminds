@@ -632,7 +632,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
 <section class="wrap home-sources sec-learn" id="home-sources" aria-labelledby="home-sources-h" hidden>
   <h2 id="home-sources-h">Sources</h2>
   <ol class="why-sources">
-    <li id="why-s1">Department for Education, Suspensions and permanent exclusions in England, 2024/25. <a href="https://explore-education-statistics.service.gov.uk/find-statistics/suspensions-and-permanent-exclusions-in-england" target="_blank" rel="noopener">explore-education-statistics.service.gov.uk</a></li>
+    <li id="why-s1">Schools Week, New curriculum to be introduced in 2028 as review published, November 2025. <a href="https://schoolsweek.co.uk/new-curriculum-to-be-introduced-in-2028-as-review-published" target="_blank" rel="noopener">schoolsweek.co.uk</a></li>
   </ol>
 </section>
 
@@ -1580,6 +1580,7 @@ function reserveForm(){
   ${field("rs-child","Your child's first name (optional)",`<input id="rs-child" name="child_first_name" autocomplete="off">`)}
   ${field("rs-year","Your child's school year",`<select id="rs-year" name="school_year" required><option value="">Choose one</option><option>Year 6</option><option>Year 7</option><option>Year 8</option><option>Another year</option></select>`, "Our workshops are for ages 11 to 13, from the last year of primary school to Year 8. Children in Year 6 are welcome once they're 11.")}
   ${field("rs-nd","Which best describes your child? (optional)",`<select id="rs-nd" name="child_neurotype"><option value="">Choose one</option><option>ADHD</option><option>Autistic</option><option>ADHD and autistic</option><option>Neither</option><option>Not sure</option><option>Prefer not to say</option></select>`, "Diagnosed or not. This helps us plan groups, and you don't have to answer.")}
+  <div class="field check"><input type="checkbox" id="rs-nd-consent" name="health_consent" value="Yes"><label for="rs-nd-consent">If you chose ADHD, autistic or both: I agree to Maverick Minds storing this as health information, only to plan groups and support. I can ask for it to be deleted at any time.</label></div>
   ${field("rs-area","Your postcode area",`<input id="rs-area" name="postcode_area" placeholder="For example, HA2" autocomplete="off" required>`, "Just the first part of your postcode. It helps us choose a venue that's easy to reach.")}
   ${field("rs-time","Morning or afternoon session?",`<select id="rs-time" name="session_preference" required><option value="">Choose one</option><option>Morning</option><option>Afternoon</option><option>Either</option></select>`)}
   ${field("rs-heard","How did you hear about us? (optional)",`<input id="rs-heard" name="heard_from">`)}
@@ -1731,14 +1732,14 @@ home(){
       </svg></span>
     <span class="eyebrow">Saturday workshops in London · ages 11 to 13 · from summer 2027</span>
     <h1>The skills school doesn't teach yet.</h1>
-    <p class="lede">Saturday workshops for every 11 to 13-year-old, designed with ADHD and autistic brains in mind. If it works for them, it works for everyone. Brilliant, as they are.</p>
+    <p class="lede">Saturday workshops for every 11 to 13-year-old, designed with ADHD and autistic brains in mind.</p>
     <div class="btns"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
   </div>
 </section>
 <section class="stack sec-learn" aria-labelledby="why-h">
   <span class="eyebrow">Why we exist</span>
-  <h2 id="why-h">School is built for one kind of brain.</h2>
-  <p class="lede">Teachers are doing their best with full classes and too little support. But when the system is stretched, the neurodivergent child pays: pupils on SEN support are suspended at four times the rate of their classmates.<sup><a href="#why-s1">1</a></sup> And it gets hardest at the move to secondary school, when almost everything changes at once.</p>
+  <h2 id="why-h">The world has changed. The timetable is catching up.</h2>
+  <p class="lede">Teachers are doing their best with full classes and a packed timetable. England's national curriculum is being updated for the first time in over a decade, but the new version won't reach classrooms until September 2028.<sup><a href="#why-s1">1</a></sup> Until then, life skills like handling big feelings, managing time and staying safe online fall between lessons. And it's hardest at the move to secondary school, when almost everything changes at once.</p>
   <blockquote class="why-belief">It's not a different child. It's the same child, in the right environment.</blockquote>
   <a class="why-more" href="#story">Read our story →</a>
 </section>
@@ -2519,6 +2520,11 @@ document.addEventListener("submit", async e=>{
       bad.type==="email" && bad.value.trim() ? "Please check the email address. It doesn't look quite right." :
       `Please fill in “${lbl?lbl.textContent:"this field"}”.`;
     const st=bad.closest(".qz-step"); if(st && typeof qzGoTo==="function") qzGoTo(form, st); msg.classList.add("err"); bad.focus(); return;
+  }
+  const nd = form.querySelector("#rs-nd"), ndOk = form.querySelector("#rs-nd-consent");
+  if(nd && ndOk && ["ADHD","Autistic","ADHD and autistic"].includes(nd.value) && !ndOk.checked){
+    msg.textContent = "To share whether your child has ADHD or is autistic, please tick the box agreeing to us storing it. Or choose “Prefer not to say”.";
+    msg.classList.add("err"); ndOk.focus(); return;
   }
   const url = FORMS[form.dataset.form];
   if(!url){ msg.textContent = "Preview only: this form isn't connected yet. Nothing was sent."; msg.classList.add("err"); return; }
