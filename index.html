@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maverick Minds</title>
-<meta name="description" content="The world wasn't built for their brains. Weekend workshops in London for children aged 11 to 13 with ADHD, autism, or both, building social and emotional skills for the move to secondary school.">
+<meta name="description" content="The skills school doesn't teach yet. Saturday workshops in London for every 11 to 13-year-old, designed with ADHD and autistic brains in mind. No diagnosis needed.">
 <meta property="og:title" content="Maverick Minds">
-<meta property="og:description" content="The world wasn't built for their brains. Weekend workshops in London for children aged 11 to 13 with ADHD, autism, or both, building social and emotional skills for the move to secondary school.">
+<meta property="og:description" content="The skills school doesn't teach yet. Saturday workshops in London for every 11 to 13-year-old, designed with ADHD and autistic brains in mind. No diagnosis needed.">
 <meta name="theme-color" content="#C2410C">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23EA580C'%3E%3Ccircle cx='40' cy='38' r='16'/%3E%3Ccircle cx='28' cy='58' r='16'/%3E%3Ccircle cx='40' cy='76' r='16'/%3E%3Crect x='40' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='26,84 14,106 44,90'/%3E%3C/g%3E%3Cg fill='%237C3AED'%3E%3Ccircle cx='80' cy='38' r='16'/%3E%3Ccircle cx='92' cy='58' r='16'/%3E%3Ccircle cx='80' cy='76' r='16'/%3E%3Crect x='64' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='94,84 106,106 76,90'/%3E%3C/g%3E%3C/svg%3E">
 <style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:760px;width:100%;margin:8px auto 0}
@@ -1572,13 +1572,14 @@ function reserveForm(){
   <input type="hidden" name="_subject" value="New founding place reservation – Maverick Minds">
   <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
   <h2>Reserve a founding place</h2>
-  <p class="hint">It takes about two minutes. Please don't include medical details here. We'll ask for anything we need privately, on your get-to-know-you call.</p>
+  <p class="hint">It takes about two minutes. Apart from the one optional question below, please don't include medical details here. We'll ask for anything we need privately, on your get-to-know-you call.</p>
   ${field("rs-name","Your name",`<input id="rs-name" name="parent_name" autocomplete="name" required>`)}
   ${field("rs-email","Email address",`<input id="rs-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("rs-phone","Phone number (optional)",`<input id="rs-phone" name="phone" type="tel" autocomplete="tel">`)}
   <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="rs-c-email"><input type="checkbox" id="rs-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="rs-c-text"><input type="checkbox" id="rs-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="rs-c-wa"><input type="checkbox" id="rs-c-wa" name="contact_preference" value="WhatsApp"> WhatsApp</label><label class="pref" for="rs-c-call"><input type="checkbox" id="rs-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="rs-c-video"><input type="checkbox" id="rs-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
   ${field("rs-child","Your child's first name (optional)",`<input id="rs-child" name="child_first_name" autocomplete="off">`)}
   ${field("rs-year","Your child's school year",`<select id="rs-year" name="school_year" required><option value="">Choose one</option><option>Year 6</option><option>Year 7</option><option>Year 8</option><option>Another year</option></select>`, "Our workshops are for ages 11 to 13, from the last year of primary school to Year 8. Children in Year 6 are welcome once they're 11.")}
+  ${field("rs-nd","Which best describes your child? (optional)",`<select id="rs-nd" name="child_neurotype"><option value="">Choose one</option><option>ADHD</option><option>Autistic</option><option>ADHD and autistic</option><option>Neither</option><option>Not sure</option><option>Prefer not to say</option></select>`, "Diagnosed or not. This helps us plan groups, and you don't have to answer.")}
   ${field("rs-area","Your postcode area",`<input id="rs-area" name="postcode_area" placeholder="For example, HA2" autocomplete="off" required>`, "Just the first part of your postcode. It helps us choose a venue that's easy to reach.")}
   ${field("rs-time","Morning or afternoon session?",`<select id="rs-time" name="session_preference" required><option value="">Choose one</option><option>Morning</option><option>Afternoon</option><option>Either</option></select>`)}
   ${field("rs-heard","How did you hear about us? (optional)",`<input id="rs-heard" name="heard_from">`)}
@@ -1729,8 +1730,8 @@ home(){
         <g class="chat"><circle cx="54" cy="12" r="3.2"/><circle cx="60" cy="9" r="3.2"/><circle cx="66" cy="12" r="3.2"/></g>
       </svg></span>
     <span class="eyebrow">Saturday workshops in London · ages 11 to 13 · from summer 2027</span>
-    <h1>The world wasn't built for their brains.</h1>
-    <p class="lede">We believe every neurodivergent child deserves to thrive in it, without having to become someone else. Brilliant, as they are.</p>
+    <h1>The skills school doesn't teach yet.</h1>
+    <p class="lede">Saturday workshops for every 11 to 13-year-old, designed with ADHD and autistic brains in mind. If it works for them, it works for everyone. Brilliant, as they are.</p>
     <div class="btns"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
   </div>
 </section>
@@ -1740,6 +1741,19 @@ home(){
   <p class="lede">Teachers are doing their best with full classes and too little support. But when the system is stretched, the neurodivergent child pays: pupils on SEN support are suspended at four times the rate of their classmates.<sup><a href="#why-s1">1</a></sup> And it gets hardest at the move to secondary school, when almost everything changes at once.</p>
   <blockquote class="why-belief">It's not a different child. It's the same child, in the right environment.</blockquote>
   <a class="why-more" href="#story">Read our story →</a>
+</section>
+<section class="stack sec-sessions" aria-labelledby="learn-h">
+  <span class="eyebrow">What they learn</span>
+  <h2 id="learn-h">Six life skills, one step at a time.</h2>
+  <ul class="ticks">
+    <li><b>Feelings and regulation:</b> spotting big feelings early and having a plan to calm down</li>
+    <li><b>Friendships and communication:</b> joining in, fixing a falling-out, saying what you need</li>
+    <li><b>Organisation and independence:</b> planners, managing time, getting ready on your own</li>
+    <li><b>Change and the unexpected:</b> coping when plans change and trying new things</li>
+    <li><b>Understanding my brain:</b> how every brain works differently, their strengths, speaking up for themselves</li>
+    <li><b>Ready for what's next:</b> travelling alone, money, staying safe online</li>
+  </ul>
+  <a class="why-more" href="#sessions">How a Saturday works →</a>
 </section>
 <section class="stack sec-sessions" aria-labelledby="how-h">
   <span class="eyebrow">How we help</span>
@@ -1759,7 +1773,7 @@ home(){
   <span class="eyebrow">What you get</span>
   <h2 id="what-h">Calm, SEN-friendly workshops for ages 11 to 13.</h2>
   <ul class="ticks">
-    <li><b>Two hours every Saturday</b> for children with ADHD, autism, or both. No diagnosis needed.</li>
+    <li><b>Two hours every Saturday</b> for every child, built around ADHD and autistic kids. No diagnosis needed.</li>
     <li><b>One adult for every five children</b>, all trained SEN staff with an Enhanced DBS check.</li>
     <li><b>£129 a month</b> for every session and the app, with one-to-one support at no extra cost. Cancel any time.</li>
   </ul>
@@ -1831,7 +1845,19 @@ sessions(){
 <section class="stack">
   <span class="eyebrow">Saturday workshops · from summer 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Two calm hours every Saturday for children aged 11 to 13 with ADHD, autism, or both. No diagnosis needed.</p>
+  <p class="lede">Two calm hours every Saturday for 11 to 13-year-olds. Built around ADHD and autistic kids, open to all. No diagnosis needed.</p>
+</section>
+<section class="stack">
+  <h2>What they learn</h2>
+  <p>Every group starts with feelings and regulation. We choose the order of the rest with each group.</p>
+  <ul class="ticks">
+    <li><b>Feelings and regulation:</b> body signals, naming feelings, a personal calm-down plan</li>
+    <li><b>Friendships and communication:</b> joining in, repairing a falling-out, saying what you need</li>
+    <li><b>Organisation and independence:</b> planners, making time visible, getting ready on your own</li>
+    <li><b>Change and the unexpected:</b> coping when plans change, trying new things, asking for help</li>
+    <li><b>Understanding my brain:</b> how every brain works differently, including ADHD and autism, strengths, speaking up for yourself</li>
+    <li><b>Ready for what's next:</b> travelling alone, money, staying safe online</li>
+  </ul>
 </section>
 <section class="stack">
   <h2>What happens in a session</h2>
@@ -1850,7 +1876,7 @@ sessions(){
       ${M("12:45 – 1:15pm","Arrive","Up to 15 minutes before or after the start. Delays happen, and nobody misses out.")}
       ${M("1:15 – 1:25pm","Ice breaker","A simple game like people bingo, so kids can talk without having to think up questions. Instructions are written down, and they can play in a pair, with a host, or watch until they're ready.")}
       ${M("1:25 – 1:30pm","Break","Five minutes to reset.")}
-      ${M("1:30 – 2:15pm","Level Up","A hands-on lesson on feelings, friendships or everyday life, with a five-minute break every 10 to 15 minutes. Some weeks include a guest speaker, always with our team in the room.")}
+      ${M("1:30 – 2:15pm","Level Up","A hands-on lesson on one of our six life skills, with a five-minute break every 10 to 15 minutes. Some weeks include a guest speaker, always with our team in the room.")}
       ${M("2:15 – 3:00pm","Play their way","Time with kids who share their interests, in a sensory-friendly space. Staff help with joining in and emotional support.")}
       ${M("3:00pm","Pickup","We share how today went, including who they've started to bond with.")}
     </ul></div></details>
@@ -1870,7 +1896,7 @@ sessions(){
   <div class="stack">
     <h2>The details</h2>
     <dl class="facts">
-      <dt>Who</dt><dd>Ages 11 to 13, preparing for or settling into secondary school. ADHD, autistic or AuDHD, diagnosed or not.</dd>
+      <dt>Who</dt><dd>Every child aged 11 to 13, preparing for or settling into secondary school. Designed around ADHD, autistic and AuDHD kids, diagnosed or not.</dd>
       <dt>When</dt><dd>Every Saturday, 2 hours. Two sessions a day.</dd>
       <dt>Price</dt><dd>£129 a month, including the app. Or £35 a session. <a href="#fees">See fees</a>.</dd>
       <dt>Staff</dt><dd>Trained SEN experts, 1 adult for every 5 children, all Enhanced DBS checked. One-to-one support included where needed.</dd>
@@ -1883,17 +1909,6 @@ sessions(){
   <p class="lede">We don't invent our own theories. Sessions draw on methods UK schools already use with autistic and ADHD pupils, and nobody is asked to mask.</p>
   <span class="chips"><span>Zones of Regulation</span><span>Neurodiversity-affirming</span><span>SCERTS</span><span>TEACCH</span><span>Executive function support</span><span>Movement and short bursts</span></span>
   <div class="faq">
-    <details><summary>The six Level Up themes</summary><div>
-      <p>Every group starts with feelings and regulation. We choose the order of the rest with each group.</p>
-      <ul class="ticks">
-        <li><b>Feelings and regulation:</b> body signals, naming feelings, a personal calm-down plan</li>
-        <li><b>Friendships and communication:</b> joining in, repairing a falling-out, saying what you need</li>
-        <li><b>Organisation and independence:</b> planners, making time visible, getting ready on your own</li>
-        <li><b>Change and the unexpected:</b> coping when plans change, trying new things, asking for help</li>
-        <li><b>Understanding my brain:</b> what ADHD and autism mean, strengths, speaking up for yourself</li>
-        <li><b>Ready for what's next:</b> travelling alone, money, staying safe online</li>
-      </ul>
-    </div></details>
     <details><summary>Who runs the sessions</summary><div>
       <ul class="ticks">
         <li>Trained SEN experts, with a site head at every venue trained as a deputy safeguarding lead</li>
@@ -2022,9 +2037,9 @@ faq(){
   <p class="lede">If your question isn't here, <a href="#contact">send us a message</a> and Elysse or Marcel will get back to you.</p>
 </section>
 <section class="faq">
-  ${q("Does my child need a diagnosis?", `<p>No. Our workshops are for children with ADHD, autism, or both (AuDHD), whether they're diagnosed, waiting for an assessment, or have never been assessed at all. If your child finds busy places hard and needs a bit more patience than a classroom can give, they're welcome.</p>`)}
+  ${q("Does my child need a diagnosis?", `<p>No. Our workshops are open to every child. Many of the children we design for have ADHD, autism, or both (AuDHD), whether they're diagnosed, waiting for an assessment, or have never been assessed at all. Nobody has to prove anything to join.</p>`)}
   ${q("My child is still in Year 6. Can they come?", `<p>Yes, once they're 11. Our workshops help children prepare for the move to secondary school, as well as settle in once they're there.</p>`)}
-  ${q("My child doesn't have SEN. Can they still come?", `<p>Yes. We're SEN-friendly, which means everything is designed so children with additional needs feel at home. That makes it a calm, understanding place for any young person who finds school hard.</p>`)}
+  ${q("Is it only for neurodivergent kids?", `<p>No. Maverick Minds is for every 11 to 13-year-old. We design every session around how ADHD and autistic kids learn best: short bursts, movement, hands-on activities and a calm room. That's how most children learn best, so every child gets more out of it.</p>`)}
   ${q("What if my child needs one-to-one support?", `<p>We'll plan it with you on your get-to-know-you call. One-to-one support for part of a session is included at no extra cost. If your child needs one-to-one support for the whole session, every week, we'll talk honestly with you about whether we're the right fit.</p>`)}
   ${q("How does the £50 deposit work?", `<p>It holds your child's founding place. We give it back after their first month. If we don't launch, or your child doesn't start with us, you get it back in full. If you change your mind, tell us before their first session and we'll refund it.</p>`)}
   ${q("Can I cancel my membership?", `<p>Yes, any time. There's no minimum term.</p>`)}
@@ -2148,7 +2163,7 @@ schools(){
 <section class="stack">
   <span class="eyebrow">For schools and SENCOs</span>
   <h1>Teachers are the heroes. We're the backup.</h1>
-  <p class="lede">We run weekend workshops outside school for children aged 11 to 13 with ADHD, autism, or both (AuDHD), focused on social and emotional development and the move to secondary school. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
+  <p class="lede">We run weekend workshops outside school for every child aged 11 to 13, designed around children with ADHD, autism, or both (AuDHD), focused on social and emotional development and the move to secondary school. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
 </section>
 <section class="stack">
   <h2>How we can work together</h2>
