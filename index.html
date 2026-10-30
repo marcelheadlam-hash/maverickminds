@@ -80,6 +80,8 @@ h2{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em}
 h3{font-size:1.2rem}
 p{margin:0}
 .lede{font-size:1.15em;color:var(--muted)}
+.why-text{display:flex;flex-direction:column;gap:1.1em;max-width:62ch}
+.why-text .lede{line-height:1.85;margin:0}
 .eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
 
 /* header + burger menu */
@@ -1730,7 +1732,11 @@ home(){
 <section class="stack sec-learn" aria-labelledby="why-h">
   <span class="eyebrow">Why we exist</span>
   <h2 id="why-h">The world has changed. The timetable is catching up.</h2>
-  <p class="lede">A hundred years ago, children learned their times tables, and the fastest way to send a message was a telegram. A hundred years later, children still learn their times tables, and it still matters. But now a message crosses the world in a second, AI can write an essay, and every phone opens a door to the whole internet. The skills to handle that world, like managing big feelings, time and life online, mostly fall between lessons. That's where we come in.</p>
+  <div class="why-text">
+    <p class="lede">A hundred years ago, children learned their times tables, and the fastest way to send a message was a telegram.</p>
+    <p class="lede">A hundred years later, children still learn their times tables, and it still matters. But now a message crosses the world in a second, AI can write an essay, and every phone opens a door to the whole internet.</p>
+    <p class="lede">The skills to handle that world, like managing big feelings, time and life online, get squeezed into the odd PSHE lesson, if they're taught at all. That's where we come in.</p>
+  </div>
   <blockquote class="why-belief">It's not a different child. It's the same child, in the right environment.</blockquote>
   <a class="why-more" href="#story">Read our story →</a>
 </section>
