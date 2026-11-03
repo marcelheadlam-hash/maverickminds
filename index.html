@@ -422,7 +422,7 @@ html.calm .hero-logo *,html.calm .tick-anim *{animation:none!important;stroke-da
 html.calm .flip-inner{transition:none}
 html.calm .hero-logo{box-shadow:none}
 .road{margin-top:8px}
-.stops{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.stops{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .stop{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;min-width:0}
 .stop-pin{width:40px;height:40px;border-radius:50%;background:var(--sec);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;margin-bottom:-20px;z-index:1;border:3px solid var(--surface)}
 .stop-card{width:100%;flex:1;background:var(--sec-soft);border:2px solid var(--sec);border-radius:16px;padding:26px 14px 14px;display:flex;flex-direction:column;gap:4px;text-align:center}
@@ -1755,10 +1755,10 @@ home(){
 <section class="stack sec-sessions" aria-labelledby="how-h">
   <span class="eyebrow">How a session works</span>
   <h2 id="how-h">Learn it. Play it. Make it your own.</h2>
-  <div class="loop" role="img" aria-label="Every week, in three hours: your child learns a life skill at Level Up, plays team games, works on their Passion Project, and you get an update at pickup. The next session builds on it.">
+  <div class="loop" role="img" aria-label="Every week, in three hours: your child learns a life skill at Level Up, makes their own skill card, plays team games, has lunch, works on their Passion Project, and you get an update at pickup. The next session builds on it.">
     <ol class="loop-steps" aria-hidden="true">
-      <li class="sat"><b>Learn it</b><span>Level Up, 1 hour 15 minutes</span></li>
-      <li class="sat"><b>Play it</b><span>Team games, 30 minutes</span></li>
+      <li class="sat"><b>Learn it</b><span>Level Up and My card, 1 hour 15 minutes</span></li>
+      <li class="sat"><b>Play it</b><span>Team games, 15 minutes</span></li>
       <li class="sat"><b>Make it your own</b><span>Passion Projects, 1 hour</span></li>
       <li class="home"><b>You see it</b><span>Your update at pickup</span></li>
     </ol>
@@ -1862,18 +1862,22 @@ sessions(){
   <p>Every session follows the same shape, so it feels familiar from week one. Three hours in total.</p>
   <div class="road">
     <ol class="stops">
-    <li class="stop"><span class="stop-pin" aria-hidden="true">1</span><div class="stop-card"><span class="stop-time">15 min</span><h3>Arrive and settle</h3><p>A calm start. No rush.</p></div></li>
-    <li class="stop"><span class="stop-pin" aria-hidden="true">2</span><div class="stop-card"><span class="stop-time">1 hr 15 min</span><h3>Level Up</h3><p>This week's life skill, with breaks.</p></div></li>
-    <li class="stop"><span class="stop-pin" aria-hidden="true">3</span><div class="stop-card"><span class="stop-time">30 min</span><h3>Team games</h3><p>Team-based games, just for fun.</p></div></li>
-    <li class="stop"><span class="stop-pin" aria-hidden="true">4</span><div class="stop-card"><span class="stop-time">1 hour</span><h3>Passion Projects</h3><p>A personal project in a track they choose.</p><span class="chips"><span>Creative</span><span>Tech</span><span>Sport and fitness</span><span>Beauty and fashion</span><span>Enterprise</span></span></div></li>
-    <li class="stop"><span class="stop-pin" aria-hidden="true">5</span><div class="stop-card"><span class="stop-time">At pickup</span><h3>Your update</h3><p>How today went.</p></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">1</span><div class="stop-card"><span class="stop-time">10 min</span><h3>Arrive and settle</h3><p>A calm start. No rush.</p></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">2</span><div class="stop-card"><span class="stop-time">1 hour</span><h3>Level Up</h3><p>This week's life skill.</p></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">3</span><div class="stop-card"><span class="stop-time">15 min</span><h3>My card</h3><p>Make the skill their own.</p></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">4</span><div class="stop-card"><span class="stop-time">15 min</span><h3>Team games</h3><p>Up and moving, just for fun.</p></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">5</span><div class="stop-card"><span class="stop-time">20 min</span><h3>Lunch</h3><p>A packed lunch, together.</p></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">6</span><div class="stop-card"><span class="stop-time">1 hour</span><h3>Passion Projects</h3><p>A personal project in a track they choose.</p><span class="chips"><span>Creative</span><span>Tech</span><span>Sport and fitness</span><span>Beauty and fashion</span><span>Enterprise</span></span></div></li>
+    <li class="stop"><span class="stop-pin" aria-hidden="true">7</span><div class="stop-card"><span class="stop-time">At pickup</span><h3>Your update</h3><p>How today went.</p></div></li>
     </ol>
   </div>
   <div class="faq">
     <details><summary>See it step by step</summary><div><ul class="ticks">
-      ${M("15 minutes","Arrive and settle","A calm start. Delays happen, and nobody misses out.")}
-      ${M("1 hour 15 minutes","Level Up","A hands-on lesson on one of our seven life skills, with a five-minute break every 10 to 15 minutes. Some weeks include a guest speaker, always with our team in the room.")}
-      ${M("30 minutes","Team games","Team-based games, just for fun. Joining in is encouraged, never forced.")}
+      ${M("10 minutes","Arrive and settle","A calm start. Delays happen, and nobody misses out.")}
+      ${M("1 hour","Level Up","A hands-on lesson on one of our seven life skills: a hook to spark curiosity, teaching, a short video with questions, then practice. Standing, moving and fidgeting are always fine. Some weeks include a guest speaker, always with our team in the room.")}
+      ${M("15 minutes","My card","Each child gets this week's skill card and makes their own version on the back, answering the same three questions every week. It goes in the journal from their welcome pack.")}
+      ${M("15 minutes","Team games","Team-based games, up and moving, just for fun. Joining in is encouraged, never forced.")}
+      ${M("20 minutes","Lunch","A packed lunch from home, eaten together with our team.")}
       ${M("1 hour","Passion Projects","Each child picks a track (creative, tech, sport and fitness, beauty and fashion, or enterprise) and works on a personal project, with the kit to practise properly. One adult leads each track.")}
       ${M("At pickup","Your update","We share how today went, including who they've started to bond with.")}
     </ul></div></details>
@@ -2045,13 +2049,14 @@ faq(){
   ${q("Does my child need a diagnosis?", `<p>No. Our workshops are for every child, including children with ADHD, autism, or both (AuDHD), whether they're diagnosed, waiting for an assessment, or have never been assessed at all. Nobody has to prove anything to join.</p>`)}
   ${q("My child is still in Year 6. Can they come?", `<p>Yes, once they're 11. Our workshops help children prepare for the move to secondary school, as well as settle in once they're there.</p>`)}
   ${q("What will my child actually learn?", `<p>Seven life skills: feelings and regulation, friendships and communication, organisation and independence, change and the unexpected, understanding their brain, getting ready for what's next, and living with tech. Every group starts with feelings and regulation, then we choose the order with the group. See <a href="#sessions">how sessions work</a>.</p>`)}
-  ${q("Will my child be on screens?", `<p>A little, and on purpose. Level Up lessons are hands-on, including "Living with tech", which teaches children to use AI well, spot fake content and stay safe online. Team games are active and screen-free, and screens in Passion Projects are only used when a project needs them, such as coding or design.</p>`)}
+  ${q("Will my child be on screens?", `<p>A little, and on purpose. Each Level Up lesson includes one short video that we've checked first, shown without ads. Lessons are otherwise hands-on, including "Living with tech", which teaches children to use AI well, spot fake content and stay safe online. Team games are active and screen-free, and screens in Passion Projects are only used when a project needs them, such as coding or design.</p>`)}
   ${q("Is it only for neurodivergent kids?", `<p>No. Maverick Minds is for every 11 to 13-year-old. We design every session around how kids who have ADHD or ASD learn best: short bursts, movement, hands-on activities and a calm room. That's how most children learn best, so every child gets more out of it.</p>`)}
   ${q("What if my child needs one-to-one support?", `<p>We'll plan it with you on your get-to-know-you call. One-to-one support for part of a session is included at no extra cost. If your child needs one-to-one support for the whole session, every week, we'll talk honestly with you about whether we're the right fit.</p>`)}
   ${q("How does the £50 deposit work?", `<p>It holds your child's founding place. We give it back after their first month. If we don't launch, or your child doesn't start with us, you get it back in full. If you change your mind, tell us before their first session and we'll refund it.</p>`)}
   ${q("Can I cancel my membership?", `<p>Yes, any time. There's no minimum term.</p>`)}
   ${q("What if my child misses a session?", `<p>Members can book a make-up session in another slot, so you don't lose out.</p>`)}
   ${q("What's the difference between the group and the small group?", `<p>Both have the same three-hour session, skills and Passion Projects. The group has up to 40 children with one adult for every 10, for £119 a month. The small group has up to 20 children with one adult for every 5, for £149 a month, for children who'd like more support. We'll help you choose on your get-to-know-you call.</p>`)}
+  ${q("What about lunch?", `<p>Please pack your child a lunch, with no nuts. There's a 20-minute lunch break, and our team eats with the children. Tell us about any allergies on your get-to-know-you call.</p>`)}
   ${q("What are Passion Projects?", `<p>The last hour of every session. Your child picks a track (creative, tech, sport and fitness, beauty and fashion, or enterprise) and works on a personal project, with the kit to practise properly. If they want to be a hairdresser, for example, we'll get them a hairdressing kit.</p>`)}
   ${q("What happens after Year 8?", `<p>Your child doesn't have to leave. Young people who want to stay can become junior leaders, helping younger members feel welcome and building their own confidence.</p>`)}
   ${q("Is this therapy, or instead of school?", `<p>No. We're not therapy or a medical service, and we don't replace school, SEN support, an EHC plan or CAMHS. We work alongside them. We'll never share anything about your child without your consent, unless we have a safeguarding concern.</p>`)}
@@ -2252,7 +2257,7 @@ fees(){
 <section class="stack">
   <h2>Every option includes</h2>
   <ul class="ticks">
-    <li>Three hours of Level Up, team games and Passion Projects, with all activities, materials and project kit</li>
+    <li>Three hours of Level Up, team games and Passion Projects, with all activities, materials and project kit. Please send a packed lunch.</li>
     <li>A get-to-know-you call, a one-page profile and a named host for your child</li>
     <li>An update after every session, and a monthly check-in with you</li>
   </ul>
