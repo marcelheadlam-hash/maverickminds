@@ -335,11 +335,11 @@ html.calm footer{border-top-color:var(--line)}
 .ticks .try{display:block;font-style:italic;color:var(--muted);margin-top:2px}
 @media (max-width:820px){.grid.commit{grid-template-columns:1fr}}
 .hero-film video,.hero-film-still{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:20px;background:#FFFAF4;box-shadow:6px 6px 0 var(--ink)}
-@media (max-width:640px){.hero-film video,.hero-film-still{aspect-ratio:4/5}}
-.hero-film-btn{position:absolute;right:14px;bottom:14px;font:700 .9rem/1 var(--body,inherit);padding:10px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer}
+.hero-film-btns{position:absolute;right:14px;bottom:14px;display:flex;gap:8px}
+.hero-film-btn{font:700 .9rem/1 var(--body,inherit);padding:10px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer}
 html.calm .hero-film video,html.calm .hero-film-still{box-shadow:none}
-html.calm .hero-film-btn{display:none}
-@media (max-width:640px){.hero-film{display:flex;flex-direction:column;align-items:flex-end;gap:12px}.hero-film-btn{position:static;border-color:var(--on-hero)}}
+html.calm .hero-film-btns{display:none}
+@media (max-width:640px){.hero-film{display:flex;flex-direction:column;align-items:flex-end;gap:12px}.hero-film-btns{position:static}.hero-film-btn{border-color:var(--on-hero)}}
 .loop{display:flex;flex-direction:column;gap:14px;position:relative}
 .loop-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
 .loop-steps li{position:relative;border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;gap:4px;text-align:center;border:2px solid var(--c-sessions);background:var(--c-sessions-soft)}
@@ -1731,14 +1731,12 @@ home(){
     <div class="btns"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
   </div>
   <figure class="hero-film">
-    <video id="hero-film" muted loop playsinline preload="metadata" poster="img/hero-story-desktop.jpg" role="img" aria-label="A school timetable from 1926 shows times tables, handwriting and geography. In 2026 it hasn't changed, while messages cross the world in a second, AI writes essays and phones open the whole internet. Skills like big feelings, time and life online are left off it. Then a new row appears, Life skills, with seven skills: big feelings, friendships, organisation, change, my brain, what's next and living with tech.">
-      <source src="img/hero-story-mobile.webm" type="video/webm" media="(max-width: 640px)">
-      <source src="img/hero-story-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+    <video id="hero-film" muted loop playsinline preload="metadata" poster="img/hero-story-desktop.jpg" role="img" aria-label="A short film with a narrator. In 1996, school was about remembering. Thirty years on, any fact is seconds away. The world has changed, but the school day hasn't. So every weekend there's Maverick Minds: three hours, one big theme each week, for example big feelings. First they learn what to do when they're angry or feeling sad, then they play it in team games, then it's their Passion Project, from drawing and coding to football, hairdressing and starting a business. Every theme builds a skill for life. Made to be fun, made for every child, ADHD and autism welcome, no diagnosis needed. Maverick Minds, every weekend: the skills to use what they know. Ready for the world they're growing into.">
       <source src="img/hero-story-desktop.webm" type="video/webm">
       <source src="img/hero-story-desktop.mp4" type="video/mp4">
     </video>
-    <img class="hero-film-still" id="hero-film-still" src="img/hero-story-desktop.jpg" alt="A timetable with a new row, Life skills, linked to seven skills: big feelings, friendships, organisation, change, my brain, what's next and living with tech." hidden>
-    <button type="button" class="hero-film-btn" id="hero-film-btn" aria-pressed="false">Pause</button>
+    <img class="hero-film-still" id="hero-film-still" src="img/hero-story-desktop.jpg" alt="Ready for the world they're growing into. The Maverick Minds logo and www.maverickminds.co.uk." hidden>
+    <div class="hero-film-btns"><button type="button" class="hero-film-btn" id="hero-film-sound" aria-pressed="false">Sound on</button><button type="button" class="hero-film-btn" id="hero-film-btn" aria-pressed="false">Pause</button></div>
   </figure>
 </section>
 <section class="stack sec-sessions" aria-labelledby="commit-h">
@@ -2664,8 +2662,7 @@ $("#skip").addEventListener("click", e=>{ e.preventDefault(); $("#app").focus();
 /* Calm mode */
 function heroFilm(){
   const v = document.getElementById("hero-film"); if(!v) return;
-  const small = matchMedia("(max-width: 640px)").matches;
-  v.poster = small ? "img/hero-story-mobile.jpg" : "img/hero-story-desktop.jpg";
+  v.poster = "img/hero-story-desktop.jpg";
   const b = document.getElementById("hero-film-btn");
   const img = document.getElementById("hero-film-still");
   if(img) img.src = v.poster;
@@ -2675,6 +2672,17 @@ function heroFilm(){
     v.hidden = false; if(img) img.hidden = true;
     if(v.dataset.paused==="1") v.pause(); else v.play().catch(()=>{});
   }
+  const snd = document.getElementById("hero-film-sound");
+  if(snd && !snd.dataset.ready){
+    snd.dataset.ready="1";
+    snd.addEventListener("click", ()=>{
+      const on = v.muted;
+      v.muted = !on;
+      if(on){ v.currentTime = 0; if(v.dataset.paused!=="1") v.play().catch(()=>{}); }
+      snd.textContent = on ? "Sound off" : "Sound on"; snd.setAttribute("aria-pressed", String(on));
+    });
+  }
+  if(calm && snd){ v.muted = true; snd.textContent = "Sound on"; snd.setAttribute("aria-pressed","false"); }
   if(b && !b.dataset.ready){
     b.dataset.ready="1";
     b.addEventListener("click", ()=>{
