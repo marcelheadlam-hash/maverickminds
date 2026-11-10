@@ -2660,35 +2660,38 @@ $("#skip").addEventListener("click", e=>{ e.preventDefault(); $("#app").focus();
 
 /* Calm mode */
 function heroFilm(){
+  /* Calm mode: still image, no film. Reduced motion (device setting): film shows but waits for Play. */
   const v = document.getElementById("hero-film"); if(!v) return;
   v.poster = "img/hero-story-desktop.jpg";
   const b = document.getElementById("hero-film-btn");
+  const snd = document.getElementById("hero-film-sound");
   const img = document.getElementById("hero-film-still");
   if(img) img.src = v.poster;
-  const calm = document.documentElement.classList.contains("calm") || matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(calm){ v.pause(); v.hidden = true; if(img) img.hidden = false; }
-  else {
+  const calm = document.documentElement.classList.contains("calm");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const setBtn = paused => { v.dataset.paused = paused ? "1" : "0"; if(b){ b.textContent = paused ? "Play" : "Pause"; b.setAttribute("aria-pressed", String(paused)); } };
+  const start = () => { v.hidden = false; if(img) img.hidden = true; setBtn(false); v.play().catch(()=>{}); };
+  if(calm){
+    v.pause(); v.hidden = true; if(img) img.hidden = false;
+    v.muted = true; if(snd){ snd.textContent = "Sound on"; snd.setAttribute("aria-pressed","false"); }
+  } else {
     v.hidden = false; if(img) img.hidden = true;
+    if(!v.dataset.paused) setBtn(reduced);
     if(v.dataset.paused==="1") v.pause(); else v.play().catch(()=>{});
   }
-  const snd = document.getElementById("hero-film-sound");
   if(snd && !snd.dataset.ready){
     snd.dataset.ready="1";
     snd.addEventListener("click", ()=>{
-      const on = v.muted;
-      v.muted = !on;
-      if(on){ v.currentTime = 0; if(v.dataset.paused!=="1") v.play().catch(()=>{}); }
-      snd.textContent = on ? "Sound off" : "Sound on"; snd.setAttribute("aria-pressed", String(on));
+      const turnOn = v.muted;
+      v.muted = !turnOn;
+      if(turnOn){ v.currentTime = 0; start(); }
+      snd.textContent = turnOn ? "Sound off" : "Sound on"; snd.setAttribute("aria-pressed", String(turnOn));
     });
   }
-  if(calm && snd){ v.muted = true; snd.textContent = "Sound on"; snd.setAttribute("aria-pressed","false"); }
   if(b && !b.dataset.ready){
     b.dataset.ready="1";
     b.addEventListener("click", ()=>{
-      const paused = v.dataset.paused==="1";
-      v.dataset.paused = paused ? "0" : "1";
-      b.textContent = paused ? "Pause" : "Play"; b.setAttribute("aria-pressed", String(!paused));
-      if(paused) v.play().catch(()=>{}); else v.pause();
+      if(v.dataset.paused==="1") start(); else { setBtn(true); v.pause(); }
     });
   }
 }
