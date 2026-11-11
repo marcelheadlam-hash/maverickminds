@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maverick Minds | Weekly life skills club for 11 to 13s in London</title>
-<meta name="description" content="The skills school doesn't teach yet. A weekly youth club in London for every 11 to 13-year-old, including those with ADHD or autism. No diagnosis needed.">
-<meta property="og:title" content="Maverick Minds | Weekly life skills club for 11 to 13s in London">
-<meta property="og:description" content="The skills school doesn't teach yet. A weekly youth club in London for every 11 to 13-year-old, including those with ADHD or autism. No diagnosis needed.">
+<title>Maverick Minds | Weekly life skills club for Years 7 to 13 in London</title>
+<meta name="description" content="The skills school doesn't teach yet. A weekly youth club and app in London for every young person from Year 7 to Year 13, including those with ADHD or autism. No diagnosis needed.">
+<meta property="og:title" content="Maverick Minds | Weekly life skills club for Years 7 to 13 in London">
+<meta property="og:description" content="The skills school doesn't teach yet. A weekly youth club and app in London for every young person from Year 7 to Year 13, including those with ADHD or autism. No diagnosis needed.">
 <meta name="theme-color" content="#C2410C">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23EA580C'%3E%3Ccircle cx='40' cy='38' r='16'/%3E%3Ccircle cx='28' cy='58' r='16'/%3E%3Ccircle cx='40' cy='76' r='16'/%3E%3Crect x='40' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='26,84 14,106 44,90'/%3E%3C/g%3E%3Cg fill='%237C3AED'%3E%3Ccircle cx='80' cy='38' r='16'/%3E%3Ccircle cx='92' cy='58' r='16'/%3E%3Ccircle cx='80' cy='76' r='16'/%3E%3Crect x='64' y='22' width='16' height='70' rx='3'/%3E%3Cpolygon points='94,84 106,106 76,90'/%3E%3C/g%3E%3C/svg%3E">
 <style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:760px;width:100%;margin:8px auto 0}
@@ -601,6 +601,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
       <nav class="main" aria-label="Main">
         <a href="#sessions" data-nav="sessions" class="sec-sessions">Sessions</a>
         <a href="#adhd-autism" data-nav="adhd-autism" class="sec-learn">ADHD and autism</a>
+        <a href="#the-app" data-nav="the-app" class="sec-sessions">The app</a>
         <a href="#fees" data-nav="fees" class="sec-sessions">Fees</a>
         <a href="#story" data-nav="story" class="sec-team">About us</a>
         <a href="#library" data-nav="library" class="sec-learn">Guides</a>
@@ -652,6 +653,7 @@ nav.main a[aria-current="page"]::before{background:#fff}
       <a href="#famous">Famous minds</a>
       <a href="#survey">Have your say</a>
       <a href="#safeguarding">Safeguarding</a>
+      <a href="#the-app">The app</a>
       <a href="#fees">Fees and booking terms</a>
       <a href="#privacy">Privacy notice</a>
       <a href="#accessibility">Accessibility</a>
@@ -1556,7 +1558,7 @@ function waitlistForm(){
   ${field("wl-email","Email address",`<input id="wl-email" name="email" type="email" autocomplete="email" required>`)}
   ${field("wl-phone","Phone number (optional)",`<input id="wl-phone" name="phone" type="tel" autocomplete="tel">`)}
   <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="wl-c-email"><input type="checkbox" id="wl-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="wl-c-text"><input type="checkbox" id="wl-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="wl-c-call"><input type="checkbox" id="wl-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="wl-c-video"><input type="checkbox" id="wl-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
-  ${field("wl-age","How old is your child?",`<input id="wl-age" name="child_age" type="number" inputmode="numeric" min="1" max="25" required aria-describedby="wl-age-hint">`, "Our first sessions are for ages 11 to 13, from Year 6 (once they're 11) to Year 8. If your child is younger or older, join anyway and we'll tell you when sessions for their age start.")}
+  ${field("wl-age","How old is your child?",`<input id="wl-age" name="child_age" type="number" inputmode="numeric" min="1" max="25" required aria-describedby="wl-age-hint">`, "Our sessions are for Years 7 to 13, in groups by stage. If your child is younger, join anyway and we'll tell you when they can start.")}
   ${field("wl-area","Your area or borough",`<input id="wl-area" name="area" placeholder="For example, Harrow">`)}
   ${field("wl-heard","How did you hear about us? (optional)",`<input id="wl-heard" name="heard_from">`)}
   ${consent("wl-consent")}
@@ -1576,7 +1578,7 @@ function reserveForm(){
   ${field("rs-phone","Phone number (optional)",`<input id="rs-phone" name="phone" type="tel" autocomplete="tel">`)}
   <fieldset class="field contact-pref"><legend>How would you like us to contact you?</legend><span class="hint">Choose as many as you like.</span><div class="pref-row"><label class="pref" for="rs-c-email"><input type="checkbox" id="rs-c-email" name="contact_preference" value="Email"> Email</label><label class="pref" for="rs-c-text"><input type="checkbox" id="rs-c-text" name="contact_preference" value="Text message"> Text message</label><label class="pref" for="rs-c-wa"><input type="checkbox" id="rs-c-wa" name="contact_preference" value="WhatsApp"> WhatsApp</label><label class="pref" for="rs-c-call"><input type="checkbox" id="rs-c-call" name="contact_preference" value="Phone call"> Phone call</label><label class="pref" for="rs-c-video"><input type="checkbox" id="rs-c-video" name="contact_preference" value="Video call"> Video call</label></div></fieldset>
   ${field("rs-child","Your child's first name (optional)",`<input id="rs-child" name="child_first_name" autocomplete="off">`)}
-  ${field("rs-year","Your child's school year",`<select id="rs-year" name="school_year" required><option value="">Choose one</option><option>Year 6</option><option>Year 7</option><option>Year 8</option><option>Another year</option></select>`, "Our youth club is for ages 11 to 13, from the last year of primary school to Year 8. Children in Year 6 are welcome once they're 11.")}
+  ${field("rs-year","Your child's school year",`<select id="rs-year" name="school_year" required><option value="">Choose one</option><option>Year 7</option><option>Year 8</option><option>Year 9</option><option>Year 10</option><option>Year 11</option><option>Year 12</option><option>Year 13</option><option>Another year</option></select>`, "Our youth club is for Years 7 to 13, in groups by stage: Years 7 and 8, Years 9 to 11, and sixth form.")}
   ${field("rs-nd","Which best describes your child? (optional)",`<select id="rs-nd" name="child_neurotype"><option value="">Choose one</option><option>ADHD</option><option>Has ASD</option><option>Has ADHD and ASD</option><option>Neither</option><option>Not sure</option><option>Prefer not to say</option></select>`, "Diagnosed or not. This helps us plan groups, and you don't have to answer.")}
   <div class="field check"><input type="checkbox" id="rs-nd-consent" name="health_consent" value="Yes"><label for="rs-nd-consent">If you chose ADHD, ASD or both: I agree to Maverick Minds storing this as health information, only to plan groups and support. I can ask for it to be deleted at any time.</label></div>
   ${field("rs-area","Your postcode area",`<input id="rs-area" name="postcode_area" placeholder="For example, HA2" autocomplete="off" required>`, "Just the first part of your postcode. It helps us choose a venue that's easy to reach.")}
@@ -1726,9 +1728,9 @@ home(){
         <circle class="eye-l" cx="48" cy="52" r="4.5" fill="#fff"/><circle class="eye-r" cx="72" cy="52" r="4.5" fill="#fff"/>
         <g class="chat"><circle cx="54" cy="12" r="3.2"/><circle cx="60" cy="9" r="3.2"/><circle cx="66" cy="12" r="3.2"/></g>
       </svg></span>
-    <span class="eyebrow">Weekly youth club in London · ages 11 to 13 · from September 2027</span>
+    <span class="eyebrow">Weekly youth club and app · Years 7 to 13 · from September 2027</span>
     <h1>The skills school doesn't teach yet.</h1>
-    <p class="lede">A weekly youth club for every 11 to 13-year-old, including those with ADHD or autism.</p>
+    <p class="lede">A weekly youth club in London for every young person from Year 7 to Year 13, including those with ADHD or autism.</p>
     <div class="btns"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#sessions">How sessions work</a></div>
   </div>
   <figure class="hero-film">
@@ -1802,6 +1804,17 @@ home(){
   </div>
   <a class="why-more" href="#sessions">See a typical session →</a>
 </section>
+<section class="stack sec-learn" aria-labelledby="app-h">
+  <span class="eyebrow">The Maverick Mind app</span>
+  <h2 id="app-h">Ten minutes a day between sessions.</h2>
+  <p class="lede">Your child practises each week's skill on their own phone. You set the routine and the rewards, and see how they're doing.</p>
+  <div class="phones">
+    <figure><img src="img/app-child-home.webp" alt="The child's home screen: today's module, When feelings get big, about 10 minutes, with points, level and current run." width="534" height="1080" loading="lazy"><figcaption>Your child's home</figcaption></figure>
+    <figure><img src="img/app-apply-it.webp" alt="An Apply it question: a homework scenario, a prompt to say out loud what they would do using the steps, and one way to answer." width="534" height="1080" loading="lazy"><figcaption>Apply it, out loud</figcaption></figure>
+    <figure><img src="img/app-grown-up-home.webp" alt="The parent's home screen: next reward, tasks to confirm, a lesson on understanding your child, and your children." width="534" height="1080" loading="lazy"><figcaption>Your home</figcaption></figure>
+  </div>
+  <a class="why-more" href="#the-app">About the app →</a>
+</section>
 <section class="stack sec-trust" aria-labelledby="what-h">
   <span class="eyebrow">What you get</span>
   <h2 id="what-h">Real skills. Their passions. Every week.</h2>
@@ -1833,7 +1846,7 @@ home(){
 <section class="stack">
   <span class="eyebrow">For parents · ADHD, autism and every brain</span>
   <h1>Built for your child, from the first day.</h1>
-  <p class="lede">Maverick Minds is for every 11 to 13-year-old, including children with ADHD or autism. Diagnosed, on a waiting list or just wondering: no diagnosis needed.</p>
+  <p class="lede">Maverick Minds is for every young person from Year 7 to Year 13, including those with ADHD or autism. Diagnosed, on a waiting list or just wondering: no diagnosis needed.</p>
   <div class="btns"><a class="btn solid" href="#join">Reserve a founding place</a><a class="btn" href="#contact">Book a chat</a></div>
 </section>
 <section class="stack sec-sessions" aria-labelledby="nd-fit-h">
@@ -1955,7 +1968,7 @@ sessions(){
 <section class="stack">
   <span class="eyebrow">Weekly youth club · from September 2027</span>
   <h1>A new skill every week. A safe place to use it.</h1>
-  <p class="lede">Three hours every week for 11 to 13-year-olds. Built for every child, including those with ADHD or autism. No diagnosis needed.</p>
+  <p class="lede">Three hours every week for Years 7 to 13, in groups by stage. Built for every child, including those with ADHD or autism. No diagnosis needed.</p>
 </section>
 <section class="stack">
   <h2>What they learn</h2>
@@ -2018,9 +2031,9 @@ sessions(){
   <div class="stack">
     <h2>The details</h2>
     <dl class="facts">
-      <dt>Who</dt><dd>Every child aged 11 to 13, preparing for or settling into secondary school. That includes children with ADHD, autism or both, diagnosed or not.</dd>
+      <dt>Who</dt><dd>Every young person from Year 7 to Year 13, in groups by stage: Years 7 and 8, Years 9 to 11, and sixth form. That includes children with ADHD, autism or both, diagnosed or not.</dd>
       <dt>When</dt><dd>Once a week, 3 hours. We'll confirm the day before launch.</dd>
-      <dt>Price</dt><dd>£119 a month for the group, £149 for the small group. Or £35 a session. <a href="#fees">See fees</a>.</dd>
+      <dt>Price</dt><dd>£119 a month for the group, £149 for the small group. Or £30 a session. <a href="#fees">See fees</a>.</dd>
       <dt>Staff</dt><dd>Trained in ADHD, autism and SEN, all Enhanced DBS checked. 1 adult for every 10 children in the group, and every 5 in the small group. One-to-one support included where needed.</dd>
       <dt>Where</dt><dd>London. We'll share the venue before launch.</dd>
     </dl>
@@ -2160,10 +2173,10 @@ faq(){
 </section>
 <section class="faq">
   ${q("Does my child need a diagnosis?", `<p>No. Our youth club is for every child, including children with ADHD, autism, or both (AuDHD), whether they're diagnosed, waiting for an assessment, or have never been assessed at all. Nobody has to prove anything to join.</p>`)}
-  ${q("My child is still in Year 6. Can they come?", `<p>Yes, once they're 11. Our youth club helps children prepare for the move to secondary school, as well as settle in once they're there.</p>`)}
+  ${q("Which school years is it for?", `<p>Years 7 to 13. We group young people by stage: Years 7 and 8, Years 9 to 11, and sixth form, so each group works on what matters at their age.</p>`)}
   ${q("What will my child actually learn?", `<p>Seven life skills: feelings and regulation, friendships and communication, organisation and independence, change and the unexpected, understanding their brain, getting ready for what's next, and living with tech. Every group starts with feelings and regulation, then we choose the order with the group. See <a href="#sessions">how sessions work</a>.</p>`)}
   ${q("Will my child be on screens?", `<p>A little, and on purpose. Each Level Up lesson includes one short video that we've checked first, shown without ads. Lessons are otherwise hands-on, including "Living with tech", which teaches children to use AI well, spot fake content and stay safe online. Team games are active and screen-free, and screens in Passion Projects are only used when a project needs them, such as coding or design.</p>`)}
-  ${q("Is it only for neurodivergent kids?", `<p>No. Maverick Minds is for every 11 to 13-year-old. We design every session around how kids who have ADHD or ASD learn best: short bursts, movement, hands-on activities and a calm room. That's how most children learn best, so every child gets more out of it.</p>`)}
+  ${q("Is it only for neurodivergent kids?", `<p>No. Maverick Minds is for every young person from Year 7 to Year 13. We design every session around how kids who have ADHD or ASD learn best: short bursts, movement, hands-on activities and a calm room. That's how most children learn best, so every child gets more out of it.</p>`)}
   ${q("What if my child needs one-to-one support?", `<p>We'll plan it with you on your get-to-know-you call. One-to-one support for part of a session is included at no extra cost. If your child needs one-to-one support for the whole session, every week, we'll talk honestly with you about whether we're the right fit.</p>`)}
   ${q("How does the £50 deposit work?", `<p>It holds your child's founding place. We give it back after their first month. If we don't launch, or your child doesn't start with us, you get it back in full. If you change your mind, tell us before their first session and we'll refund it.</p>`)}
   ${q("Can I cancel my membership?", `<p>Yes, any time. There's no minimum term.</p>`)}
@@ -2171,7 +2184,8 @@ faq(){
   ${q("What's the difference between the group and the small group?", `<p>Both have the same three-hour session, skills and Passion Projects. The group has up to 40 children with one adult for every 10, for £119 a month. The small group has up to 20 children with one adult for every 5, for £149 a month, for children who'd like more support. We'll help you choose on your get-to-know-you call.</p>`)}
   ${q("What about lunch?", `<p>Please pack your child a lunch, with no nuts. There's a 20-minute lunch break, and our team eats with the children. Tell us about any allergies on your get-to-know-you call.</p>`)}
   ${q("What are Passion Projects?", `<p>The last hour of every session. Your child picks a track (creative, tech, sport and fitness, beauty and fashion, or enterprise) and works on a personal project, with the kit to practise properly. If they want to be a hairdresser, for example, we'll get them a hairdressing kit.</p>`)}
-  ${q("What happens after Year 8?", `<p>Your child doesn't have to leave. Young people who want to stay can become junior leaders, helping younger members feel welcome and building their own confidence.</p>`)}
+  ${q("What can older members do?", `<p>Sixth formers can become junior leaders, helping younger members feel welcome and building their own confidence.</p>`)}
+  ${q("Is there an app?", `<p>Yes. The Maverick Mind app launches in September 2027, so your child can practise for ten minutes a day at home. It's included in both memberships. <a href="#the-app">About the app</a>.</p>`)}
   ${q("Is this therapy, or instead of school?", `<p>No. We're not therapy or a medical service, and we don't replace school, SEN support, an EHC plan or CAMHS. We work alongside them. We'll never share anything about your child without your consent, unless we have a safeguarding concern.</p>`)}
   ${q("Is there anything for parents?", `<p>Yes. An update after every session, a monthly check-in, termly parent workshops on things like meltdowns and EHC plans, and our free <a href="#library">guides</a>. Pickup is also a chance to meet other parents.</p>`)}
   ${q("Do you run holiday clubs?", `<p>Half-term holiday days are coming. Members will hear about dates first.</p>`)}
@@ -2179,7 +2193,7 @@ faq(){
   ${q("What if my child has a meltdown or wants to leave?", `<p>That's okay, and they won't be in trouble. There's a quiet space they can use at any time without asking. A member of staff will stay nearby, keep things calm and use what you've told us helps your child.</p><p>If your child wants to go home, or we think they need you, we'll call you straight away. We'll talk it through with you at pickup.</p>`)}
   ${q("How do refunds and cancellations work?", `<p>See our <a href="#fees">booking terms</a>. In short: if we cancel, you get a full refund, and if you cancel with enough notice, you get a refund or credit.</p>`)}
   ${q("What if they don't enjoy it?", `<p>Tell us. We'll talk after the first session about what your child found hard and change what we can, such as where they sit, which activities they join or how they arrive. Some children need two or three sessions to settle, and some prefer to come for part of a session at first, which is fine. There's no commitment to keep coming, and you can cancel your membership at any time.</p>`)}
-  ${q("Can they bring a friend?", `<p>Yes, if their friend is aged 11 to 13. Their friend's parent needs to reserve a place too, and you can tell us you'd like them to come together.</p>`)}
+  ${q("Can they bring a friend?", `<p>Yes, if their friend is in Years 7 to 13. Their friend's parent needs to reserve a place too, and you can tell us you'd like them to come together.</p>`)}
   ${q("What do the staff know about ADHD and autism?", `<p>Our sessions are run by staff trained in ADHD, autism and SEN. Every member of staff completes our training on ADHD, autism and sensory needs before their first session, as well as safeguarding training. See <a href="#safeguarding">safeguarding</a>.</p>`)}
   ${q("What will I hear about the session?", `<p>After every session you get an update on what the Level Up lesson covered and how your child got on. Choose whether you'd like it in person at pickup or written down. If your child is there, we talk with them, not about them.</p>`)}
 </section>`;
@@ -2289,7 +2303,7 @@ schools(){
 <section class="stack">
   <span class="eyebrow">For SENCOs, PSHE and pastoral leads</span>
   <h1>Teachers are the heroes. We're the backup.</h1>
-  <p class="lede">We run a weekly youth club outside school for every child aged 11 to 13, including children with ADHD, autism, or both (AuDHD). They learn seven life skills, from handling big feelings to living with tech, with extra support around the move to secondary school. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
+  <p class="lede">We run a weekly youth club outside school for every young person from Year 7 to Year 13, including those with ADHD, autism, or both (AuDHD). They learn seven life skills, from handling big feelings to living with tech, with extra support around the move to secondary school. No diagnosis needed. The skills they practise with us, like regulating emotions and handling change, go back into your classroom with them.</p>
 </section>
 <section class="stack">
   <h2>How we can work together</h2>
@@ -2328,6 +2342,71 @@ schools(){
   <a class="btn solid" href="#contact" data-topic="I'm from a school or SENCO">Get in touch</a>
 </section>`;
 },
+"the-app"(){
+  return `
+<section class="stack">
+  <span class="eyebrow">The Maverick Mind app · iPhone and Android · from September 2027</span>
+  <h1>Ten minutes a day to practise what they learn.</h1>
+  <p class="lede">A life skills app for every young person from Year 7 to Year 13. Your child practises on their own phone. You set the routine and see how they're doing. No diagnosis needed.</p>
+  <div class="btns"><a class="btn solid" href="#contact">Tell us you're interested</a><a class="btn" href="#fees">Fees</a></div>
+</section>
+<section class="stack">
+  <div class="phones">
+    <figure><img src="img/app-child-home.webp" alt="The child's home screen: today's module, When feelings get big, about 10 minutes, with points, level and current run." width="534" height="1080"><figcaption>Your child's home</figcaption></figure>
+    <figure><img src="img/app-apply-it.webp" alt="An Apply it question: a homework scenario, a prompt to say out loud what they would do using the steps, and one way to answer." width="534" height="1080"><figcaption>Apply it, out loud</figcaption></figure>
+    <figure><img src="img/app-grown-up-home.webp" alt="The parent's home screen: next reward, tasks to confirm, a lesson on understanding your child, and your children." width="534" height="1080"><figcaption>Your home</figcaption></figure>
+  </div>
+  <p class="phones-note">Early designs. The finished app may look different.</p>
+</section>
+<section class="two">
+  <div class="stack">
+    <h2>For your child</h2>
+    <ul class="ticks">
+      <li><b>One short module a day,</b> on the same life skills as our sessions, starting with handling big feelings.</li>
+      <li><b>Short videos and real-life choices,</b> with every question and instruction read aloud.</li>
+      <li><b>Apply it:</b> they say out loud what they'd do in a real situation. A wrong answer gets a hint and another try, never a cross.</li>
+      <li><b>Points, levels and rewards</b> they keep. Nothing is ever taken away, and there are no league tables.</li>
+      <li><b>Calm mode</b> with softer colours and no movement, and a font option for dyslexia.</li>
+    </ul>
+  </div>
+  <div class="stack">
+    <h2>For you</h2>
+    <ul class="ticks">
+      <li><b>Build the after-school routine,</b> with suggested tasks and rewards you can change.</li>
+      <li><b>Confirm tasks</b> when they're done, and choose the rewards they're working towards.</li>
+      <li><b>See their progress</b> and the Saturday update, and read their answers.</li>
+      <li><b>Understanding your child:</b> short lessons for parents, written with an educational psychologist.</li>
+    </ul>
+  </div>
+</section>
+<section class="stack">
+  <h2>Safe by design</h2>
+  <ul class="ticks">
+    <li><b>No AI chat.</b> An AI marks your child's answer against a guide our team writes. It never talks to your child or writes anything for them, and you can change any mark.</li>
+    <li><b>No messaging, ads or tracking.</b> Young people can't contact each other, and we don't use third-party trackers.</li>
+    <li><b>Voice recordings are deleted after marking,</b> except one a week that we keep for you to listen to.</li>
+    <li><b>Data stays in the UK or EU,</b> with companies under contract who can't train AI on it.</li>
+    <li><b>Built to the ICO Children's Code.</b> For under-13s, you create the account and your child's login sits under yours.</li>
+  </ul>
+  <a class="why-more" href="#safeguarding">Our safeguarding policy →</a>
+</section>
+<section class="two">
+  <div class="stack">
+    <span class="eyebrow">Members</span>
+    <h2>Included</h2>
+    <p>The app is part of both memberships, at no extra cost.</p>
+  </div>
+  <div class="stack">
+    <span class="eyebrow">On its own</span>
+    <h2>£19.99 a month</h2>
+    <p>For pay-as-you-go families, and anyone who'd like the app without sessions. Paid through the App Store or Google Play.</p>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="stack"><span class="eyebrow">Launching September 2027</span><h2>Want to know when it's ready?</h2><p>Tell us you're interested and we'll let you know first.</p></div>
+  <a class="btn solid" href="#contact">Tell us you're interested</a>
+</section>`;
+},
 fees(){
   const t=(title,body)=>`<details><summary>${title}</summary><div>${body}</div></details>`;
   return `
@@ -2345,6 +2424,7 @@ fees(){
       <li>Every weekly three-hour session</li>
       <li>Missed a session? Book a make-up session</li>
       <li>One-to-one support where needed, at no extra cost</li>
+      <li>The Maverick Mind app, from September 2027</li>
       <li>No minimum term. Cancel any time.</li>
     </ul>
     <p>About £27 a session. Months with five sessions cost the same.</p>
@@ -2357,6 +2437,7 @@ fees(){
       <li>Every weekly three-hour session</li>
       <li>Missed a session? Book a make-up session</li>
       <li>One-to-one support where needed, at no extra cost</li>
+      <li>The Maverick Mind app, from September 2027</li>
       <li>No minimum term. Cancel any time.</li>
     </ul>
     <p>About £34 a session. Months with five sessions cost the same.</p>
@@ -2364,8 +2445,13 @@ fees(){
 </section>
 <section class="stack">
   <span class="eyebrow">Pay as you go</span>
-  <h2>£35 a session</h2>
+  <h2>£30 a session</h2>
   <p>Book the sessions you want, with no commitment. One-to-one support where needed, at no extra cost.</p>
+</section>
+<section class="stack">
+  <span class="eyebrow">The Maverick Mind app</span>
+  <h2>£19.99 a month on its own</h2>
+  <p>Included in both memberships. Pay-as-you-go families, and anyone who'd like the app without sessions, can subscribe through the App Store or Google Play from September 2027. <a href="#the-app">About the app</a>.</p>
 </section>
 <section class="stack">
   <h2>Every option includes</h2>
